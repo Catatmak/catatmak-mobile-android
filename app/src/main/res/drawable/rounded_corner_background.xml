@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <size
+        android:width="306dp"
+        android:height="175dp" />
+    <solid android:color="#3497F9" /> <!-- Warna background -->
+    <corners android:radius="50dp" /> <!-- Radius sudut -->
+</shape>

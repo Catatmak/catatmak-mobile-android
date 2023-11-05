@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Catetmak.</string>
+
+    <string name="title_onboarding">Dapatkan Analisa Keuangan by Mamih AI yang Langsung Terkirim Lewat Whatsapp Setiap Minggu</string>
+    <string name="desc_onboarding">Aplikasi yang bikin pencatatan keuanganmu lebih mudah. Siap analisa keuanganmu dengan bantuan prediksi dari ai</string>
+    <string name="gas_try">GAS COBA</string>
 </resources>
