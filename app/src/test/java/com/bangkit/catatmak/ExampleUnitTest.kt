@@ -1,4 +1,4 @@
-package com.bangkit.catetmak
+package com.bangkit.catatmak
 
 import org.junit.Test
 

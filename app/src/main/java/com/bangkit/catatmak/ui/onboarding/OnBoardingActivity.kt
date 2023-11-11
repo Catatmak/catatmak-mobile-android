@@ -1,12 +1,10 @@
-package com.bangkit.catetmak.ui.onboarding
+package com.bangkit.catatmak.ui.onboarding
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
-import com.bangkit.catetmak.R
-import com.bangkit.catetmak.databinding.ActivityOnBoardingBinding
-import com.bangkit.catetmak.ui.main.MainActivity
+import com.bangkit.catatmak.databinding.ActivityOnBoardingBinding
+import com.bangkit.catatmak.ui.main.MainActivity
 
 class OnBoardingActivity : AppCompatActivity() {
 
@@ -21,11 +19,13 @@ class OnBoardingActivity : AppCompatActivity() {
     }
 
     private fun setupAction() {
-        binding.buttonTry.setOnClickListener { goToMainActivity() }
+        binding.btnTryNow.setOnClickListener { goToMainActivity() }
     }
 
     private fun goToMainActivity() {
         val intent = Intent(this, MainActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(intent)
+        finish()
     }
 }

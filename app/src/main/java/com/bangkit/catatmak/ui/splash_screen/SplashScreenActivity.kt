@@ -1,13 +1,12 @@
-package com.bangkit.catetmak.ui.splash_screen
+package com.bangkit.catatmak.ui.splash_screen
 
 import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import com.bangkit.catetmak.databinding.ActivitySplashScreenBinding
-import com.bangkit.catetmak.ui.main.MainActivity
-import com.bangkit.catetmak.ui.onboarding.OnBoardingActivity
+import com.bangkit.catatmak.ui.onboarding.OnBoardingActivity
+import com.bangkit.catatmak.databinding.ActivitySplashScreenBinding
 
 @SuppressLint("CustomSplashScreen")
 class SplashScreenActivity : AppCompatActivity() {

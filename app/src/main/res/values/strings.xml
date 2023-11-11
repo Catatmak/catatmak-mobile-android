@@ -1,7 +1,18 @@
 <resources>
-    <string name="app_name">Catetmak.</string>
+    <string name="app_name">Catatmak.</string>
 
-    <string name="title_onboarding">Dapatkan Analisa Keuangan by Mamih AI yang Langsung Terkirim Lewat Whatsapp Setiap Minggu</string>
-    <string name="desc_onboarding">Aplikasi yang bikin pencatatan keuanganmu lebih mudah. Siap analisa keuanganmu dengan bantuan prediksi dari ai</string>
-    <string name="gas_try">GAS COBA</string>
+    <string name="title_onboarding_1">Selamat datang di Catatmak!</string>
+    <string name="desc_onboarding_1">Aplikasi yang bikin pencatatan keuanganmu lebih mudah. Siap analisa keuanganmu dengan bantuan prediksi dari ai</string>
+    <string name="title_onboarding_2">Catat Keuangan Mudah Langsung Terhubung dengan Whatsapp</string>
+    <string name="desc_onboarding_2">Aplikasi yang bikin pencatatan keuanganmu lebih mudah. Siap analisa keuanganmu dengan bantuan prediksi dari ai</string>
+    <string name="title_onboarding_3">Dapatkan Analisa Keuangan by Mamih AI yang Langsung Terkirim Lewat Whatsapp Setiap Minggu</string>
+    <string name="desc_onboarding_3">Aplikasi yang bikin pencatatan keuanganmu lebih mudah. Siap analisa keuanganmu dengan bantuan prediksi dari ai</string>
+
+
+    <string name="try_now">GAS COBA</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
 </resources>

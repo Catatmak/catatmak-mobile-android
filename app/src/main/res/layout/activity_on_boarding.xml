@@ -1,67 +1,202 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    app:layoutDescription="@xml/activity_on_boarding_scene"
     tools:context=".ui.onboarding.OnBoardingActivity">
 
     <ImageView
-        android:layout_width="wrap_content"
+        android:id="@+id/ivBackgroundOnBoarding1"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:src="@drawable/rounded_corner_background"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/guideline1" />
 
     <ImageView
-        android:id="@+id/ivCatetmak"
-        android:layout_width="wrap_content"
+        android:id="@+id/ivLogoOnBoarding1"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:src="@drawable/catetmak_logo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/guideline2" />
 
     <TextView
-        android:id="@+id/tvTitleOnBoarding"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginTop="32dp"
+        android:id="@+id/tvTitleOnBoarding1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
         android:fontFamily="@font/sf_pro_display_bold"
         android:paddingHorizontal="40dp"
-        android:text="@string/title_onboarding"
+        android:text="@string/title_onboarding_1"
         android:textAlignment="center"
         android:textColor="@color/dark_blue"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ivCatetmak" />
+        app:layout_constraintStart_toStartOf="@id/ivBackgroundOnBoarding1"
+        app:layout_constraintEnd_toEndOf="@id/ivBackgroundOnBoarding1"
+        app:layout_constraintTop_toBottomOf="@id/ivBackgroundOnBoarding1" />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
+        android:id="@+id/tevDesc1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:fontFamily="@font/sf_pro_display_regular"
         android:paddingHorizontal="40dp"
-        android:text="@string/desc_onboarding"
+        android:text="@string/desc_onboarding_1"
         android:textAlignment="center"
         android:textColor="@color/dark_blue"
         android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/tvTitleOnBoarding1"
+        app:layout_constraintStart_toStartOf="@id/tvTitleOnBoarding1"
+        app:layout_constraintTop_toBottomOf="@id/tvTitleOnBoarding1" />
+
+    <ImageView
+        android:id="@+id/ivBackgroundOnBoarding2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/rounded_corner_background"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guideline1" />
+
+    <ImageView
+        android:id="@+id/ivLogoOnBoarding2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/catetmak_logo"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guideline2" />
+
+    <TextView
+        android:id="@+id/tvTitleOnBoarding2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/sf_pro_display_bold"
+        android:paddingHorizontal="40dp"
+        android:text="@string/title_onboarding_2"
+        android:textAlignment="center"
+        android:textColor="@color/dark_blue"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@id/ivBackgroundOnBoarding2"
+        app:layout_constraintEnd_toEndOf="@id/ivBackgroundOnBoarding2"
+        app:layout_constraintTop_toBottomOf="@id/ivBackgroundOnBoarding2" />
+
+    <TextView
+        android:id="@+id/tevDesc2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/sf_pro_display_regular"
+        android:paddingHorizontal="40dp"
+        android:text="@string/desc_onboarding_2"
+        android:textAlignment="center"
+        android:textColor="@color/dark_blue"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@id/tvTitleOnBoarding2"
+        app:layout_constraintStart_toStartOf="@id/tvTitleOnBoarding2"
+        app:layout_constraintTop_toBottomOf="@id/tvTitleOnBoarding2" />
+
+    <ImageView
+        android:id="@+id/ivBackgroundOnBoarding3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/rounded_corner_background"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guideline1" />
+
+    <ImageView
+        android:id="@+id/ivLogoOnBoarding3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/catetmak_logo"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guideline2" />
+
+    <TextView
+        android:id="@+id/tvTitleOnBoarding3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/sf_pro_display_bold"
+        android:paddingHorizontal="40dp"
+        android:text="@string/title_onboarding_3"
+        android:textAlignment="center"
+        android:textColor="@color/dark_blue"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@id/ivBackgroundOnBoarding3"
+        app:layout_constraintEnd_toEndOf="@id/ivBackgroundOnBoarding3"
+        app:layout_constraintTop_toBottomOf="@id/ivBackgroundOnBoarding3" />
+
+    <TextView
+        android:id="@+id/tevDesc3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/sf_pro_display_regular"
+        android:paddingHorizontal="40dp"
+        android:text="@string/desc_onboarding_3"
+        android:textAlignment="center"
+        android:textColor="@color/dark_blue"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@id/tvTitleOnBoarding3"
+        app:layout_constraintStart_toStartOf="@id/tvTitleOnBoarding3"
+        app:layout_constraintTop_toBottomOf="@id/tvTitleOnBoarding3" />
+
+    <androidx.constraintlayout.utils.widget.ImageFilterView
+        android:id="@+id/menu1"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="32dp"
+        app:altSrc="@drawable/ic_circle_full"
+        app:layout_constraintEnd_toStartOf="@+id/menu2"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvTitleOnBoarding" />
+        app:layout_constraintTop_toBottomOf="parent"
+        app:srcCompat="@drawable/ic_circle"
+        app:tint="@color/light_blue" />
+
+    <androidx.constraintlayout.utils.widget.ImageFilterView
+        android:id="@+id/menu2"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:altSrc="@drawable/ic_circle_full"
+        app:layout_constraintBottom_toBottomOf="@+id/menu1"
+        app:layout_constraintEnd_toStartOf="@+id/menu3"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/menu1"
+        app:layout_constraintTop_toTopOf="@+id/menu1"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/ic_circle"
+        app:tint="@color/light_blue" />
+
+    <androidx.constraintlayout.utils.widget.ImageFilterView
+        android:id="@+id/menu3"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:altSrc="@drawable/ic_circle_full"
+        app:layout_constraintBottom_toBottomOf="@+id/menu2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/menu2"
+        app:layout_constraintTop_toTopOf="@+id/menu2"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/ic_circle"
+        app:tint="@color/light_blue" />
 
     <Button
-        android:id="@+id/buttonTry"
+        android:id="@+id/btnTryNow"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/sf_pro_display_medium"
-        android:text="@string/gas_try"
-        android:textColor="@color/white"
         android:layout_marginHorizontal="12dp"
         android:layout_marginBottom="18dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:fontFamily="@font/sf_pro_display_medium"
+        android:text="@string/try_now"
+        android:alpha="0"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@id/menu2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -78,4 +213,5 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="132dp" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.motion.widget.MotionLayout>
