@@ -7,19 +7,31 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.bangkit.catatmak.ui.main.ui.home.HomeFragment"
+        android:name="com.bangkit.catatmak.ui.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.bangkit.catatmak.ui.main.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_transaction"
+        android:name="com.bangkit.catatmak.ui.transaction.TransactionFragment"
+        android:label="@string/title_transaction"
+        tools:layout="@layout/fragment_transaction" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.bangkit.catatmak.ui.main.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/navigation_add_transaction"
+        android:name="com.bangkit.catatmak.ui.add_transaction.AddTransactionFragment"
+        android:label="@string/title_add_transaction"
+        tools:layout="@layout/fragment_add_transaction" />
+
+    <fragment
+        android:id="@+id/navigation_analysis"
+        android:name="com.bangkit.catatmak.ui.analysis.AnalysisFragment"
+        android:label="@string/analysis"
+        tools:layout="@layout/fragment_analysis" />
+
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.bangkit.catatmak.ui.profile.ProfileFragment"
+        android:label="@string/profile"
+        tools:layout="@layout/fragment_profile" />
 </navigation>

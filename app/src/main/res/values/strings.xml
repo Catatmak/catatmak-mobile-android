@@ -8,11 +8,55 @@
     <string name="title_onboarding_3">Dapatkan Analisa Keuangan by Mamih AI yang Langsung Terkirim Lewat Whatsapp Setiap Minggu</string>
     <string name="desc_onboarding_3">Aplikasi yang bikin pencatatan keuanganmu lebih mudah. Siap analisa keuanganmu dengan bantuan prediksi dari ai</string>
 
-
     <string name="try_now">GAS COBA</string>
     <string name="title_activity_main">MainActivity</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_transaction">Transaksi</string>
+    <string name="title_home">Beranda</string>
+    <string name="title_add_transaction">Catatmak</string>
+    <string name="analysis">Analisa</string>
+    <string name="profile">Profil</string>
+    <string name="todays_expenses">Pengeluaran Hari Ini</string>
+    <string name="total">Rp. 150.000</string>
+    <string name="insight_title">\" Hari Ini Lumayan Boros \"</string>
+    <string name="insight_message">Kamu lumayan boros nih bulan ini, terjadi kenaikan pengeluaran pada kategori Makan sebesar Rp. 1.000.000</string>
+    <string name="todays_transaction">Transaksi Hari Ini</string>
+    <string name="created_at">29 Oktober, 15.00</string>
+    <string name="item_name">Bakso dan Es Teh Manis</string>
+    <string name="category_name">Makan Minum</string>
+    <string name="price">- Rp. 24.000</string>
 
+    <string-array name="data_created_at">
+        <item>29 Oktober, 15.00</item>
+        <item>29 Oktober, 15.00</item>
+        <item>29 Oktober, 15.00</item>
+        <item>29 Oktober, 15.00</item>
+    </string-array>
+
+    <string-array name="data_item_name">
+        <item>Bakso dan Es Teh Manis</item>
+        <item>Bakso dan Es Teh Manis</item>
+        <item>Bakso dan Es Teh Manis</item>
+        <item>Nemu Duit Dijalan</item>
+    </string-array>
+
+    <string-array name="data_category_name">
+        <item>Tidak Terkategori</item>
+        <item>Makan Minum</item>
+        <item>Makan Minum</item>
+        <item>Makan Minum</item>
+    </string-array>
+
+    <string-array name="data_price">
+        <item>Rp. 24.000</item>
+        <item>Rp. 24.000</item>
+        <item>Rp. 24.000</item>
+        <item>Rp. 50.000</item>
+    </string-array>
+    
+    <string-array name="data_is_plus">
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>1</item>
+    </string-array>
 </resources>
