@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/option_filter_1"
+        android:title="@string/one_month_ago" />
+    <item
+        android:id="@+id/option_filter_2"
+        android:title="@string/one_week_ago" />
+    <item
+        android:id="@+id/option_filter_3"
+        android:title="@string/one_day_ago" />
+</menu>

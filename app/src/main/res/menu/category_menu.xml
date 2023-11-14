@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/option_category_1"
+        android:title="@string/food_and_drink" />
+    <item
+        android:id="@+id/option_category_2"
+        android:title="Sedekah" />
+    <item
+        android:id="@+id/option_category_3"
+        android:title="Poya-Poya" />
+</menu>

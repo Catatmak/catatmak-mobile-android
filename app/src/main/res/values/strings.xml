@@ -24,6 +24,20 @@
     <string name="item_name">Bakso dan Es Teh Manis</string>
     <string name="category_name">Makan Minum</string>
     <string name="price">- Rp. 24.000</string>
+    <string name="mak_beti_image">Gambar Mak Beti</string>
+    <string name="mak_beti_ai_image">Gamar Mak Beti AI</string>
+    <string name="one_week_ago">1 Minggu Terakhir</string>
+    <string name="category">Kategori</string>
+    <string name="one_month_ago">1 Bulan Terakhir</string>
+    <string name="one_day_ago">1 Hari Terakhir</string>
+    <string name="food_and_drink"><![CDATA[Makanan & Minuman]]></string>
+    <string name="ic_arrow_down">Icon Panah Ke Bawah</string>
+    <string name="ic_arrow_up">Icon Panah Ke Atas</string>
+    <string name="income">Pemasukan</string>
+    <string name="total_income">Rp. 5.000.000</string>
+    <string name="expenses">Pengeluaran</string>
+    <string name="total_expenses">Rp. 2.000.000</string>
+    <string name="list_transaction">Daftar Transaksi</string>
 
     <string-array name="data_created_at">
         <item>29 Oktober, 15.00</item>

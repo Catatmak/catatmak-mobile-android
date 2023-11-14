@@ -42,17 +42,22 @@
                 android:text="@string/total"
                 android:textColor="@color/white"
                 android:textSize="28sp"
+                android:maxWidth="195dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvTodaysExpeses" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
 
     <ImageView
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:src="@drawable/catetmak_logo_with_background"
+        android:layout_marginBottom="12dp"
         app:layout_constraintBottom_toTopOf="@id/guideline1"
-        app:layout_constraintStart_toEndOf="@id/guideline2" />
+        app:layout_constraintTop_toTopOf="@id/cvTodaysExpeses"
+        app:layout_constraintEnd_toEndOf="@id/cvTodaysExpeses"
+        app:layout_constraintStart_toEndOf="@id/guideline2"
+        android:contentDescription="@string/mak_beti_image" />
 
     <ImageView
         android:id="@+id/ivMamihAi"
@@ -62,7 +67,8 @@
         android:src="@drawable/mamih_ai"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cvTodaysExpeses" />
+        app:layout_constraintTop_toBottomOf="@id/cvTodaysExpeses"
+        android:contentDescription="@string/mak_beti_ai_image" />
 
     <TextView
         android:id="@+id/tvInsightTitle"
@@ -125,14 +131,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="96dp" />
+        app:layout_constraintGuide_begin="89dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="250dp" />
+        app:layout_constraintGuide_begin="240dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

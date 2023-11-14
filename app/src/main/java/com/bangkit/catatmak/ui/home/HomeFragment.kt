@@ -88,6 +88,5 @@ class HomeFragment : Fragment() {
     private fun setTransactionData() {
         val listTransactionAdapter = ListTransactionAdapter(list)
         binding?.rvTransactions?.adapter = listTransactionAdapter
-        listTransactionAdapter.notifyDataSetChanged()
     }
 }
