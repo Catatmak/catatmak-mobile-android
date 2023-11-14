@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layoutDescription="@xml/activity_on_boarding_scene"
+    app:layoutDescription="@xml/activity_on_boarding_scene_lanscape"
     tools:context=".ui.onboarding.OnBoardingActivity">
 
     <ImageView
@@ -26,9 +26,8 @@
 
     <TextView
         android:id="@+id/tvTitleOnBoarding1"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
         android:fontFamily="@font/sf_pro_display_bold"
         android:paddingHorizontal="40dp"
         android:text="@string/title_onboarding_1"
@@ -36,7 +35,6 @@
         android:textColor="@color/dark_blue"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@id/ivBackgroundOnBoarding1"
-        app:layout_constraintEnd_toEndOf="@id/ivBackgroundOnBoarding1"
         app:layout_constraintTop_toBottomOf="@id/ivBackgroundOnBoarding1" />
 
     <TextView
@@ -58,10 +56,10 @@
         android:id="@+id/ivBackgroundOnBoarding2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:contentDescription="@string/mak_beti_image"
         android:src="@drawable/rounded_corner_background"
         app:layout_constraintStart_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/guideline1"
-        android:contentDescription="@string/mak_beti_image"/>
+        app:layout_constraintTop_toBottomOf="@id/guideline1" />
 
     <ImageView
         android:id="@+id/ivLogoOnBoarding2"
@@ -69,14 +67,12 @@
         android:layout_height="wrap_content"
         android:src="@drawable/catetmak_logo"
         app:layout_constraintStart_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/guideline2"
-        android:contentDescription="@string/mak_beti_image"/>
+        app:layout_constraintTop_toBottomOf="@id/guideline2" />
 
     <TextView
         android:id="@+id/tvTitleOnBoarding2"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
         android:fontFamily="@font/sf_pro_display_bold"
         android:paddingHorizontal="40dp"
         android:text="@string/title_onboarding_2"
@@ -84,7 +80,6 @@
         android:textColor="@color/dark_blue"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@id/ivBackgroundOnBoarding2"
-        app:layout_constraintEnd_toEndOf="@id/ivBackgroundOnBoarding2"
         app:layout_constraintTop_toBottomOf="@id/ivBackgroundOnBoarding2" />
 
     <TextView
@@ -106,25 +101,23 @@
         android:id="@+id/ivBackgroundOnBoarding3"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:contentDescription="@string/mak_beti_image"
         android:src="@drawable/rounded_corner_background"
         app:layout_constraintStart_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/guideline1"
-        android:contentDescription="@string/mak_beti_image"/>
+        app:layout_constraintTop_toBottomOf="@id/guideline1" />
 
     <ImageView
         android:id="@+id/ivLogoOnBoarding3"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:src="@drawable/catetmak_logo"
-        app:layout_constraintStart_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/guideline2"
-        android:contentDescription="@string/mak_beti_image"/>
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guideline2" />
 
     <TextView
         android:id="@+id/tvTitleOnBoarding3"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
         android:fontFamily="@font/sf_pro_display_bold"
         android:paddingHorizontal="40dp"
         android:text="@string/title_onboarding_3"
@@ -132,7 +125,6 @@
         android:textColor="@color/dark_blue"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@id/ivBackgroundOnBoarding3"
-        app:layout_constraintEnd_toEndOf="@id/ivBackgroundOnBoarding3"
         app:layout_constraintTop_toBottomOf="@id/ivBackgroundOnBoarding3" />
 
     <TextView
@@ -154,7 +146,6 @@
         android:id="@+id/menu1"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_marginStart="32dp"
         app:altSrc="@drawable/ic_circle_full"
         app:layout_constraintEnd_toStartOf="@+id/menu2"
         app:layout_constraintHorizontal_bias="0.5"
@@ -186,37 +177,45 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/menu2"
-        app:layout_constraintTop_toTopOf="@+id/menu2"
-        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/ic_circle"
         app:tint="@color/light_blue" />
 
     <Button
         android:id="@+id/btnTryNow"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="12dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginBottom="18dp"
         android:fontFamily="@font/sf_pro_display_medium"
         android:text="@string/try_now"
-        android:visibility="gone"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@id/menu2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@id/tevDesc1"
+        app:layout_constraintStart_toStartOf="@id/tevDesc1"
+        app:layout_constraintTop_toBottomOf="@id/tevDesc1" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="179dp" />
+        app:layout_constraintGuide_begin="80dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="132dp" />
+        app:layout_constraintGuide_begin="30dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="86dp" />
 
 </androidx.constraintlayout.motion.widget.MotionLayout>
