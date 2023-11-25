@@ -21,7 +21,7 @@
         app:layout_constraintEnd_toStartOf="@id/btnCategory"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:strokeColor="@color/light_gray" />
+        app:strokeColor="@color/light_gray2" />
 
     <Button
         android:id="@+id/btnCategory"
@@ -42,7 +42,7 @@
         app:layout_constraintStart_toEndOf="@id/btnFilter"
         app:layout_constraintTop_toTopOf="@id/btnFilter"
         app:layout_constraintBottom_toBottomOf="@id/btnFilter"
-        app:strokeColor="@color/light_gray" />
+        app:strokeColor="@color/light_gray2" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cvIncome"

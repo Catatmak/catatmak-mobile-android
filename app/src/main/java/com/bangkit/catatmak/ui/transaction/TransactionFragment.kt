@@ -8,7 +8,9 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
 import android.widget.PopupMenu
+import android.widget.Toast
 import androidx.annotation.MenuRes
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -17,12 +19,16 @@ import com.bangkit.catatmak.R
 import com.bangkit.catatmak.adapter.ListTransactionAdapter
 import com.bangkit.catatmak.databinding.FragmentTransactionBinding
 import com.bangkit.catatmak.model.Transaction
+import com.google.android.material.bottomsheet.BottomSheetDialog
 
 class TransactionFragment : Fragment() {
 
     private val list = ArrayList<Transaction>()
     private var _binding: FragmentTransactionBinding? = null
     private val binding get() = _binding
+
+    private lateinit var edtExpenseName: EditText
+    private lateinit var edtPrice: EditText
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -156,6 +162,32 @@ class TransactionFragment : Fragment() {
     private fun setTransactionData() {
         val listTransactionAdapter = ListTransactionAdapter(list)
         binding?.rvTransactions?.adapter = listTransactionAdapter
+
+        listTransactionAdapter.setOnItemClickCallback(object :
+            ListTransactionAdapter.OnItemClickCallback {
+            override fun onItemClicked(data: Transaction) {
+              updateTransaction(data)
+            }
+        })
+    }
+
+    private fun updateTransaction(data: Transaction) {
+        val bsDialog = BottomSheetDialog(requireActivity())
+        val view = layoutInflater.inflate(R.layout.bs_update_transaction, null)
+
+        val btnUpdate = view.findViewById<Button>(R.id.btnUpdate)
+        edtExpenseName = view.findViewById(R.id.edtExpenseName)
+        edtPrice = view.findViewById(R.id.edtPrice)
+
+        edtExpenseName.setText(data.itemName)
+        edtPrice.setText(data.price)
+
+        btnUpdate.setOnClickListener {
+            Toast.makeText(context, "Berhasil mengupdate data", Toast.LENGTH_SHORT).show()
+        }
+        bsDialog.setCancelable(true)
+        bsDialog.setContentView(view)
+        bsDialog.show()
     }
 
     override fun onDestroy() {

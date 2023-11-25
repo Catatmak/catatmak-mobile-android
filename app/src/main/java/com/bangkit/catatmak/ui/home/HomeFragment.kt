@@ -5,19 +5,28 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
+import android.widget.Toast
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.bangkit.catatmak.R
 import com.bangkit.catatmak.adapter.ListTransactionAdapter
 import com.bangkit.catatmak.databinding.FragmentHomeBinding
 import com.bangkit.catatmak.model.Transaction
+import com.google.android.material.bottomsheet.BottomSheetDialog
+
 
 class HomeFragment : Fragment() {
 
     private val list = ArrayList<Transaction>()
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding
+
+    private lateinit var btnUpdate: Button
+    private lateinit var btnDelate: Button
+    private lateinit var edtExpenseName: EditText
+    private lateinit var edtPrice: EditText
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,9 +45,9 @@ class HomeFragment : Fragment() {
         setTransactionData()
     }
 
+
     override fun onResume() {
         super.onResume()
-        setProperHeightOfView()
         list.clear()
         list.addAll(getListTransactions())
         setTransactionData()
@@ -49,14 +58,14 @@ class HomeFragment : Fragment() {
         _binding = null
     }
 
-    private fun setProperHeightOfView() {
-        val layoutView = binding?.root
-        val layoutParams = layoutView?.layoutParams
-        if (layoutParams != null) {
-            layoutParams.height = ViewGroup.LayoutParams.WRAP_CONTENT
-            layoutView.requestLayout()
-        }
-    }
+//    private fun setProperHeightOfView() {
+//        val layoutView = binding?.root
+//        val layoutParams = layoutView?.layoutParams
+//        if (layoutParams != null) {
+//            layoutParams.height = ViewGroup.LayoutParams.WRAP_CONTENT
+//            layoutView.requestLayout()
+//        }
+//    }
 
     private fun setupRecyclerView() {
         binding?.rvTransactions?.apply {
@@ -88,5 +97,37 @@ class HomeFragment : Fragment() {
     private fun setTransactionData() {
         val listTransactionAdapter = ListTransactionAdapter(list)
         binding?.rvTransactions?.adapter = listTransactionAdapter
+
+        listTransactionAdapter.setOnItemClickCallback(object :
+            ListTransactionAdapter.OnItemClickCallback {
+            override fun onItemClicked(data: Transaction) {
+              updateTransaction(data)
+            }
+        })
+    }
+
+    private fun updateTransaction(data: Transaction) {
+        val bsDialog = BottomSheetDialog(requireActivity())
+        val view = layoutInflater.inflate(R.layout.bs_update_transaction, null)
+
+        btnUpdate = view.findViewById(R.id.btnUpdate)
+        btnDelate = view.findViewById(R.id.btnDelete)
+        edtExpenseName = view.findViewById(R.id.edtExpenseName)
+        edtPrice = view.findViewById(R.id.edtPrice)
+
+        edtExpenseName.setText(data.itemName)
+        edtPrice.setText(data.price)
+
+        btnUpdate.setOnClickListener {
+            Toast.makeText(context, "Berhasil mengupdate transaksi", Toast.LENGTH_SHORT).show()
+        }
+
+        btnDelate.setOnClickListener {
+            Toast.makeText(context, "Berhasil delate transaksi", Toast.LENGTH_SHORT).show()
+        }
+
+        bsDialog.setCancelable(true)
+        bsDialog.setContentView(view)
+        bsDialog.show()
     }
 }

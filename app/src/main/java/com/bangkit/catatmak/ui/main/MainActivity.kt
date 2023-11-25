@@ -42,8 +42,22 @@ class MainActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
-            if (destination.id == R.id.navigation_home) {
-                supportActionBar?.title = "Halo, Rifki 👋"
+            when (destination.id) {
+                R.id.navigation_home -> {
+                    supportActionBar?.title = resources.getString(R.string.welcome)
+                }
+
+                R.id.navigation_add_transaction -> {
+                    supportActionBar?.title = resources.getString(R.string.add_transaction)
+                }
+
+                R.id.navigation_transaction -> {
+                    supportActionBar?.title = resources.getString(R.string.transaction)
+                }
+
+                R.id.navigation_analysis -> {
+                    supportActionBar?.title = resources.getString(R.string.analysis)
+                }
             }
         }
     }

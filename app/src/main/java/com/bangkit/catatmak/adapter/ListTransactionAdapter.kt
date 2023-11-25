@@ -1,5 +1,6 @@
 package com.bangkit.catatmak.adapter
 
+import android.annotation.SuppressLint
 import android.graphics.Color
 import android.util.Log
 import android.view.LayoutInflater
@@ -14,30 +15,43 @@ import com.bangkit.catatmak.model.Transaction
 class ListTransactionAdapter(private val listTransaction: ArrayList<Transaction>) :
     RecyclerView.Adapter<ListTransactionAdapter.ListViewHolder>() {
 
+    private lateinit var onItemClickCallback: OnItemClickCallback
+
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback
+    }
+
+    private lateinit var layoutInflater: LayoutInflater
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
     ): ListViewHolder {
-        val view: View = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_row_transaction, parent, false)
+        layoutInflater = LayoutInflater.from(parent.context)
+        val view: View = layoutInflater.inflate(R.layout.item_row_transaction, parent, false)
         return ListViewHolder(view)
     }
 
+    @SuppressLint("InflateParams")
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
         val (createdAt, itemName, categoryName, price, isPlus) = listTransaction[position]
         holder.createdAt.text = createdAt
         holder.itemName.text = itemName
         holder.categoryName.text = categoryName
-        Log.d("Adapter", "${isPlus.toString()}")
         if (isPlus.toInt() == 1) {
-            holder.price.text = "+ $price"
+            holder.price.text =
+                holder.itemName.context.resources.getString(R.string.total_price, "+", "Rp.", price)
             val green = ContextCompat.getColor(holder.itemView.context, R.color.dark_green)
             holder.price.setTextColor(green)
         }
-        if (isPlus.toInt() == 0){
-            holder.price.text = "- $price"
+        if (isPlus.toInt() == 0) {
+            holder.price.text =
+                holder.itemName.context.resources.getString(R.string.total_price, "-", "Rp.", price)
             holder.price.setTextColor(Color.RED)
         }
+
+        holder.itemView.setOnClickListener { onItemClickCallback.onItemClicked(listTransaction[holder.adapterPosition]) }
+
     }
 
     override fun getItemCount(): Int = listTransaction.size
@@ -47,5 +61,9 @@ class ListTransactionAdapter(private val listTransaction: ArrayList<Transaction>
         val itemName: TextView = itemView.findViewById(R.id.tvItemName)
         val categoryName: TextView = itemView.findViewById(R.id.tvCategoryName)
         val price: TextView = itemView.findViewById(R.id.tvPrice)
+    }
+
+    interface OnItemClickCallback {
+        fun onItemClicked(data: Transaction)
     }
 }
