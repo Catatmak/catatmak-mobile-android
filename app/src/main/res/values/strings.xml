@@ -74,6 +74,26 @@
         <item>1</item>
     </string-array>
 
+    <string-array name="insight_created_at">
+        <item>Minggu, 29 Oktober</item>
+        <item>Minggu, 29 Oktober</item>
+    </string-array>
+
+    <string-array name="insight_title">
+        <item>Pengeluaranmu Hari Ini Naik 50% 😭</item>
+        <item>Pengeluaranmu Hari Ini Naik 50% 😭</item>
+    </string-array>
+
+    <string-array name="insight_desc">
+        <item>Kamu lumayan boros nih bulan ini, terjadi kenaikan pengeluaran pada kategori Makan sebesar Rp. 1.000.000</item>
+        <item>Kamu lumayan boros nih bulan ini, terjadi kenaikan pengeluaran pada kategori Makan sebesar Rp. 1.000.000</item>
+    </string-array>
+
+    <string-array name="insight_is_favorite">
+        <item>1</item>
+        <item>0</item>
+    </string-array>
+
     <string name="update_manual_transaction">Update Transaksi Manual</string>
     <string name="expense_name">Nama Pengeluaran</string>
     <string name="price">Harga</string>
@@ -90,4 +110,10 @@
     <string name="transaction">Riwayat Transaksi</string>
     <string name="analysis">Analisa Keuangan</string>
     <string name="add_transaction">Catat Transaksi</string>
+    <string name="today">Hari ini</string>
+    <string name="this_week">Minggu Ini</string>
+    <string name="this_month">Bulan Ini</string>
+    <string name="insight_by_mamih_ai">Insight by Mamih AI</string>
+    <string name="analysis_title">Pengeluaranmu Hari Ini Naik 50% 😭</string>
+    <string name="analysis_desc">Kamu lumayan boros nih bulan ini, terjadi kenaikan pengeluaran pada kategori Makan sebesar Rp. 1.000.000</string>
 </resources>

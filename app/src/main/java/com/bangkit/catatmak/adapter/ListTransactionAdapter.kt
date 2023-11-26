@@ -21,13 +21,11 @@ class ListTransactionAdapter(private val listTransaction: ArrayList<Transaction>
         this.onItemClickCallback = onItemClickCallback
     }
 
-    private lateinit var layoutInflater: LayoutInflater
-
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
     ): ListViewHolder {
-        layoutInflater = LayoutInflater.from(parent.context)
+        val layoutInflater = LayoutInflater.from(parent.context)
         val view: View = layoutInflater.inflate(R.layout.item_row_transaction, parent, false)
         return ListViewHolder(view)
     }
@@ -43,8 +41,7 @@ class ListTransactionAdapter(private val listTransaction: ArrayList<Transaction>
                 holder.itemName.context.resources.getString(R.string.total_price, "+", "Rp.", price)
             val green = ContextCompat.getColor(holder.itemView.context, R.color.dark_green)
             holder.price.setTextColor(green)
-        }
-        if (isPlus.toInt() == 0) {
+        } else {
             holder.price.text =
                 holder.itemName.context.resources.getString(R.string.total_price, "-", "Rp.", price)
             holder.price.setTextColor(Color.RED)

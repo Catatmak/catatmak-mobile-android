@@ -1,19 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <TextView
-        android:id="@+id/text_analysis"
-        android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <Button
+        android:id="@+id/btnFilter1"
+        style="@style/Widget.Material3.Button.OutlinedButton.Icon"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginTop="12dp"
+        android:drawableEnd="@drawable/ic_arrow_down"
+        android:fontFamily="@font/sf_pro_display_medium"
+        android:padding="6dp"
+        android:text="@string/today"
+        android:textColor="@color/dark_blue"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:strokeColor="@color/light_gray2" />
+
+    <TextView
+        android:id="@+id/tvInsightByMamihAi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/sf_pro_display_bold"
+        android:text="@string/insight_by_mamih_ai"
         android:textAlignment="center"
-        android:textSize="20sp"
-        android:text="This is analysis fragment"
+        android:textColor="@color/dark_blue"
+        android:textSize="18sp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnFilter1" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvInsights"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:nestedScrollingEnabled="true"
+        android:overScrollMode="never"
+        android:scrollbarSize="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/tvInsightByMamihAi"
+         />
+
+    <Button
+        android:id="@+id/btnFilter2"
+        style="@style/Widget.Material3.Button.OutlinedButton.Icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:drawableEnd="@drawable/ic_arrow_down"
+        android:fontFamily="@font/sf_pro_display_medium"
+        android:padding="6dp"
+        android:text="@string/one_month_ago"
+        android:textColor="@color/dark_blue"
+        android:textSize="14sp"
+        app:layout_constraintTop_toBottomOf="@id/rvInsights"
+        app:layout_constraintStart_toStartOf="parent"
+        app:strokeColor="@color/light_gray2" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -58,7 +58,7 @@ class TransactionFragment : Fragment() {
 
     private fun setupAction() {
         binding?.btnFilter?.setOnClickListener { v: View ->
-            showMenu(v, R.menu.filter_menu, binding?.btnFilter!!)
+            showMenu(v, R.menu.filter_menu1, binding?.btnFilter!!)
         }
         binding?.btnCategory?.setOnClickListener { v: View ->
             showMenu(v, R.menu.category_menu, binding?.btnCategory!!)
