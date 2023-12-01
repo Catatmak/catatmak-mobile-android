@@ -94,18 +94,18 @@
         <item>0</item>
     </string-array>
 
-    <string name="update_manual_transaction">Update Transaksi Manual</string>
+    <string name="update_transaction">Update Transaksi</string>
     <string name="expense_name">Nama Pengeluaran</string>
     <string name="price">Harga</string>
     <string name="update">Update</string>
-    <string name="delete">Delete</string>
+    <string name="delete">HAPUS DATA</string>
     <string name="record_finances">Catat Keuangan</string>
-    <string name="record_manually">CATAT MANUAL</string>
-    <string name="record_with_photo">CATAT PAKE PHOTO</string>
-    <string name="record_with_whatsapp">CATAT PAKE WHATSAPP?</string>
+    <string name="record_manually">MANUAL</string>
+    <string name="record_with_photo">PAKAI PHOTO</string>
+    <string name="record_with_whatsapp">PAKAI WHATSAPP</string>
     <string name="date">Tanggal</string>
     <string name="record_manual_transaction">Catat Transaksi Manual</string>
-    <string name="save">Simpan</string>
+    <string name="save">SIMPAN TRANSAKSI</string>
     <string name="welcome">Halo, Rifki 👋</string>
     <string name="transaction">Riwayat Transaksi</string>
     <string name="analysis">Analisa Keuangan</string>
@@ -116,4 +116,12 @@
     <string name="insight_by_mamih_ai">Insight by Mamih AI</string>
     <string name="analysis_title">Pengeluaranmu Hari Ini Naik 50% 😭</string>
     <string name="analysis_desc">Kamu lumayan boros nih bulan ini, terjadi kenaikan pengeluaran pada kategori Makan sebesar Rp. 1.000.000</string>
+    <string name="date_hint">Contoh : 26 November 2023</string>
+    <string name="expense_name_hint">Contoh: Bakso, Mie Ayam, Sate Kambing</string>
+    <string name="price_hint">Contoh: 15000</string>
+    <string name="category_hint">Pilih Kategori</string>
+    <string name="tv_total_income">Total Pemasukan</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="notification">Notification</string>
 </resources>

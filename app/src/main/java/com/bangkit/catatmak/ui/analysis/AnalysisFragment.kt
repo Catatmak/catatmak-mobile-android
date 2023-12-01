@@ -68,7 +68,12 @@ class AnalysisFragment : Fragment() {
     }
 
     private fun setInsightData() {
-        val insightAdapter = InsightAdapter(insights)
+        val insightAdapter = InsightAdapter(insights) { position, isFavorite ->
+            // Handle the favorite click event here
+            // You can update your data or UI based on the position and isFavorite status
+            insights[position].isFavorite = if (isFavorite) "1" else "0"
+            // Perform any necessary UI updates here
+        }
         binding?.rvInsights?.adapter = insightAdapter
 
     }

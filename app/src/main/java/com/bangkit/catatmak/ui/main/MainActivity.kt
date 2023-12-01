@@ -3,7 +3,6 @@ package com.bangkit.catatmak.ui.main
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -12,6 +11,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.bangkit.catatmak.R
 import com.bangkit.catatmak.databinding.ActivityMainBinding
+import com.google.android.material.navigation.NavigationBarView
 
 class MainActivity : AppCompatActivity() {
 
@@ -24,11 +24,14 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
+        setSupportActionBar(binding.topAppBar)
+
         val navView: BottomNavigationView = binding.navView
 
+        navView.labelVisibilityMode = NavigationBarView.LABEL_VISIBILITY_LABELED
+
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
+
         val appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.navigation_home,
@@ -40,6 +43,7 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
@@ -68,9 +72,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == R.id.action_notification) {
-            Toast.makeText(this, "Halaman Notification", Toast.LENGTH_SHORT).show()
+        return when (item.itemId) {
+            R.id.action_notification -> {
+                // Lakukan aksi yang diinginkan saat item menu diklik
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
-        return super.onOptionsItemSelected(item)
     }
 }

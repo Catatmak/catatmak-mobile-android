@@ -166,29 +166,29 @@ class TransactionFragment : Fragment() {
         listTransactionAdapter.setOnItemClickCallback(object :
             ListTransactionAdapter.OnItemClickCallback {
             override fun onItemClicked(data: Transaction) {
-              updateTransaction(data)
+//              updateTransaction(data)
             }
         })
     }
 
-    private fun updateTransaction(data: Transaction) {
-        val bsDialog = BottomSheetDialog(requireActivity())
-        val view = layoutInflater.inflate(R.layout.bs_update_transaction, null)
-
-        val btnUpdate = view.findViewById<Button>(R.id.btnUpdate)
-        edtExpenseName = view.findViewById(R.id.edtExpenseName)
-        edtPrice = view.findViewById(R.id.edtPrice)
-
-        edtExpenseName.setText(data.itemName)
-        edtPrice.setText(data.price)
-
-        btnUpdate.setOnClickListener {
-            Toast.makeText(context, "Berhasil mengupdate data", Toast.LENGTH_SHORT).show()
-        }
-        bsDialog.setCancelable(true)
-        bsDialog.setContentView(view)
-        bsDialog.show()
-    }
+//    private fun updateTransaction(data: Transaction) {
+//        val bsDialog = BottomSheetDialog(requireActivity())
+//        val view = layoutInflater.inflate(R.layout.bs_update_transaction, null)
+//
+//        val btnUpdate = view.findViewById<Button>(R.id.btnUpdate)
+//        edtExpenseName = view.findViewById(R.id.edtExpenseName)
+//        edtPrice = view.findViewById(R.id.edtPrice)
+//
+//        edtExpenseName.setText(data.itemName)
+//        edtPrice.setText(data.price)
+//
+//        btnUpdate.setOnClickListener {
+//            Toast.makeText(context, "Berhasil mengupdate data", Toast.LENGTH_SHORT).show()
+//        }
+//        bsDialog.setCancelable(true)
+//        bsDialog.setContentView(view)
+//        bsDialog.show()
+//    }
 
     override fun onDestroy() {
         super.onDestroy()

@@ -8,5 +8,5 @@ data class Insight(
     val createdAt: String,
     val insightTitle: String,
     val insightDesc: String,
-    val isFavorite: String
+    var isFavorite: String
 ) : Parcelable

@@ -46,7 +46,7 @@
         app:layout_constraintEnd_toEndOf="@id/guideline5"
         tools:text="@string/analysis_desc" />
 
-    <ImageButton
+    <ImageView
         android:id="@+id/ibFavorite"
         android:backgroundTint="@color/transparent"
         android:layout_width="wrap_content"
@@ -54,8 +54,7 @@
         android:src="@drawable/ic_baseline_favorite_24"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/guideline5"/>
+        app:layout_constraintBottom_toBottomOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline5"

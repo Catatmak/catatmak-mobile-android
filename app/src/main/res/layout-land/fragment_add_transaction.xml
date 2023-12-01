@@ -27,52 +27,52 @@
         app:layout_constraintStart_toStartOf="@id/ivLogo"
         app:layout_constraintEnd_toEndOf="@id/ivLogo"/>
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnRecordManually"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/sf_pro_display_semibold"
         android:text="@string/record_manually"
         android:textColor="@color/white"
-        android:fontFamily="@font/sf_pro_display_semibold"
         android:textSize="14sp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="24dp"
-        app:layout_constraintTop_toBottomOf="@id/tvRecordFinances"
+        app:layout_constraintEnd_toEndOf="@id/tvRecordFinances"
         app:layout_constraintStart_toStartOf="@id/tvRecordFinances"
-        app:layout_constraintEnd_toEndOf="@id/tvRecordFinances" />
+        app:layout_constraintTop_toBottomOf="@id/tvRecordFinances" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnRecordWithPhoto"
         style="?attr/materialButtonOutlinedStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/record_with_photo"
-        android:fontFamily="@font/sf_pro_display_semibold"
-        android:textSize="14sp"
-        app:strokeColor="@color/light_blue"
         android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
         android:layout_marginTop="4dp"
-        app:layout_constraintTop_toBottomOf="@id/btnRecordManually"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/sf_pro_display_semibold"
+        android:text="@string/record_with_photo"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@id/btnRecordManually"
         app:layout_constraintStart_toStartOf="@id/btnRecordManually"
-        app:layout_constraintEnd_toEndOf="@id/btnRecordManually" />
+        app:layout_constraintTop_toBottomOf="@id/btnRecordManually"
+        app:strokeColor="@color/light_blue" />
 
-    <TextView
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/tvRecordWithWhatsapp"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/dark_blue"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="16dp"
         android:fontFamily="@font/sf_pro_display_semibold"
         android:text="@string/record_with_whatsapp"
-        android:textAlignment="center"
-        android:textColor="@color/dark_blue"
+        android:textColor="@color/white"
         android:textSize="14sp"
-        android:layout_marginBottom="24dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnRecordWithPhoto"
+        app:layout_constraintEnd_toEndOf="@id/btnRecordWithPhoto"
         app:layout_constraintStart_toStartOf="@id/btnRecordWithPhoto"
-        app:layout_constraintEnd_toEndOf="@id/btnRecordWithPhoto"/>
+        app:layout_constraintTop_toBottomOf="@id/btnRecordWithPhoto" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline1"
