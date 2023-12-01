@@ -30,13 +30,15 @@
     <string name="category">Kategori</string>
     <string name="one_month_ago">1 Bulan Terakhir</string>
     <string name="one_day_ago">1 Hari Terakhir</string>
-    <string name="food_and_drink">Makanan &amp; Minuman</string>
+    <string name="food">Makanan</string>
+    <string name="transportation">Transportasi</string>
+    <string name="entertainment">Hiburan</string>
     <string name="ic_arrow_down">Icon Panah Ke Bawah</string>
     <string name="ic_arrow_up">Icon Panah Ke Atas</string>
     <string name="income">Pemasukan</string>
     <string name="total_income">Rp. 5.000.000</string>
     <string name="expenses">Pengeluaran</string>
-    <string name="total_expenses">Rp. 2.000.000</string>
+    <string name="total_expenses">Rp. %1$s</string>
     <string name="list_transaction">Daftar Transaksi</string>
 
     <string-array name="data_created_at">
@@ -55,9 +57,9 @@
 
     <string-array name="data_category_name">
         <item>Tidak Terkategori</item>
-        <item>Makan Minum</item>
-        <item>Makan Minum</item>
-        <item>Makan Minum</item>
+        <item>Makanan</item>
+        <item>Transportasi</item>
+        <item>Hiburan</item>
     </string-array>
 
     <string-array name="data_price">
@@ -124,4 +126,62 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="notification">Notification</string>
+    <string name="title_categories_automatically">10 Pengeluaran Kamu Belum\n Terkategorisasi Nih 😬</string>
+    <string name="categories_automatically">KATEGORI OTOMATIS</string>
+    <string name="categories">Kategori Otomatis</string>
+    <string name="ok_update">OKE GASS UPDATE</string>
+    <string name="username">RAYHAN RAFIUD DAROJAT</string>
+    <string name="member_status">Premium Member</string>
+    <string name="settings">Pengaturan Akun</string>
+    <string name="change_profile">Ubah Profil</string>
+    <string name="about">Tentang Kami</string>
+    <string name="policy">Kebijakan Privasi</string>
+    <string name="logout">KELUAR</string>
+    <string name="premium_medal">Mendali Premiuh Member</string>
+    <string name="change_profile_icon">Icon Ubah Profil</string>
+    <string name="about_me_icon">Icon Tentang Kami</string>
+    <string name="policy_icon">Icon Kebijakan Privasi</string>
+    <string name="no_wa">Nomor Whatsapp</string>
+    <string name="no_hint">085741892603</string>
+    <string name="name">Nama Lengkap</string>
+    <string name="name_hint">contoh: Rayhan Rafiud Darojat</string>
+    <string name="email">Email</string>
+    <string name="email_name">contoh: rayhan@gmail.com</string>
+    <string name="gander">Jenis Kelamin</string>
+    <string name="age">Usia</string>
+    <string name="age_hint">Masukan Usia</string>
+    <string name="intro">Selamat datang di Catatmak, aplikasi pencatatan keuangan yang memudahkan Anda untuk mengelola keuangan pribadi secara efisien. Kami berkomitmen untuk melindungi privasi dan keamanan informasi pengguna. Dengan menggunakan Catatamk, Anda setuju dengan kebijakan privasi kami sebagai berikut:</string>
+    <string name="one">"1."</string>
+    <string name="title_1">Pencatatan Data Keuangan</string>
+    <string name="desc_1">CatatMak menyimpan data keuangan yang Anda masukkan melalui aplikasi ini. Informasi tersebut digunakan untuk menyediakan layanan pencatatan keuangan dan memberikan analisis yang bermanfaat untuk membantu Anda mengelola keuangan pribadi Anda.</string>
+    <string name="two">2.</string>
+    <string name="title_2">Keamanan Data</string>
+    <string name="desc_2">Kami memprioritaskan keamanan data pengguna. CatatMak menggunakan langkah-langkah keamanan teknologi informasi terkini untuk melindungi informasi pribadi Anda dari akses yang tidak sah, pengungkapan, perubahan, dan</string>
+    <string name="three">3.</string>
+    <string name="title_3">Kebijakan Cookie</string>
+    <string name="desc_3">CatatMak mungkin menggunakan cookie atau teknologi serupa untuk mengumpulkan informasi yang membantu meningkatkan layanan kami. Anda dapat mengelola pengaturan cookie melalui pengaturan perangkat Anda.</string>
+    <string name="four">4.</string>
+    <string name="title_4">Perubahan Kebijakan</string>
+    <string name="desc_4">Kebijakan privasi ini dapat berubah seiring waktu untuk mencerminkan perubahan dalam hukum atau pembaruan layanan. Pembaruan tersebut akan diinformasikan kepada pengguna melalui saluran komunikasi yang sesuai.</string>
+    <string name="five">5.</string>
+    <string name="title_5">Perubahan Kebijakan</string>
+    <string name="desc_5">ika Anda memiliki pertanyaan atau kekhawatiran tentang kebijakan privasi kami, silakan hubungi tim dukungan kami melalui email di support@catatmak.com.</string>
+    <string name="closing">Dengan menggunakan CatatMak, Anda menunjukkan persetujuan Anda terhadap kebijakan privasi ini. Terima kasih telah memilih CatatMak sebagai mitra pencatatan keuangan Anda.</string>
+    <string name="intro_about_us">Sejak hari pertama, kami telah diberkahi dengan anggota tim yang luar biasa:</string>
+    <string name="member_1">Rayhan Rafiud Darojat</string>
+    <string name="from_1">dari STMIK Widya Utama</string>
+    <string name="member_2">Muhammad Rifki</string>
+    <string name="member_3">Jovanic Morgan</string>
+    <string name="from_3">Universitas Sriwijaya</string>
+    <string name="member_4">Muhammad Zhafran</string>
+    <string name="member_5">Putu Putri Pratiwi</string>
+    <string name="from_5">Universitas Udayana</string>
+    <string name="six">6.</string>
+    <string name="member_6">Ni Putu Suci Paramita</string>
+    <string name="seven">7.</string>
+    <string name="member_7">Dewa Athallah Putra Kamiko</string>
+    <string name="from_7">Institut Teknologi Indonesia</string>
+    <string name="closing_about_us">Terima kasih kepada semua anggota tim atas kontribusi dan semangat yang mereka bawa ke dalam setiap langkah proyek ini. Kami berharap untuk terus tumbuh dan meraih lebih banyak pencapaian luar biasa bersama-sama di tahun-tahun mendatang. Selamat ulang tahun yang pertama, dan mari terus berkarya bersama menuju masa depan yang penuh prestasi! 🎉🚀</string>
+    <string name="supported_by">Supported by</string>
+    <string name="logo_bangkit_dikti">Logo Bangkit Dikti</string>
 </resources>

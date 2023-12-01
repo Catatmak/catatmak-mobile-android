@@ -1,84 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/ivLogo"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
-        android:src="@drawable/catetmak_logo_with_background"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/guideline1" />
-
-    <TextView
-        android:id="@+id/tvRecordFinances"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/sf_pro_display_bold"
-        android:text="@string/record_finances"
-        android:textAlignment="center"
-        android:textColor="@color/dark_blue"
-        android:textSize="18sp"
-        app:layout_constraintTop_toBottomOf="@id/ivLogo"
-        app:layout_constraintStart_toStartOf="@id/ivLogo"
-        app:layout_constraintEnd_toEndOf="@id/ivLogo"/>
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnRecordManually"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="16dp"
-        android:fontFamily="@font/sf_pro_display_semibold"
-        android:text="@string/record_manually"
-        android:textColor="@color/white"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="@id/tvRecordFinances"
-        app:layout_constraintStart_toStartOf="@id/tvRecordFinances"
-        app:layout_constraintTop_toBottomOf="@id/tvRecordFinances" />
+        android:layout_height="match_parent">
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnRecordWithPhoto"
-        style="?attr/materialButtonOutlinedStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="16dp"
-        android:fontFamily="@font/sf_pro_display_semibold"
-        android:text="@string/record_with_photo"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="@id/btnRecordManually"
-        app:layout_constraintStart_toStartOf="@id/btnRecordManually"
-        app:layout_constraintTop_toBottomOf="@id/btnRecordManually"
-        app:strokeColor="@color/light_blue" />
+        <ImageView
+            android:id="@+id/ivLogo"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:src="@drawable/catetmak_logo_with_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/guideline1" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/tvRecordWithWhatsapp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/dark_blue"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="16dp"
-        android:fontFamily="@font/sf_pro_display_semibold"
-        android:text="@string/record_with_whatsapp"
-        android:textColor="@color/white"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="@id/btnRecordWithPhoto"
-        app:layout_constraintStart_toStartOf="@id/btnRecordWithPhoto"
-        app:layout_constraintTop_toBottomOf="@id/btnRecordWithPhoto" />
+        <TextView
+            android:id="@+id/tvRecordFinances"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/sf_pro_display_bold"
+            android:text="@string/record_finances"
+            android:textAlignment="center"
+            android:textColor="@color/dark_blue"
+            android:textSize="18sp"
+            app:layout_constraintTop_toBottomOf="@id/ivLogo"
+            app:layout_constraintStart_toStartOf="@id/ivLogo"
+            app:layout_constraintEnd_toEndOf="@id/ivLogo"/>
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="16dp" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnRecordManually"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/sf_pro_display_semibold"
+            android:text="@string/record_manually"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@id/tvRecordFinances"
+            app:layout_constraintStart_toStartOf="@id/tvRecordFinances"
+            app:layout_constraintTop_toBottomOf="@id/tvRecordFinances" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnRecordWithPhoto"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/sf_pro_display_semibold"
+            android:text="@string/record_with_photo"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@id/btnRecordManually"
+            app:layout_constraintStart_toStartOf="@id/btnRecordManually"
+            app:layout_constraintTop_toBottomOf="@id/btnRecordManually"
+            app:strokeColor="@color/light_blue" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnRecordWithWhatsapp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/dark_blue"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/sf_pro_display_semibold"
+            android:text="@string/record_with_whatsapp"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@id/btnRecordWithPhoto"
+            app:layout_constraintStart_toStartOf="@id/btnRecordWithPhoto"
+            app:layout_constraintTop_toBottomOf="@id/btnRecordWithPhoto" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="16dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>
+

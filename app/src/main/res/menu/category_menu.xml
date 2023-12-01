@@ -2,11 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/option_category_1"
-        android:title="@string/food_and_drink" />
+        android:title="@string/food" />
     <item
         android:id="@+id/option_category_2"
-        android:title="Sedekah" />
+        android:title="@string/transportation" />
     <item
         android:id="@+id/option_category_3"
-        android:title="Poya-Poya" />
+        android:title="@string/entertainment" />
 </menu>

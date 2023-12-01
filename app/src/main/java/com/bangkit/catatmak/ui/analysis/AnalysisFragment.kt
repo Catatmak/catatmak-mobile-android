@@ -1,5 +1,6 @@
 package com.bangkit.catatmak.ui.analysis
 
+import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -17,6 +18,7 @@ import com.bangkit.catatmak.R
 import com.bangkit.catatmak.adapter.InsightAdapter
 import com.bangkit.catatmak.databinding.FragmentAnalysisBinding
 import com.bangkit.catatmak.model.Insight
+import com.bangkit.catatmak.ui.categories.CategoriesActivity
 
 class AnalysisFragment : Fragment() {
 
@@ -87,11 +89,15 @@ class AnalysisFragment : Fragment() {
 
     private fun setUpAction() {
         binding?.btnFilter1?.setOnClickListener { v: View ->
-            showMenu(v, R.menu.filter_menu_2, binding?.btnFilter1!!)
+            showMenu(v, R.menu.filter_menu_time_current, binding?.btnFilter1!!)
         }
 
         binding?.btnFilter2?.setOnClickListener { v: View ->
-            showMenu(v, R.menu.filter_menu1, binding?.btnFilter2!!)
+            showMenu(v, R.menu.menu_filter_time_past, binding?.btnFilter2!!)
+        }
+
+        binding?.btnCategoriesAutomatically?.setOnClickListener {
+            startActivity(Intent(requireActivity(), CategoriesActivity::class.java))
         }
     }
 
@@ -161,9 +167,5 @@ class AnalysisFragment : Fragment() {
             drawable,     // drawableEnd
             drawables[3]  // drawableBottom
         )
-    }
-
-    companion object {
-
     }
 }

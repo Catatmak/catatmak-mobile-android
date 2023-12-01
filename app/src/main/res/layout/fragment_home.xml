@@ -1,154 +1,161 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="16dp">
+    android:layout_height="match_parent">
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cvTodaysExpeses"
-        android:layout_width="320dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
-        android:backgroundTint="@color/dark_blue"
-        app:cardCornerRadius="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cvTodaysExpeses"
+            android:layout_width="320dp"
             android:layout_height="wrap_content"
-            android:padding="16dp">
+            android:layout_marginTop="18dp"
+            android:backgroundTint="@color/dark_blue"
+            app:cardCornerRadius="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
-                android:id="@+id/tvTodaysExpeses"
-                android:layout_width="wrap_content"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/sf_pro_display_medium"
-                android:text="@string/todays_expenses"
-                android:textColor="@color/white"
-                android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:padding="16dp">
 
-            <TextView
-                android:id="@+id/tvTotal"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:fontFamily="@font/sf_pro_display_bold"
-                android:text="@string/total"
-                android:textColor="@color/white"
-                android:textSize="28sp"
-                android:maxWidth="195dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/guideline3"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvTodaysExpeses" />
+                <TextView
+                    android:id="@+id/tvTodaysExpeses"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/sf_pro_display_medium"
+                    android:text="@string/todays_expenses"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_begin="193dp" />
+                <TextView
+                    android:id="@+id/tvTotal"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/sf_pro_display_bold"
+                    android:text="@string/total"
+                    android:textColor="@color/white"
+                    android:textSize="28sp"
+                    android:maxWidth="195dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/guideline3"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvTodaysExpeses" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </com.google.android.material.card.MaterialCardView>
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_begin="193dp" />
 
-    <ImageView
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:src="@drawable/catetmak_logo_with_background"
-        android:layout_marginBottom="12dp"
-        app:layout_constraintBottom_toTopOf="@id/guideline1"
-        app:layout_constraintTop_toTopOf="@id/cvTodaysExpeses"
-        app:layout_constraintEnd_toEndOf="@id/cvTodaysExpeses"
-        app:layout_constraintStart_toEndOf="@id/guideline2"
-        android:contentDescription="@string/mak_beti_image" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
 
-    <ImageView
-        android:id="@+id/ivMamihAi"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:src="@drawable/mamih_ai"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cvTodaysExpeses"
-        android:contentDescription="@string/mak_beti_ai_image" />
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/catetmak_logo_with_background"
+            android:layout_marginBottom="12dp"
+            app:layout_constraintBottom_toTopOf="@id/guideline1"
+            app:layout_constraintTop_toTopOf="@id/cvTodaysExpeses"
+            app:layout_constraintEnd_toEndOf="@id/cvTodaysExpeses"
+            app:layout_constraintStart_toEndOf="@id/guideline2"
+            android:contentDescription="@string/mak_beti_image" />
 
-    <TextView
-        android:id="@+id/tvInsightTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/sf_pro_display_bold"
-        android:text="@string/insight_title"
-        android:textAlignment="center"
-        android:textColor="@color/dark_blue"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@id/ivMamihAi"
-        app:layout_constraintStart_toStartOf="@id/ivMamihAi"
-        app:layout_constraintTop_toBottomOf="@id/ivMamihAi" />
+        <ImageView
+            android:id="@+id/ivMamihAi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:src="@drawable/mamih_ai"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cvTodaysExpeses"
+            android:contentDescription="@string/mak_beti_ai_image" />
 
-    <TextView
-        android:id="@+id/tvInsightMessage"
-        android:layout_width="292dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
-        android:fontFamily="@font/sf_pro_display_medium"
-        android:lineHeight="17dp"
-        android:text="@string/insight_message"
-        android:textAlignment="center"
-        android:textColor="@color/dark_blue"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="@id/tvInsightTitle"
-        app:layout_constraintStart_toStartOf="@id/tvInsightTitle"
-        app:layout_constraintTop_toBottomOf="@id/tvInsightTitle"
-        tools:ignore="UnusedAttribute" />
+        <TextView
+            android:id="@+id/tvInsightTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/sf_pro_display_bold"
+            android:text="@string/insight_title"
+            android:textAlignment="center"
+            android:textColor="@color/dark_blue"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@id/ivMamihAi"
+            app:layout_constraintStart_toStartOf="@id/ivMamihAi"
+            app:layout_constraintTop_toBottomOf="@id/ivMamihAi" />
 
-    <TextView
-        android:id="@+id/tvTodaysTransaction"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:fontFamily="@font/sf_pro_display_bold"
-        android:text="@string/todays_transaction"
-        android:textColor="@color/dark_blue"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvInsightMessage" />
+        <TextView
+            android:id="@+id/tvInsightMessage"
+            android:layout_width="292dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:fontFamily="@font/sf_pro_display_medium"
+            android:lineHeight="17dp"
+            android:text="@string/insight_message"
+            android:textAlignment="center"
+            android:textColor="@color/dark_blue"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@id/tvInsightTitle"
+            app:layout_constraintStart_toStartOf="@id/tvInsightTitle"
+            app:layout_constraintTop_toBottomOf="@id/tvInsightTitle"
+            tools:ignore="UnusedAttribute" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvTransactions"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:nestedScrollingEnabled="true"
-        android:overScrollMode="never"
-        android:scrollbarSize="0dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvTodaysTransaction"
-        tools:listitem="@layout/item_row_transaction" />
+        <TextView
+            android:id="@+id/tvTodaysTransaction"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:fontFamily="@font/sf_pro_display_bold"
+            android:text="@string/todays_transaction"
+            android:textColor="@color/dark_blue"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvInsightMessage" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="89dp" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvTransactions"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:nestedScrollingEnabled="true"
+            android:overScrollMode="never"
+            android:scrollbarSize="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTodaysTransaction"
+            tools:listitem="@layout/item_row_transaction" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="240dp" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="89dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="240dp" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>
+

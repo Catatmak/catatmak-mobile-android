@@ -10,7 +10,6 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.PopupMenu
-import android.widget.Toast
 import androidx.annotation.MenuRes
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -19,7 +18,6 @@ import com.bangkit.catatmak.R
 import com.bangkit.catatmak.adapter.ListTransactionAdapter
 import com.bangkit.catatmak.databinding.FragmentTransactionBinding
 import com.bangkit.catatmak.model.Transaction
-import com.google.android.material.bottomsheet.BottomSheetDialog
 
 class TransactionFragment : Fragment() {
 
@@ -58,7 +56,7 @@ class TransactionFragment : Fragment() {
 
     private fun setupAction() {
         binding?.btnFilter?.setOnClickListener { v: View ->
-            showMenu(v, R.menu.filter_menu1, binding?.btnFilter!!)
+            showMenu(v, R.menu.menu_filter_time_past, binding?.btnFilter!!)
         }
         binding?.btnCategory?.setOnClickListener { v: View ->
             showMenu(v, R.menu.category_menu, binding?.btnCategory!!)

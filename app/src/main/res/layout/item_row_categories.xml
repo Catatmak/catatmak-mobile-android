@@ -26,36 +26,40 @@
         android:textSize="14sp"
         android:textColor="@color/dark_blue"
         tools:text="@string/item_name"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="3dp"
         app:layout_constraintStart_toStartOf="@id/tvCreatedAt"
-        app:layout_constraintTop_toBottomOf="@id/tvCreatedAt"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/tvCreatedAt" />
 
     <TextView
-        android:id="@+id/tvCategoryName"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/sf_pro_display_semibold"
-        android:textSize="12sp"
-        android:textColor="@color/dark_blue"
-        tools:text="@string/category_name"
-        android:textAlignment="textEnd"
-        app:layout_constraintStart_toEndOf="@id/tvCreatedAt"
-        app:layout_constraintTop_toTopOf="@id/tvCreatedAt"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
-    <TextView
-        android:id="@+id/tvPrice"
+        android:id="@+id/tvItemPrice"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:fontFamily="@font/sf_pro_display_bold"
         android:textSize="16sp"
-        android:textColor="@color/red"
-        tools:text="Rp. 100.000"
-        android:textAlignment="textEnd"
-        app:layout_constraintTop_toBottomOf="@id/tvCategoryName"
-        app:layout_constraintStart_toStartOf="@id/tvCategoryName"
-        app:layout_constraintEnd_toEndOf="@id/tvCategoryName"/>
+        android:textColor="@color/dark_blue"
+        tools:text="Rp. 50.000"
+        android:layout_marginTop="4dp"
+        app:layout_constraintStart_toStartOf="@id/tvItemName"
+        app:layout_constraintTop_toBottomOf="@id/tvItemName" />
+
+
+    <Button
+        android:id="@+id/btnChooseCategory"
+        style="@style/Widget.Material3.Button.OutlinedButton.Icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableEnd="@drawable/ic_arrow_down"
+        android:fontFamily="@font/sf_pro_display_medium"
+        android:padding="8dp"
+        tools:text="Makanan"
+        android:textColor="@color/dark_blue"
+        android:textSize="14sp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="3dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:strokeColor="@color/light_gray2" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
