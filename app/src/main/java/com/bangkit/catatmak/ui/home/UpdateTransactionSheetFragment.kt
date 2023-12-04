@@ -90,7 +90,11 @@ class UpdateTransactionSheetFragment : BottomSheetDialogFragment() {
             showDatePickerDialog(binding?.edtDate!!)
         }
 
-        val items = arrayOf("Makanan & Minuman", "Transportasi", "Uang Sekolah", "Party")
+        binding?.ivClose?.setOnClickListener {
+            dismiss()
+        }
+
+        val items = arrayOf("Makanan", "Shopping", "Hiburan")
 
         val adapter = CustomArrayAdapter(requireContext(), R.layout.dropdown_item_layout, items)
 

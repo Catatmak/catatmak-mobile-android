@@ -7,9 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.bangkit.catatmak.databinding.FragmentProfileBinding
-import com.bangkit.catatmak.ui.about.AboutActivity
-import com.bangkit.catatmak.ui.privacy_policy.PrivacyPolicyActivity
-import com.bangkit.catatmak.ui.update_profile.UpdateProfileActivity
+import com.bangkit.catatmak.ui.profile.about.AboutActivity
+import com.bangkit.catatmak.ui.profile.privacy_policy.PrivacyPolicyActivity
+import com.bangkit.catatmak.ui.profile.update_profile.UpdateProfileActivity
 
 class ProfileFragment : Fragment() {
 

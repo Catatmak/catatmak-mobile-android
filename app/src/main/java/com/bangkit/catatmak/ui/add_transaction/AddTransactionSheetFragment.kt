@@ -58,16 +58,15 @@ class AddTransactionSheetFragment : BottomSheetDialogFragment() {
 
     }
 
+    override fun onDismiss(dialog: DialogInterface) {
+        super.onDismiss(dialog)
+        (parentFragment as? AddTransactionFragment)?.isSheetShown = false
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         setUpAction()
-    }
-
-    override fun onDismiss(dialog: DialogInterface) {
-        super.onDismiss(dialog)
-        // Reset isSheetShown to allow the sheet to be shown again
-        (parentFragment as? AddTransactionFragment)?.isSheetShown = false
     }
 
     private fun setUpAction() {
@@ -84,7 +83,11 @@ class AddTransactionSheetFragment : BottomSheetDialogFragment() {
             showDatePickerDialog(binding?.edtDate!!)
         }
 
-        val items = arrayOf("Makanan & Minuman", "Transportasi", "Uang Sekolah", "Party")
+        binding?.ivClose?.setOnClickListener {
+            dismiss()
+        }
+
+        val items = arrayOf("Makanan", "Shopping", "Hiburan")
 
         val adapter = CustomArrayAdapter(requireContext(), R.layout.dropdown_item_layout, items)
 
@@ -94,8 +97,8 @@ class AddTransactionSheetFragment : BottomSheetDialogFragment() {
             adapter.setSelectedPosition(position)
         }
 
-        binding?.toggleButton?.isSingleSelection = true
-        binding?.btnExpenses?.let { binding?.toggleButton?.id }
+        binding?.tbNoteTakingOption?.isSingleSelection = true
+        binding?.btnExpenses?.let { binding?.tbNoteTakingOption?.id }
         binding?.btnExpenses?.apply {
             setBackgroundColor(
                 ContextCompat.getColor(
@@ -105,7 +108,7 @@ class AddTransactionSheetFragment : BottomSheetDialogFragment() {
             )
             setTextColor(Color.WHITE)
         }
-        binding?.toggleButton?.addOnButtonCheckedListener { toggleButton, checkedId, isChecked ->
+        binding?.tbNoteTakingOption?.addOnButtonCheckedListener { toggleButton, checkedId, isChecked ->
             val button: Button = toggleButton.findViewById(checkedId)
             if (isChecked) {
                 if (button.id == binding?.btnExpenses?.id) {
@@ -128,12 +131,11 @@ class AddTransactionSheetFragment : BottomSheetDialogFragment() {
                         setTextColor(Color.WHITE)
                     }
 
-                    binding?.tvExpenseName?.visibility = View.VISIBLE
-                    binding?.tfExpenseName?.visibility = View.VISIBLE
-                    binding?.tvPrice?.visibility = View.VISIBLE
-                    binding?.tfPrice?.visibility = View.VISIBLE
-                    binding?.tvTotalIncome?.visibility = View.GONE
-                    binding?.tfTotalIncome?.visibility = View.GONE
+                    binding?.edtExpenseName?.setText("")
+                    binding?.edtDate?.setText("")
+                    binding?.edtPrice?.setText("")
+                    binding?.actvCategory?.setText("")
+                    binding?.tvPrice?.text = resources.getString(R.string.tv_price)
                 } else if (button.id == binding?.btnIncome?.id) {
                     binding?.btnExpenses?.apply {
                         setBackgroundColor(Color.WHITE)
@@ -153,13 +155,11 @@ class AddTransactionSheetFragment : BottomSheetDialogFragment() {
                         )
                         setTextColor(Color.WHITE)
                     }
-
-                    binding?.tvExpenseName?.visibility = View.GONE
-                    binding?.tfExpenseName?.visibility = View.GONE
-                    binding?.tvPrice?.visibility = View.GONE
-                    binding?.tfPrice?.visibility = View.GONE
-                    binding?.tvTotalIncome?.visibility = View.VISIBLE
-                    binding?.tfTotalIncome?.visibility = View.VISIBLE
+                    binding?.edtExpenseName?.setText("")
+                    binding?.edtDate?.setText("")
+                    binding?.edtPrice?.setText("")
+                    binding?.actvCategory?.setText("")
+                    binding?.tvPrice?.text = resources.getString(R.string.tv_total_income)
                 }
             }
         }

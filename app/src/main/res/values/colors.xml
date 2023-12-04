@@ -9,10 +9,13 @@
     <color name="light_red">#FFD8D8</color>
     <color name="light_gray1">#FBFBFB</color>
     <color name="light_gray2">#EBEBEB</color>
+    <color name="light_gray3">#F7F7F7</color>
     <color name="dark_gray1">#DFDFDF</color>
     <color name="dark_gray2">#D2D2D2</color>
     <color name="dark_gray3">#9C9C9C</color>
+    <color name="dark_gray4">#D3D3D3</color>
     <color name="dark_green">#03840D</color>
     <color name="transparent">#00000000</color>
     <color name="orange">#FAA348</color>
+    <color name="teal_blue">#29ADB2</color>
 </resources>

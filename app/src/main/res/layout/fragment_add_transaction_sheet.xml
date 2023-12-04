@@ -10,35 +10,54 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/rounded_top_corners"
-            android:orientation="vertical"
             android:padding="16dp">
 
             <com.google.android.material.bottomsheet.BottomSheetDragHandleView
                 android:id="@+id/drag_handle"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:layout_width="match_parent"
+                android:id="@+id/tvTitle"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
                 android:fontFamily="@font/sf_pro_display_semibold"
                 android:text="@string/record_manual_transaction"
                 android:textAlignment="center"
                 android:textColor="@color/dark_blue"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent "
+                app:layout_constraintTop_toBottomOf="@id/drag_handle" />
+
+            <ImageView
+                android:id="@+id/ivClose"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_close"
+                app:layout_constraintBottom_toTopOf="@id/guideline2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.75"
+                app:layout_constraintStart_toEndOf="@id/guideline1"
+                app:layout_constraintTop_toBottomOf="@id/guideline3"
+                app:layout_constraintVertical_bias="0.83" />
 
             <com.google.android.material.button.MaterialButtonToggleGroup
-                android:id="@+id/toggleButton"
-                android:layout_width="match_parent"
+                android:id="@+id/tbNoteTakingOption"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:gravity="center">
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvTitle">
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnExpenses"
@@ -59,32 +78,39 @@
                     app:strokeColor="@color/dark_blue" />
             </com.google.android.material.button.MaterialButtonToggleGroup>
 
+
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/tvDate"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
+                android:layout_marginTop="16dp"
                 android:fontFamily="@font/sf_pro_display_medium"
                 android:text="@string/date"
                 android:textColor="@color/dark_blue"
-                android:textSize="12sp" />
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tbNoteTakingOption" />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textField1"
+                android:id="@+id/tfDate"
                 style="?attr/textInputOutlinedStyle"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
                 android:textColorHint="@color/dark_gray2"
                 app:boxBackgroundColor="@color/light_gray1"
-                app:hintEnabled="false">
+                app:hintEnabled="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvDate">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edtDate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:ems="10"
                     android:clickable="false"
                     android:cursorVisible="false"
+                    android:ems="10"
                     android:focusable="false"
                     android:focusableInTouchMode="true"
                     android:fontFamily="@font/sf_pro_display_medium"
@@ -98,30 +124,34 @@
 
             <TextView
                 android:id="@+id/tvExpenseName"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
+                android:layout_marginTop="16dp"
                 android:fontFamily="@font/sf_pro_display_medium"
                 android:text="@string/expense_name"
                 android:textColor="@color/dark_blue"
-                android:textSize="12sp" />
-
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tfDate" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tfExpenseName"
                 style="?attr/textInputOutlinedStyle"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:textColorHint="@color/dark_gray2"
                 app:boxBackgroundColor="@color/light_gray1"
-                app:hintEnabled="false">
+                app:hintEnabled="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvExpenseName">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edtExpenseName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:focusableInTouchMode="true"
                     android:fontFamily="@font/sf_pro_display_medium"
                     android:hint="@string/expense_name_hint"
                     android:inputType="text"
@@ -133,23 +163,28 @@
 
             <TextView
                 android:id="@+id/tvPrice"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
+                android:layout_marginTop="16dp"
                 android:fontFamily="@font/sf_pro_display_medium"
-                android:text="@string/price"
+                android:text="@string/tv_price"
                 android:textColor="@color/dark_blue"
-                android:textSize="12sp" />
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tfExpenseName" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tfPrice"
                 style="?attr/textInputOutlinedStyle"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:textColorHint="@color/dark_gray2"
                 app:boxBackgroundColor="@color/light_gray1"
-                app:hintEnabled="false">
+                app:hintEnabled="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvPrice">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edtPrice"
@@ -158,7 +193,7 @@
                     android:ems="10"
                     android:fontFamily="@font/sf_pro_display_medium"
                     android:hint="@string/price_hint"
-                    android:inputType="date"
+                    android:inputType="text|number"
                     android:textColor="@color/dark_blue"
                     android:textSize="14sp"
                     tools:ignore="SpeakableTextPresentCheck" />
@@ -166,69 +201,38 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/tvCategory"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
+                android:layout_marginTop="16dp"
                 android:fontFamily="@font/sf_pro_display_medium"
                 android:text="@string/category"
                 android:textColor="@color/dark_blue"
-                android:textSize="12sp" />
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tfPrice" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tfCategory"
                 style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:textColorHint="@color/dark_gray2"
                 app:boxBackgroundColor="@color/light_gray1"
-                app:hintEnabled="false">
+                app:hintEnabled="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvCategory">
 
                 <AutoCompleteTextView
                     android:id="@+id/actvCategory"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:fontFamily="@font/sf_pro_display_medium"
                     android:hint="@string/category_hint"
                     android:inputType="none"
-                    android:ems="10"
-                    android:fontFamily="@font/sf_pro_display_medium"
-                    android:textColor="@color/dark_blue"
-                    android:textSize="14sp"
-                    tools:ignore="SpeakableTextPresentCheck"/>
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <TextView
-                android:id="@+id/tvTotalIncome"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:fontFamily="@font/sf_pro_display_medium"
-                android:text="@string/tv_total_income"
-                android:textColor="@color/dark_blue"
-                android:textSize="12sp"
-                android:visibility="gone" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tfTotalIncome"
-                style="?attr/textInputOutlinedStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColorHint="@color/dark_gray2"
-                android:visibility="gone"
-                app:boxBackgroundColor="@color/light_gray1"
-                app:boxStrokeWidth="0dp"
-                app:hintEnabled="false">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edtTotalIncome"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:fontFamily="@font/sf_pro_display_medium"
-                    android:hint="@string/price_hint"
-                    android:inputType="date"
                     android:textColor="@color/dark_blue"
                     android:textSize="14sp"
                     tools:ignore="SpeakableTextPresentCheck" />
@@ -237,17 +241,203 @@
 
             <Button
                 android:id="@+id/btnSave"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="60dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginTop="40dp"
                 android:layout_marginBottom="24dp"
                 android:backgroundTint="@color/dark_blue"
                 android:fontFamily="@font/sf_pro_display_semibold"
                 android:text="@string/save"
                 android:textColor="@color/white"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tfCategory" />
 
-        </LinearLayout>
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="311dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="75dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="37dp" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!--        <LinearLayout-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:background="@drawable/rounded_top_corners"-->
+        <!--            android:orientation="vertical"-->
+        <!--            android:padding="16dp">-->
+
+
+        <!--            <TextView-->
+        <!--                android:id="@+id/tvExpenseName"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_marginBottom="8dp"-->
+        <!--                android:fontFamily="@font/sf_pro_display_medium"-->
+        <!--                android:text="@string/expense_name"-->
+        <!--                android:textColor="@color/dark_blue"-->
+        <!--                android:textSize="12sp" />-->
+
+
+        <!--            <com.google.android.material.textfield.TextInputLayout-->
+        <!--                android:id="@+id/tfExpenseName"-->
+        <!--                style="?attr/textInputOutlinedStyle"-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:textColorHint="@color/dark_gray2"-->
+        <!--                app:boxBackgroundColor="@color/light_gray1"-->
+        <!--                app:hintEnabled="false">-->
+
+        <!--                <com.google.android.material.textfield.TextInputEditText-->
+        <!--                    android:id="@+id/edtExpenseName"-->
+        <!--                    android:layout_width="match_parent"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:ems="10"-->
+        <!--                    android:focusableInTouchMode="true"-->
+        <!--                    android:fontFamily="@font/sf_pro_display_medium"-->
+        <!--                    android:hint="@string/expense_name_hint"-->
+        <!--                    android:inputType="text"-->
+        <!--                    android:textColor="@color/dark_blue"-->
+        <!--                    android:textSize="14sp"-->
+        <!--                    tools:ignore="SpeakableTextPresentCheck" />-->
+
+        <!--            </com.google.android.material.textfield.TextInputLayout>-->
+
+        <!--            <TextView-->
+        <!--                android:id="@+id/tvPrice"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_marginTop="8dp"-->
+        <!--                android:layout_marginBottom="8dp"-->
+        <!--                android:fontFamily="@font/sf_pro_display_medium"-->
+        <!--                android:text="@string/price"-->
+        <!--                android:textColor="@color/dark_blue"-->
+        <!--                android:textSize="12sp" />-->
+
+        <!--            <com.google.android.material.textfield.TextInputLayout-->
+        <!--                android:id="@+id/tfPrice"-->
+        <!--                style="?attr/textInputOutlinedStyle"-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:textColorHint="@color/dark_gray2"-->
+        <!--                app:boxBackgroundColor="@color/light_gray1"-->
+        <!--                app:hintEnabled="false">-->
+
+        <!--                <com.google.android.material.textfield.TextInputEditText-->
+        <!--                    android:id="@+id/edtPrice"-->
+        <!--                    android:layout_width="match_parent"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:ems="10"-->
+        <!--                    android:fontFamily="@font/sf_pro_display_medium"-->
+        <!--                    android:hint="@string/price_hint"-->
+        <!--                    android:inputType="date"-->
+        <!--                    android:textColor="@color/dark_blue"-->
+        <!--                    android:textSize="14sp"-->
+        <!--                    tools:ignore="SpeakableTextPresentCheck" />-->
+
+        <!--            </com.google.android.material.textfield.TextInputLayout>-->
+
+        <!--            <TextView-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_marginTop="8dp"-->
+        <!--                android:layout_marginBottom="8dp"-->
+        <!--                android:fontFamily="@font/sf_pro_display_medium"-->
+        <!--                android:text="@string/category"-->
+        <!--                android:textColor="@color/dark_blue"-->
+        <!--                android:textSize="12sp" />-->
+
+        <!--            <com.google.android.material.textfield.TextInputLayout-->
+        <!--                android:id="@+id/tfCategory"-->
+        <!--                style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:textColorHint="@color/dark_gray2"-->
+        <!--                app:boxBackgroundColor="@color/light_gray1"-->
+        <!--                app:hintEnabled="false">-->
+
+        <!--                <AutoCompleteTextView-->
+        <!--                    android:id="@+id/actvCategory"-->
+        <!--                    android:layout_width="match_parent"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:hint="@string/category_hint"-->
+        <!--                    android:inputType="none"-->
+        <!--                    android:ems="10"-->
+        <!--                    android:fontFamily="@font/sf_pro_display_medium"-->
+        <!--                    android:textColor="@color/dark_blue"-->
+        <!--                    android:textSize="14sp"-->
+        <!--                    tools:ignore="SpeakableTextPresentCheck"/>-->
+
+        <!--            </com.google.android.material.textfield.TextInputLayout>-->
+
+        <!--            <TextView-->
+        <!--                android:id="@+id/tvTotalIncome"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_marginTop="8dp"-->
+        <!--                android:layout_marginBottom="8dp"-->
+        <!--                android:fontFamily="@font/sf_pro_display_medium"-->
+        <!--                android:text="@string/tv_total_income"-->
+        <!--                android:textColor="@color/dark_blue"-->
+        <!--                android:textSize="12sp"-->
+        <!--                android:visibility="gone" />-->
+
+        <!--            <com.google.android.material.textfield.TextInputLayout-->
+        <!--                android:id="@+id/tfTotalIncome"-->
+        <!--                style="?attr/textInputOutlinedStyle"-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:textColorHint="@color/dark_gray2"-->
+        <!--                android:visibility="gone"-->
+        <!--                app:boxBackgroundColor="@color/light_gray1"-->
+        <!--                app:hintEnabled="false">-->
+
+        <!--                <com.google.android.material.textfield.TextInputEditText-->
+        <!--                    android:id="@+id/edtTotalIncome"-->
+        <!--                    android:layout_width="match_parent"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:ems="10"-->
+        <!--                    android:fontFamily="@font/sf_pro_display_medium"-->
+        <!--                    android:hint="@string/price_hint"-->
+        <!--                    android:inputType="date"-->
+        <!--                    android:textColor="@color/dark_blue"-->
+        <!--                    android:textSize="14sp"-->
+        <!--                    tools:ignore="SpeakableTextPresentCheck" />-->
+
+        <!--            </com.google.android.material.textfield.TextInputLayout>-->
+
+        <!--            <Button-->
+        <!--                android:id="@+id/btnSave"-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_marginTop="60dp"-->
+        <!--                android:layout_marginEnd="16dp"-->
+        <!--                android:layout_marginBottom="24dp"-->
+        <!--                android:backgroundTint="@color/dark_blue"-->
+        <!--                android:fontFamily="@font/sf_pro_display_semibold"-->
+        <!--                android:text="@string/save"-->
+        <!--                android:textColor="@color/white"-->
+        <!--                android:textSize="14sp" />-->
+
+        <!--        </LinearLayout>-->
     </androidx.core.widget.NestedScrollView>
 </FrameLayout>

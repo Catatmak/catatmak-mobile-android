@@ -1,16 +1,15 @@
-package com.bangkit.catatmak.ui.privacy_policy
+package com.bangkit.catatmak.ui.profile.update_profile
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.bangkit.catatmak.databinding.ActivityPrivacyPolicyBinding
+import com.bangkit.catatmak.databinding.ActivityUpdateProfileBinding
 
-class PrivacyPolicyActivity : AppCompatActivity() {
+class UpdateProfileActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityPrivacyPolicyBinding
-
+    private lateinit var binding: ActivityUpdateProfileBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityPrivacyPolicyBinding.inflate(layoutInflater)
+        binding = ActivityUpdateProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         setSupportActionBar(binding.topAppBar)

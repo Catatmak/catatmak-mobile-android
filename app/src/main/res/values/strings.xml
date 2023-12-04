@@ -33,9 +33,9 @@
     <string name="food">Makanan</string>
     <string name="transportation">Transportasi</string>
     <string name="entertainment">Hiburan</string>
-    <string name="ic_arrow_down">Icon Panah Ke Bawah</string>
-    <string name="ic_arrow_up">Icon Panah Ke Atas</string>
-    <string name="income">Pemasukan</string>
+    <string name="ic_expense">Icon Pengeluaran</string>
+    <string name="ic_income">Icon Pendapatan</string>
+    <string name="income">Pendapatan</string>
     <string name="total_income">Rp. 5.000.000</string>
     <string name="expenses">Pengeluaran</string>
     <string name="total_expenses">Rp. %1$s</string>
@@ -96,18 +96,36 @@
         <item>0</item>
     </string-array>
 
+    <string-array name="data_date_time">
+        <item>Hari Ini</item>
+        <item>1 Desember</item>
+        <item>30 November</item>
+    </string-array>
+
+    <string-array name="data_total">
+        <item>5.000.000</item>
+        <item>5.000.000</item>
+        <item>5.000.000</item>
+    </string-array>
+
+    <string-array name="data_expenses_amount">
+        <item>10</item>
+        <item>10</item>
+        <item>10</item>
+    </string-array>
+
     <string name="update_transaction">Update Transaksi</string>
     <string name="expense_name">Nama Pengeluaran</string>
-    <string name="price">Harga</string>
+    <string name="tv_price">Harga</string>
     <string name="update">Update</string>
-    <string name="delete">HAPUS DATA</string>
+    <string name="delete">HAPUS</string>
     <string name="record_finances">Catat Keuangan</string>
     <string name="record_manually">MANUAL</string>
     <string name="record_with_photo">PAKAI PHOTO</string>
     <string name="record_with_whatsapp">PAKAI WHATSAPP</string>
     <string name="date">Tanggal</string>
     <string name="record_manual_transaction">Catat Transaksi Manual</string>
-    <string name="save">SIMPAN TRANSAKSI</string>
+    <string name="save">SIMPAN</string>
     <string name="welcome">Halo, Rifki 👋</string>
     <string name="transaction">Riwayat Transaksi</string>
     <string name="analysis">Analisa Keuangan</string>
@@ -168,20 +186,31 @@
     <string name="desc_5">ika Anda memiliki pertanyaan atau kekhawatiran tentang kebijakan privasi kami, silakan hubungi tim dukungan kami melalui email di support@catatmak.com.</string>
     <string name="closing">Dengan menggunakan CatatMak, Anda menunjukkan persetujuan Anda terhadap kebijakan privasi ini. Terima kasih telah memilih CatatMak sebagai mitra pencatatan keuangan Anda.</string>
     <string name="intro_about_us">Sejak hari pertama, kami telah diberkahi dengan anggota tim yang luar biasa:</string>
-    <string name="member_1">Rayhan Rafiud Darojat</string>
-    <string name="from_1">dari STMIK Widya Utama</string>
-    <string name="member_2">Muhammad Rifki</string>
-    <string name="member_3">Jovanic Morgan</string>
-    <string name="from_3">Universitas Sriwijaya</string>
-    <string name="member_4">Muhammad Zhafran</string>
-    <string name="member_5">Putu Putri Pratiwi</string>
-    <string name="from_5">Universitas Udayana</string>
+    <string name="member_1">Rayhan Rafiud Darojat dari STMIK Widya Utama</string>
+    <string name="member_2">Muhammad Rifki dari STMIK Widya Utama</string>
+    <string name="member_3">Jovanic Morgan Universitas Sriwijaya</string>
+    <string name="member_4">Muhammad Zhafran Universitas Sriwijaya</string>
+    <string name="member_5">Putu Putri Pratiwi Universitas Udayana</string>
     <string name="six">6.</string>
-    <string name="member_6">Ni Putu Suci Paramita</string>
+    <string name="member_6">Ni Putu Suci Paramita Universitas Udayana</string>
     <string name="seven">7.</string>
-    <string name="member_7">Dewa Athallah Putra Kamiko</string>
-    <string name="from_7">Institut Teknologi Indonesia</string>
+    <string name="member_7">Dewa Athallah Putra Kamiko Institut Teknologi Indonesia</string>
     <string name="closing_about_us">Terima kasih kepada semua anggota tim atas kontribusi dan semangat yang mereka bawa ke dalam setiap langkah proyek ini. Kami berharap untuk terus tumbuh dan meraih lebih banyak pencapaian luar biasa bersama-sama di tahun-tahun mendatang. Selamat ulang tahun yang pertama, dan mari terus berkarya bersama menuju masa depan yang penuh prestasi! 🎉🚀</string>
     <string name="supported_by">Supported by</string>
     <string name="logo_bangkit_dikti">Logo Bangkit Dikti</string>
+    <string name="expenses_statistic">Statistik Pengeluaran</string>
+    <string name="cash_flow_graph">Grafik Arus Kas</string>
+    <string name="savings">Tabungan</string>
+    <string name="finansial_in_this_month">Finansial Kamu Bulan Ini</string>
+    <string name="expense_summary">Ringkasan Pengeluaran</string>
+    <string name="monthly">Bulanan</string>
+    <string name="weekly">Mingguan</string>
+    <string name="daily">Harian</string>
+    <string name="income_summary">Ringkasan Pemasukan</string>
+    <string name="last_month">Bulan Terakhir</string>
+    <string name="expense_daily">Pengeluaran Harian</string>
+    <string name="expenses_amount">%1$s Pengeluaran</string>
+    <string name="detail_expense">Detail Pengeluaran</string>
+    <string name="seven_day_ago">7 Hari Terakhir</string>
+    <string name="income_name">Nama Pemasukan</string>
 </resources>
