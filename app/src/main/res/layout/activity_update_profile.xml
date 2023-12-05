@@ -201,16 +201,16 @@
         app:layout_constraintEnd_toEndOf="parent">
 
         <AutoCompleteTextView
-            android:id="@+id/edtGander"
+            android:id="@+id/actvGander"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/gander"
-            android:inputType="none"
             android:ems="10"
             android:fontFamily="@font/sf_pro_display_medium"
+            android:hint="@string/gander"
+            android:inputType="none"
             android:textColor="@color/dark_blue"
             android:textSize="14sp"
-            tools:ignore="SpeakableTextPresentCheck"/>
+            tools:ignore="SpeakableTextPresentCheck" />
 
     </com.google.android.material.textfield.TextInputLayout>
 

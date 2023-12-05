@@ -136,6 +136,7 @@ class AddTransactionSheetFragment : BottomSheetDialogFragment() {
                     binding?.edtPrice?.setText("")
                     binding?.actvCategory?.setText("")
                     binding?.tvPrice?.text = resources.getString(R.string.tv_price)
+                    binding?.tvExpenseName?.text = resources.getString(R.string.expense_name)
                 } else if (button.id == binding?.btnIncome?.id) {
                     binding?.btnExpenses?.apply {
                         setBackgroundColor(Color.WHITE)
@@ -160,6 +161,7 @@ class AddTransactionSheetFragment : BottomSheetDialogFragment() {
                     binding?.edtPrice?.setText("")
                     binding?.actvCategory?.setText("")
                     binding?.tvPrice?.text = resources.getString(R.string.tv_total_income)
+                    binding?.tvExpenseName?.text = resources.getString(R.string.income_name)
                 }
             }
         }

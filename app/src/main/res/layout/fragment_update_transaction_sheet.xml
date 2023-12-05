@@ -29,7 +29,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/sf_pro_display_semibold"
-                android:text="@string/record_manual_transaction"
+                android:text="@string/update_transaction"
                 android:textAlignment="center"
                 android:textColor="@color/dark_blue"
                 android:textSize="18sp"
@@ -110,12 +110,12 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
-                android:id="@+id/tvIncomeName"
+                android:id="@+id/tvExpenseName"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/sf_pro_display_medium"
-                android:text="@string/income_name"
+                android:text="@string/expense_name"
                 android:textColor="@color/dark_blue"
                 android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -132,7 +132,7 @@
                 app:hintEnabled="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvIncomeName">
+                app:layout_constraintTop_toBottomOf="@id/tvExpenseName">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edtExpenseName"
@@ -154,7 +154,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/sf_pro_display_medium"
-                android:text="@string/tv_total_income"
+                android:text="@string/tv_price"
                 android:textColor="@color/dark_blue"
                 android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="parent"

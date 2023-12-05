@@ -114,7 +114,7 @@
         <item>10</item>
     </string-array>
 
-    <string name="update_transaction">Update Transaksi</string>
+    <string name="update_transaction">Ubah Transaksi</string>
     <string name="expense_name">Nama Pengeluaran</string>
     <string name="tv_price">Harga</string>
     <string name="update">Update</string>
@@ -213,4 +213,7 @@
     <string name="detail_expense">Detail Pengeluaran</string>
     <string name="seven_day_ago">7 Hari Terakhir</string>
     <string name="income_name">Nama Pemasukan</string>
+    <string name="add_with_photo">Tambah Pakai Foto</string>
+    <string name="ok_save">OKE SIP SIMPAN</string>
+    <string name="ceck_data_invoice">Cek data struk foto</string>
 </resources>

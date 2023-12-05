@@ -37,7 +37,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:fontFamily="@font/sf_pro_display_regular"
-        android:text="10 Pengeluaran"
+        android:text="3 Pemasukan"
         android:textColor="@color/dark_blue"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="@id/tvTotalExpense"

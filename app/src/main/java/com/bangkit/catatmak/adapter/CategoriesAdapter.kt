@@ -15,22 +15,26 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bangkit.catatmak.R
 import com.bangkit.catatmak.model.Transaction
 
-class CategoriesAdapter(private val list: ArrayList<Transaction>) :
+class CategoriesAdapter(private val list: ArrayList<Transaction>, private val isAddPhotoPage: Boolean) :
     RecyclerView.Adapter<CategoriesAdapter.ListViewHolder>() {
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
     ): ListViewHolder {
-        val layoutInflater = LayoutInflater.from(parent.context)
-        val view: View = layoutInflater.inflate(R.layout.item_row_categories, parent, false)
+        val view = if (isAddPhotoPage) {
+            LayoutInflater.from(parent.context).inflate(R.layout.item_row_preview, parent, false)
+        } else {
+            LayoutInflater.from(parent.context).inflate(R.layout.item_row_categories, parent, false)
+        }
+
         return ListViewHolder(view)
     }
 
     override fun getItemCount(): Int = list.size
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-        val (createdAt, itemName, categoryName, price, isPlus) = list[position]
+        val (createdAt, itemName, categoryName, price, _) = list[position]
         holder.createdAt.text = createdAt
         holder.itemName.text = itemName
         holder.itemPrice.text =  holder.itemName.context.resources.getString(R.string.total_expenses, price)
