@@ -1,61 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:padding="8dp"
-    android:layout_gravity="center">
+    android:layout_gravity="center"
+    android:padding="8dp">
 
     <TextView
         android:id="@+id/tvCreatedAt"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="91dp"
+        android:layout_height="18dp"
         android:fontFamily="@font/sf_pro_display_regular"
-        android:textSize="12sp"
         android:textColor="@color/dark_blue"
-        tools:text="@string/created_at"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/tvItemName"
+        app:layout_constraintStart_toStartOf="@id/tvItemName"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5"
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:text="@string/created_at" />
 
     <TextView
         android:id="@+id/tvItemName"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/sf_pro_display_semibold"
-        android:textSize="14sp"
+        android:maxWidth="215dp"
         android:textColor="@color/dark_blue"
-        tools:text="@string/item_name"
-        android:layout_marginTop="4dp"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/guideline6"
         app:layout_constraintStart_toStartOf="@id/tvCreatedAt"
-        app:layout_constraintTop_toBottomOf="@id/tvCreatedAt"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@+id/tvCreatedAt"
+        app:layout_constraintVertical_bias="0.5"
+        tools:text="@string/item_name" />
 
     <TextView
         android:id="@+id/tvCategoryName"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/sf_pro_display_semibold"
-        android:textSize="12sp"
-        android:textColor="@color/dark_blue"
-        tools:text="@string/category_name"
         android:textAlignment="textEnd"
-        app:layout_constraintStart_toEndOf="@id/tvCreatedAt"
-        app:layout_constraintTop_toTopOf="@id/tvCreatedAt"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        android:textColor="@color/dark_blue"
+        android:textSize="12sp"
+        android:padding="4dp"
+        android:layout_marginBottom="3dp"
+        app:layout_constraintBottom_toTopOf="@+id/tvPrice"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:text="@string/category_name" />
 
     <TextView
         android:id="@+id/tvPrice"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/sf_pro_display_bold"
-        android:textSize="16sp"
-        android:textColor="@color/red"
-        tools:text="Rp. 100.000"
+        android:maxWidth="170dp"
         android:textAlignment="textEnd"
-        app:layout_constraintTop_toBottomOf="@id/tvCategoryName"
-        app:layout_constraintStart_toStartOf="@id/tvCategoryName"
-        app:layout_constraintEnd_toEndOf="@id/tvCategoryName"/>
+        android:textColor="@color/red"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline6"
+        app:layout_constraintTop_toBottomOf="@+id/tvCategoryName"
+        tools:text="Rp. 100.000" />
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="226dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

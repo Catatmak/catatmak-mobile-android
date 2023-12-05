@@ -2,6 +2,7 @@ package com.bangkit.catatmak.adapter
 
 import android.annotation.SuppressLint
 import android.graphics.Color
+import android.graphics.drawable.GradientDrawable
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bangkit.catatmak.R
 import com.bangkit.catatmak.model.Transaction
+import com.google.android.material.card.MaterialCardView
 
 class ListTransactionAdapter(private val listTransaction: ArrayList<Transaction>) :
     RecyclerView.Adapter<ListTransactionAdapter.ListViewHolder>() {
@@ -36,6 +38,10 @@ class ListTransactionAdapter(private val listTransaction: ArrayList<Transaction>
         holder.createdAt.text = createdAt
         holder.itemName.text = itemName
         holder.categoryName.text = categoryName
+        if (holder.categoryName.text.toString() == "Tidak Terkategori") {
+            holder.categoryName.setBackgroundResource(R.drawable.background_red_with_radius);
+            holder.categoryName.setTextColor(ContextCompat.getColor(holder.itemView.context, android.R.color.white));
+        }
         if (isPlus.toInt() == 1) {
             holder.price.text =
                 holder.itemName.context.resources.getString(R.string.total_price, "+", "Rp.", price)

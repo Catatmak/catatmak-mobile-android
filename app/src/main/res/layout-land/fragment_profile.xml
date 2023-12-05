@@ -12,10 +12,9 @@
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cvBgHeader"
             android:layout_width="0dp"
-            android:layout_height="110dp"
+            android:layout_height="wrap_content"
             android:backgroundTint="@color/dark_blue"
             android:elevation="8dp"
-            android:padding="16dp"
             app:cardCornerRadius="0dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -24,13 +23,12 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_margin="16dp">
 
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginEnd="16dp"
                     android:backgroundTint="@android:color/white"
                     android:orientation="vertical"
                     app:cardCornerRadius="4dp"
@@ -41,48 +39,50 @@
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:padding="16dp">
 
                         <ImageView
                             android:id="@+id/ivPremiumMedal"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_margin="16dp"
                             android:contentDescription="@string/premium_medal"
                             android:src="@drawable/medallions"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toStartOf="@id/tvUsername"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <TextView
                             android:id="@+id/tvUsername"
-                            android:layout_width="0dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginEnd="16dp"
                             android:fontFamily="@font/sf_pro_display_bold"
                             android:text="@string/username"
                             android:textColor="@color/dark_blue"
                             android:textSize="18sp"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginEnd="16dp"
+                            app:layout_constraintBottom_toTopOf="@id/tvMemberStatus"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@id/ivPremiumMedal"
-                            app:layout_constraintTop_toTopOf="@id/ivPremiumMedal" />
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toEndOf="@+id/ivPremiumMedal"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_chainStyle="packed" />
 
                         <TextView
                             android:id="@+id/tvMemberStatus"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="18dp"
-                            android:layout_marginEnd="16dp"
-                            android:layout_marginBottom="16dp"
                             android:fontFamily="@font/sf_pro_display_medium"
                             android:text="@string/member_status"
                             android:textColor="@color/dark_blue"
                             android:textSize="14sp"
-                            app:layout_constraintBottom_toBottomOf="@id/ivPremiumMedal"
+                            app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="@id/tvUsername"
+                            app:layout_constraintHorizontal_bias="1.0"
                             app:layout_constraintStart_toStartOf="@id/tvUsername"
-                            app:layout_constraintTop_toBottomOf="@id/tvUsername" />
+                            app:layout_constraintTop_toBottomOf="@id/tvUsername"
+                            app:layout_constraintVertical_bias="0.5" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </com.google.android.material.card.MaterialCardView>
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -250,7 +250,6 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>
-
 
         <Button
             android:id="@+id/btnLogout"

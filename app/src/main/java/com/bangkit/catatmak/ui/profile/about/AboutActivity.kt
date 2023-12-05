@@ -1,15 +1,21 @@
-package com.bangkit.catatmak.ui.update_profile
+package com.bangkit.catatmak.ui.profile.about
 
+import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.bangkit.catatmak.databinding.ActivityUpdateProfileBinding
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.StyleSpan
+import com.bangkit.catatmak.databinding.ActivityAboutBinding
 
-class UpdateProfileActivity : AppCompatActivity() {
+class AboutActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityUpdateProfileBinding
+    private lateinit var binding: ActivityAboutBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityUpdateProfileBinding.inflate(layoutInflater)
+        binding = ActivityAboutBinding.inflate(layoutInflater)
+
         setContentView(binding.root)
 
         setSupportActionBar(binding.topAppBar)

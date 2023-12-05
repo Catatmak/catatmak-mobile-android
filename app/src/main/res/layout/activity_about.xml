@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".ui.privacy_policy.PrivacyPolicyActivity">
+    tools:context=".ui.profile.privacy_policy.PrivacyPolicyActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/topAppBarLayout"
@@ -52,7 +52,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:fontFamily="@font/sf_pro_display_bold"
+        android:fontFamily="@font/sf_pro_display_regular"
         android:lineSpacingExtra="6dp"
         android:text="@string/one"
         android:textColor="@color/dark_blue"
@@ -62,39 +62,25 @@
 
     <TextView
         android:id="@+id/tvMember1"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:fontFamily="@font/sf_pro_display_bold"
+        android:fontFamily="@font/sf_pro_display_medium"
         android:lineSpacingExtra="6dp"
         android:text="@string/member_1"
         android:textColor="@color/dark_blue"
         android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/guideline"
         app:layout_constraintTop_toBottomOf="@id/tvIntro" />
-
-    <TextView
-        android:id="@+id/tvFrom1"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginEnd="16dp"
-        android:fontFamily="@font/sf_pro_display_regular"
-        android:lineSpacingExtra="6dp"
-        android:text="@string/from_1"
-        android:textColor="@color/dark_blue"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@id/tvMember1"
-        app:layout_constraintStart_toEndOf="@id/tvMember1"
-        app:layout_constraintTop_toTopOf="@id/tvMember1" />
 
     <TextView
         android:id="@+id/tvNumber2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:fontFamily="@font/sf_pro_display_bold"
+        android:fontFamily="@font/sf_pro_display_regular"
         android:lineSpacingExtra="6dp"
         android:text="@string/two"
         android:textColor="@color/dark_blue"
@@ -104,39 +90,25 @@
 
     <TextView
         android:id="@+id/tvMember2"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
         android:layout_marginEnd="16dp"
-        android:fontFamily="@font/sf_pro_display_bold"
+        android:fontFamily="@font/sf_pro_display_medium"
         android:lineSpacingExtra="6dp"
         android:text="@string/member_2"
         android:textColor="@color/dark_blue"
         android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/guideline"
         app:layout_constraintTop_toBottomOf="@id/tvMember1" />
-
-    <TextView
-        android:id="@+id/tvFrom2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginEnd="16dp"
-        android:fontFamily="@font/sf_pro_display_regular"
-        android:lineSpacingExtra="6dp"
-        android:text="@string/from_1"
-        android:textColor="@color/dark_blue"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@id/tvMember2"
-        app:layout_constraintStart_toEndOf="@id/tvMember2"
-        app:layout_constraintTop_toTopOf="@id/tvMember2" />
 
     <TextView
         android:id="@+id/tvNumber3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:fontFamily="@font/sf_pro_display_bold"
+        android:fontFamily="@font/sf_pro_display_regular"
         android:lineSpacingExtra="6dp"
         android:text="@string/three"
         android:textColor="@color/dark_blue"
@@ -146,39 +118,25 @@
 
     <TextView
         android:id="@+id/tvMember3"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
         android:layout_marginEnd="16dp"
-        android:fontFamily="@font/sf_pro_display_bold"
+        android:fontFamily="@font/sf_pro_display_medium"
         android:lineSpacingExtra="6dp"
         android:text="@string/member_3"
         android:textColor="@color/dark_blue"
         android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/guideline"
         app:layout_constraintTop_toBottomOf="@id/tvMember2" />
-
-    <TextView
-        android:id="@+id/tvFrom3"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginEnd="16dp"
-        android:fontFamily="@font/sf_pro_display_regular"
-        android:lineSpacingExtra="6dp"
-        android:text="@string/from_3"
-        android:textColor="@color/dark_blue"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@id/tvMember3"
-        app:layout_constraintStart_toEndOf="@id/tvMember3"
-        app:layout_constraintTop_toTopOf="@id/tvMember3" />
 
     <TextView
         android:id="@+id/tvNumber4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:fontFamily="@font/sf_pro_display_bold"
+        android:fontFamily="@font/sf_pro_display_regular"
         android:lineSpacingExtra="6dp"
         android:text="@string/four"
         android:textColor="@color/dark_blue"
@@ -188,39 +146,25 @@
 
     <TextView
         android:id="@+id/tvMember4"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
         android:layout_marginEnd="16dp"
-        android:fontFamily="@font/sf_pro_display_bold"
+        android:fontFamily="@font/sf_pro_display_medium"
         android:lineSpacingExtra="6dp"
         android:text="@string/member_4"
         android:textColor="@color/dark_blue"
         android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/guideline"
         app:layout_constraintTop_toBottomOf="@id/tvMember3" />
-
-    <TextView
-        android:id="@+id/tvFrom4"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginEnd="16dp"
-        android:fontFamily="@font/sf_pro_display_regular"
-        android:lineSpacingExtra="6dp"
-        android:text="@string/from_3"
-        android:textColor="@color/dark_blue"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@id/tvMember4"
-        app:layout_constraintStart_toEndOf="@id/tvMember4"
-        app:layout_constraintTop_toTopOf="@id/tvMember4" />
 
     <TextView
         android:id="@+id/tvNumber5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:fontFamily="@font/sf_pro_display_bold"
+        android:fontFamily="@font/sf_pro_display_regular"
         android:lineSpacingExtra="6dp"
         android:text="@string/five"
         android:textColor="@color/dark_blue"
@@ -230,40 +174,25 @@
 
     <TextView
         android:id="@+id/tvMember5"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
         android:layout_marginEnd="16dp"
-        android:fontFamily="@font/sf_pro_display_bold"
+        android:fontFamily="@font/sf_pro_display_medium"
         android:lineSpacingExtra="6dp"
         android:text="@string/member_5"
         android:textColor="@color/dark_blue"
         android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/guideline"
         app:layout_constraintTop_toBottomOf="@id/tvMember4" />
-
-    <TextView
-        android:id="@+id/tvFrom5"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginEnd="16dp"
-        android:fontFamily="@font/sf_pro_display_regular"
-        android:lineSpacingExtra="6dp"
-        android:text="@string/from_5"
-        android:textColor="@color/dark_blue"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@id/tvMember5"
-        app:layout_constraintStart_toEndOf="@id/tvMember5"
-        app:layout_constraintTop_toTopOf="@id/tvMember5" />
-
 
     <TextView
         android:id="@+id/tvNumber6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:fontFamily="@font/sf_pro_display_bold"
+        android:fontFamily="@font/sf_pro_display_regular"
         android:lineSpacingExtra="6dp"
         android:text="@string/six"
         android:textColor="@color/dark_blue"
@@ -273,39 +202,25 @@
 
     <TextView
         android:id="@+id/tvMember6"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
         android:layout_marginEnd="16dp"
-        android:fontFamily="@font/sf_pro_display_bold"
+        android:fontFamily="@font/sf_pro_display_medium"
         android:lineSpacingExtra="6dp"
         android:text="@string/member_6"
         android:textColor="@color/dark_blue"
         android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/guideline"
         app:layout_constraintTop_toBottomOf="@id/tvMember5" />
-
-    <TextView
-        android:id="@+id/tvFrom6"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginEnd="16dp"
-        android:fontFamily="@font/sf_pro_display_regular"
-        android:lineSpacingExtra="6dp"
-        android:text="@string/from_5"
-        android:textColor="@color/dark_blue"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@id/tvMember6"
-        app:layout_constraintStart_toEndOf="@id/tvMember6"
-        app:layout_constraintTop_toTopOf="@id/tvMember6" />
 
     <TextView
         android:id="@+id/tvNumber7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:fontFamily="@font/sf_pro_display_bold"
+        android:fontFamily="@font/sf_pro_display_regular"
         android:lineSpacingExtra="6dp"
         android:text="@string/seven"
         android:textColor="@color/dark_blue"
@@ -315,32 +230,18 @@
 
     <TextView
         android:id="@+id/tvMember7"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
         android:layout_marginEnd="16dp"
-        android:fontFamily="@font/sf_pro_display_bold"
+        android:fontFamily="@font/sf_pro_display_medium"
         android:lineSpacingExtra="6dp"
         android:text="@string/member_7"
         android:textColor="@color/dark_blue"
         android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/guideline"
         app:layout_constraintTop_toBottomOf="@id/tvMember6" />
-
-    <TextView
-        android:id="@+id/tvFrom7"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginEnd="16dp"
-        android:fontFamily="@font/sf_pro_display_regular"
-        android:lineSpacingExtra="6dp"
-        android:text="@string/from_7"
-        android:textColor="@color/dark_blue"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@id/tvMember7"
-        app:layout_constraintStart_toEndOf="@id/tvMember7"
-        app:layout_constraintTop_toTopOf="@id/tvMember7" />
 
     <TextView
         android:id="@+id/tvClosing"
@@ -358,7 +259,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvNumber7" />
+        app:layout_constraintTop_toBottomOf="@id/tvMember7" />
 
     <TextView
         android:id="@+id/tvSupportedBy"
@@ -381,8 +282,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
+        android:paddingBottom="16dp"
         android:contentDescription="@string/logo_bangkit_dikti"
-        android:paddingBottom="24dp"
         android:src="@drawable/bangkit_dikti"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvSupportedBy" />
