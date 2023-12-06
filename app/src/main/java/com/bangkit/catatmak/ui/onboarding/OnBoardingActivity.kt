@@ -4,7 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.bangkit.catatmak.databinding.ActivityOnBoardingBinding
-import com.bangkit.catatmak.ui.main.MainActivity
+import com.bangkit.catatmak.ui.authentication.LoginActivity
 
 class OnBoardingActivity : AppCompatActivity() {
 
@@ -23,7 +23,7 @@ class OnBoardingActivity : AppCompatActivity() {
     }
 
     private fun goToMainActivity() {
-        val intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, LoginActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(intent)
         finish()

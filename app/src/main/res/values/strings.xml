@@ -216,4 +216,21 @@
     <string name="add_with_photo">Tambah Pakai Foto</string>
     <string name="ok_save">OKE SIP SIMPAN</string>
     <string name="ceck_data_invoice">Cek data struk foto</string>
+    <string name="login_title">Masukan Nomor Whatsapp</string>
+    <string name="login_subtitle">Kode verifikasi akan dikirimkan langsung ke nomor whatsapp kamu.</string>
+    <string name="login_country_code">+62</string>
+    <string name="whatsapp_number_hint">85741892603</string>
+    <string name="not_have_account">Belum Punya Akun?</string>
+    <string name="send_whatsapp">Kirim Whatsapp Pertamamu</string>
+    <string name="next">LANJUT</string>
+    <string name="back"><![CDATA[< Kembali]]></string>
+    <string name="verif_title">Verifikasi Kode</string>
+    <string name="verif_subtitle">Masukan kode verifikasi yang telah dikirimkan ke nomor whatsapp +6285741892603</string>
+    <string name="not_have_receive_message">Tidak Menerima Pesan</string>
+    <string name="send_again">Kirim Ulang</string>
+    <string name="verif_code_hint">343534</string>
+    <string name="verif_success_title">Verifikasi Berhasil\nOtomatis Pindah Halaman\n dalam 3 detik</string>
+    <string name="move">PINDAH HALAMAN</string>
+    <string name="verif_fail_title">Verifikasi Akun Gagal\nToken Tidak Valid</string>
+    <string name="verif_again">VERIFIKASI ULANG</string>
 </resources>

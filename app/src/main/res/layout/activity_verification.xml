@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.authentication.LoginActivity">
+
+    <Button
+        android:id="@+id/ivLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="44dp"
+        android:text="@string/back"
+        android:textColor="@android:color/white"
+        android:backgroundTint="@color/red"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvLoginTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/sf_pro_display_bold"
+        android:text="@string/verif_title"
+        android:textColor="@color/dark_blue"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/ivLogo"
+        app:layout_constraintTop_toBottomOf="@id/ivLogo" />
+
+    <TextView
+        android:id="@+id/tvLoginSubtitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/sf_pro_display_regular"
+        android:text="@string/verif_subtitle"
+        android:textColor="@color/dark_blue"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/ivLogo"
+        app:layout_constraintTop_toBottomOf="@id/tvLoginTitle" />
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tfWhatsappNumber"
+        style="?attr/textInputFilledStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textColorHint="@color/dark_gray2"
+        app:boxStrokeColor="@color/dark_blue"
+        app:hintEnabled="false"
+        app:layout_constraintEnd_toEndOf="@id/tvLoginSubtitle"
+        app:layout_constraintStart_toStartOf="@id/tvLoginSubtitle"
+        app:layout_constraintTop_toBottomOf="@id/tvLoginSubtitle">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtExpenseName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/white"
+            android:ems="10"
+            android:fontFamily="@font/sf_pro_display_medium"
+            android:hint="@string/verif_code_hint"
+            android:inputType="number"
+            android:textColor="@color/dark_blue"
+            android:textSize="36sp"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/tvNotHaveAccount"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/sf_pro_display_regular"
+        android:text="@string/not_have_receive_message"
+        android:textColor="@color/dark_blue"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@id/tfWhatsappNumber"
+        app:layout_constraintTop_toBottomOf="@id/tfWhatsappNumber" />
+
+    <TextView
+        android:id="@+id/tvSendWhatsapp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:fontFamily="@font/sf_pro_display_regular"
+        android:text="@string/send_again"
+        android:textColor="@color/light_blue"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@id/tvNotHaveAccount"
+        app:layout_constraintStart_toEndOf="@id/tvNotHaveAccount"
+        app:layout_constraintTop_toTopOf="@id/tvNotHaveAccount" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="279dp" />
+
+    <Button
+        android:id="@+id/btnNext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/dark_blue"
+        android:layout_marginHorizontal="12dp"
+        android:layout_marginBottom="18dp"
+        android:fontFamily="@font/sf_pro_display_medium"
+        android:text="@string/next"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

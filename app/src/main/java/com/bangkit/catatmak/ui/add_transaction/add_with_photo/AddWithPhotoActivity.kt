@@ -23,6 +23,14 @@ class AddWithPhotoActivity : AppCompatActivity() {
         binding = ActivityAddWithPhotoBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        setSupportActionBar(binding.topAppBar)
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        binding.topAppBar.setNavigationOnClickListener {
+            @Suppress("DEPRECATION")
+            onBackPressed()
+        }
+
         val imageUriString = intent.getStringExtra(IMAGE_URI)
         imageUri = Uri.parse(imageUriString)
 
