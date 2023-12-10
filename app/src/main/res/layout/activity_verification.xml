@@ -4,119 +4,155 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:fitsSystemWindows="true"
     tools:context=".ui.authentication.LoginActivity">
 
-    <Button
-        android:id="@+id/ivLogo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="44dp"
-        android:text="@string/back"
-        android:textColor="@android:color/white"
-        android:backgroundTint="@color/red"
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@id/btnVerify"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/tvLoginTitle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/sf_pro_display_bold"
-        android:text="@string/verif_title"
-        android:textColor="@color/dark_blue"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/ivLogo"
-        app:layout_constraintTop_toBottomOf="@id/ivLogo" />
-
-    <TextView
-        android:id="@+id/tvLoginSubtitle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="16dp"
-        android:fontFamily="@font/sf_pro_display_regular"
-        android:text="@string/verif_subtitle"
-        android:textColor="@color/dark_blue"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/ivLogo"
-        app:layout_constraintTop_toBottomOf="@id/tvLoginTitle" />
-
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tfWhatsappNumber"
-        style="?attr/textInputFilledStyle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:textColorHint="@color/dark_gray2"
-        app:boxStrokeColor="@color/dark_blue"
-        app:hintEnabled="false"
-        app:layout_constraintEnd_toEndOf="@id/tvLoginSubtitle"
-        app:layout_constraintStart_toStartOf="@id/tvLoginSubtitle"
-        app:layout_constraintTop_toBottomOf="@id/tvLoginSubtitle">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edtExpenseName"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@android:color/white"
-            android:ems="10"
-            android:fontFamily="@font/sf_pro_display_medium"
-            android:hint="@string/verif_code_hint"
-            android:inputType="number"
-            android:textColor="@color/dark_blue"
-            android:textSize="36sp"
-            tools:ignore="SpeakableTextPresentCheck" />
+            android:layout_height="wrap_content">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <Button
+                android:id="@+id/btnBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="44dp"
+                android:backgroundTint="@color/red"
+                android:text="@string/back"
+                android:textColor="@android:color/white"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tvNotHaveAccount"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/sf_pro_display_regular"
-        android:text="@string/not_have_receive_message"
-        android:textColor="@color/dark_blue"
-        android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="@id/tfWhatsappNumber"
-        app:layout_constraintTop_toBottomOf="@id/tfWhatsappNumber" />
+            <TextView
+                android:id="@+id/tvVerifTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/sf_pro_display_bold"
+                android:text="@string/verif_title"
+                android:textColor="@color/dark_blue"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/btnBack"
+                app:layout_constraintTop_toBottomOf="@id/btnBack" />
 
-    <TextView
-        android:id="@+id/tvSendWhatsapp"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:fontFamily="@font/sf_pro_display_regular"
-        android:text="@string/send_again"
-        android:textColor="@color/light_blue"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@id/tvNotHaveAccount"
-        app:layout_constraintStart_toEndOf="@id/tvNotHaveAccount"
-        app:layout_constraintTop_toTopOf="@id/tvNotHaveAccount" />
+            <TextView
+                android:id="@+id/tvVerifSubtitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="@font/sf_pro_display_regular"
+                android:text="@string/verif_subtitle"
+                android:textColor="@color/dark_blue"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/tvVerifTitle"
+                app:layout_constraintTop_toBottomOf="@id/tvVerifTitle" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="279dp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tfOTP"
+                style="?attr/textInputFilledStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/dark_gray2"
+                app:boxStrokeColor="@color/dark_blue"
+                app:hintEnabled="false"
+                app:layout_constraintEnd_toEndOf="@id/tvVerifSubtitle"
+                app:layout_constraintStart_toStartOf="@id/tvVerifSubtitle"
+                app:layout_constraintTop_toBottomOf="@id/tvVerifSubtitle">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtOTP"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@android:color/white"
+                    android:ems="10"
+                    android:fontFamily="@font/sf_pro_display_medium"
+                    android:hint="@string/verif_code_hint"
+                    android:inputType="number"
+                    android:textColor="@color/dark_blue"
+                    android:textSize="36sp"
+                    android:maxLength="6"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/tvNotReceiveMessage"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/sf_pro_display_regular"
+                android:text="@string/not_have_receive_message"
+                android:textColor="@color/dark_blue"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="@id/tfOTP"
+                app:layout_constraintTop_toBottomOf="@id/tfOTP" />
+
+            <TextView
+                android:id="@+id/tvSendAgain"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:clickable="true"
+                android:fontFamily="@font/sf_pro_display_regular"
+                android:text="@string/send_again"
+                android:textColor="@color/light_blue"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@id/tvNotReceiveMessage"
+                app:layout_constraintStart_toEndOf="@id/tvNotReceiveMessage"
+                app:layout_constraintTop_toTopOf="@id/tvNotReceiveMessage"
+                android:focusable="true" />
+
+            <ProgressBar
+                android:id="@+id/progressIndicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:visibility="visible" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="279dp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
 
     <Button
-        android:id="@+id/btnNext"
+        android:id="@+id/btnVerify"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/dark_blue"
         android:layout_marginHorizontal="12dp"
         android:layout_marginBottom="18dp"
+        android:backgroundTint="@color/dark_blue"
         android:fontFamily="@font/sf_pro_display_medium"
-        android:text="@string/next"
+        android:text="@string/verify"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+

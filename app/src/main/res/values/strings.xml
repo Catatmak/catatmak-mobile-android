@@ -225,12 +225,19 @@
     <string name="next">LANJUT</string>
     <string name="back"><![CDATA[< Kembali]]></string>
     <string name="verif_title">Verifikasi Kode</string>
-    <string name="verif_subtitle">Masukan kode verifikasi yang telah dikirimkan ke nomor whatsapp +6285741892603</string>
+    <string name="verif_subtitle">Masukan kode verifikasi yang telah dikirimkan ke nomor whatsapp +%1$s</string>
     <string name="not_have_receive_message">Tidak Menerima Pesan</string>
     <string name="send_again">Kirim Ulang</string>
     <string name="verif_code_hint">343534</string>
-    <string name="verif_success_title">Verifikasi Berhasil\nOtomatis Pindah Halaman\n dalam 3 detik</string>
+    <string name="verif_success_title">Verifikasi Berhasil\nOtomatis Pindah Halaman\n dalam %1$s detik</string>
     <string name="move">PINDAH HALAMAN</string>
     <string name="verif_fail_title">Verifikasi Akun Gagal\nToken Tidak Valid</string>
     <string name="verif_again">VERIFIKASI ULANG</string>
+    <string name="empty_phone_input">Input tidak boleh kosong.</string>
+    <string name="verify">VERIFIKASI</string>
+    <string name="dialog_title">Oke</string>
+    <string name="dialog_positive_action">Lanjut</string>
+    <string name="warning_title">Keluar</string>
+    <string name="logout_warning">Yakin ingin keluar dari aplikasi?</string>
+    <string name="dialog_negative_action">Tidak</string>
 </resources>
