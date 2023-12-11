@@ -60,10 +60,11 @@
                     android:textSize="14sp" />
 
                 <TextView
+                    android:id="@+id/tvTotalIncome"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/sf_pro_display_bold"
-                    android:text="@string/total_income"
+                    tools:text="@string/total_income"
                     android:textColor="@color/dark_blue"
                     android:textSize="18sp" />
 
@@ -95,7 +96,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="6dp"
-                    android:contentDescription="@string/ic_expense"
+                    android:contentDescription="@string/ic_outcome"
                     android:src="@drawable/ic_arrow_down_with_background_red" />
 
                 <TextView
@@ -103,15 +104,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="3dp"
                     android:fontFamily="@font/sf_pro_display_medium"
-                    android:text="@string/expenses"
+                    android:text="@string/outcome"
                     android:textColor="@color/dark_blue"
                     android:textSize="14sp" />
 
                 <TextView
+                    android:id="@+id/tvTotalOutcome"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/sf_pro_display_bold"
-                    android:text="Rp. 2.000.0000"
+                    tools:text="Rp. 2.000.0000"
                     android:textColor="@color/dark_blue"
                     android:textSize="18sp" />
 
@@ -208,6 +210,17 @@
             </LinearLayout>
 
         </com.google.android.material.card.MaterialCardView>
+
+        <ProgressBar
+            android:id="@+id/progressIndicatorFinancialsTotal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTitle"
+            tools:visibility="visible" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

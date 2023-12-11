@@ -11,5 +11,4 @@ class MainViewModel(private val repository: CatatmakRepository) : ViewModel() {
     fun getSession(): LiveData<UserModel> {
         return repository.getSession().asLiveData()
     }
-
 }

@@ -38,19 +38,30 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/tvTotal"
+                    android:id="@+id/tvTotalOutcomeToday"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
                     android:fontFamily="@font/sf_pro_display_bold"
-                    android:text="@string/total"
+                    android:maxWidth="195dp"
+                    tools:text="@string/total"
                     android:textColor="@color/white"
                     android:textSize="28sp"
-                    android:maxWidth="195dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@id/guideline3"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tvTodaysExpeses" />
+
+                <ProgressBar
+                    android:id="@+id/progressIndicatorFinancialsTotal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:visibility="visible" />
 
                 <androidx.constraintlayout.widget.Guideline
                     android:id="@+id/guideline3"
@@ -65,24 +76,24 @@
         <ImageView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:src="@drawable/catetmak_logo_with_background"
             android:layout_marginBottom="12dp"
+            android:contentDescription="@string/mak_beti_image"
+            android:src="@drawable/catetmak_logo_with_background"
             app:layout_constraintBottom_toTopOf="@id/guideline1"
-            app:layout_constraintTop_toTopOf="@id/cvTodaysExpeses"
             app:layout_constraintEnd_toEndOf="@id/cvTodaysExpeses"
             app:layout_constraintStart_toEndOf="@id/guideline2"
-            android:contentDescription="@string/mak_beti_image" />
+            app:layout_constraintTop_toTopOf="@id/cvTodaysExpeses" />
 
         <ImageView
             android:id="@+id/ivMamihAi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
+            android:contentDescription="@string/mak_beti_ai_image"
             android:src="@drawable/mamih_ai"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cvTodaysExpeses"
-            android:contentDescription="@string/mak_beti_ai_image" />
+            app:layout_constraintTop_toBottomOf="@id/cvTodaysExpeses" />
 
         <TextView
             android:id="@+id/tvInsightTitle"
@@ -139,6 +150,33 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvTodaysTransaction"
             tools:listitem="@layout/item_row_transaction" />
+
+
+        <TextView
+            android:id="@+id/tvNoTransactionData"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:fontFamily="@font/sf_pro_display_medium"
+            android:text="@string/no_transaction_data"
+            android:textColor="@color/red"
+            android:textSize="14sp"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTodaysTransaction"
+            android:visibility="gone" />
+
+        <ProgressBar
+            android:id="@+id/progressIndicatorTodaysFinancials"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTodaysTransaction"
+            tools:visibility="visible" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline1"

@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bangkit.catatmak.R
 import com.bangkit.catatmak.model.Expense
-import com.bangkit.catatmak.ui.transaction.expense.DetailExpenseActivity
+import com.bangkit.catatmak.ui.transaction.outcome.DetailOutcomeActivity
 
 class ExpenseAdapter(private val list: ArrayList<Expense>) :  RecyclerView.Adapter<ExpenseAdapter.ListViewHolder>() {
 
@@ -25,7 +25,7 @@ class ExpenseAdapter(private val list: ArrayList<Expense>) :  RecyclerView.Adapt
         holder.expensesAmount.text = holder.itemView.context.resources.getString(R.string.expenses_amount, expensesAmount)
 
         holder.itemView.setOnClickListener {
-            holder.itemView.context.startActivity(Intent(holder.itemView.context, DetailExpenseActivity::class.java))
+            holder.itemView.context.startActivity(Intent(holder.itemView.context, DetailOutcomeActivity::class.java))
         }
     }
 

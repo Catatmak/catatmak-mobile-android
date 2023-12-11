@@ -19,6 +19,7 @@
             testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
             buildConfigField("String", "BASE_URL", "\"https://catatmak.com/\"")
+            buildConfigField("String", "BASE_URL_FINANCIALS", "\"https://catatmak-api-lbiuaop2oq-et.a.run.app/\"")
         }
 
         buildTypes {

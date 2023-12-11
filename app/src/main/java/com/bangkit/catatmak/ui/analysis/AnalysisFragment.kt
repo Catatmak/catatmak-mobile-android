@@ -84,7 +84,7 @@ class AnalysisFragment : Fragment() {
         type.apply {
             clear()
             add(resources.getString(R.string.income))
-            add(resources.getString(R.string.expenses))
+            add(resources.getString(R.string.outcome))
             add(resources.getString(R.string.savings))
         }
         val axisType = AxisDateFormatter(type.toArray(arrayOfNulls<String>(type.size)))
@@ -98,7 +98,7 @@ class AnalysisFragment : Fragment() {
         );
         binding?.lineChartCashFlow?.marker = marker;
 
-        val barDataSet = BarDataSet(value, getString(R.string.expenses))
+        val barDataSet = BarDataSet(value, getString(R.string.outcome))
         barDataSet.colors = listOf(
             ContextCompat.getColor(requireActivity(), R.color.orange),
             ContextCompat.getColor(requireActivity(), R.color.red),
@@ -167,7 +167,7 @@ class AnalysisFragment : Fragment() {
         );
         binding?.lineChartExpenses?.marker = marker;
 
-        val expensesBarDataSet = BarDataSet(expenses, getString(R.string.expenses))
+        val expensesBarDataSet = BarDataSet(expenses, getString(R.string.outcome))
         expensesBarDataSet.color = ContextCompat.getColor(requireActivity(), R.color.teal_blue)
         expensesBarDataSet.setDrawValues(false)
 

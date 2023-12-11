@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import com.bangkit.catatmak.R
 import com.bangkit.catatmak.data.ResultState
+import com.bangkit.catatmak.data.api.CatatmakRepository
 import com.bangkit.catatmak.data.pref.UserModel
 import com.bangkit.catatmak.databinding.ActivityVerificationBinding
 import com.bangkit.catatmak.ui.ViewModelFactory
@@ -39,7 +40,6 @@ class VerificationActivity : AppCompatActivity() {
         super.onResume()
         showLoading(false)
         binding.edtOTP.setText("")
-        sendOtp()
     }
 
     private fun sendOtp() {
@@ -77,8 +77,6 @@ class VerificationActivity : AppCompatActivity() {
     private fun verify() {
         val otp = binding.edtOTP.text.toString().trim()
 
-        Log.d("Verify", "$phone : $otp")
-
         val isInputEmpty = otp.isEmpty()
 
         binding.tfOTP.error =
@@ -97,6 +95,8 @@ class VerificationActivity : AppCompatActivity() {
                             if (token.isNotEmpty()) {
                                 viewModel.saveSession(UserModel(token))
                             }
+                            CatatmakRepository.resetInstance()
+                            ViewModelFactory.resetInstance()
                             val intent = Intent(this, VerifSuccessActivity::class.java)
                             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                             startActivity(intent)

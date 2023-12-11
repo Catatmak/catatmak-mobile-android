@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.bangkit.catatmak.databinding.FragmentExpenseSummaryBinding
-import com.bangkit.catatmak.ui.transaction.expense.ExpenseActivity
+import com.bangkit.catatmak.ui.transaction.outcome.OutcomeActivity
 
 class ExpenseSummaryFragment : Fragment() {
 
@@ -26,7 +26,7 @@ class ExpenseSummaryFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding?.btnDetailSummary?.setOnClickListener {
-            startActivity(Intent(requireActivity(), ExpenseActivity::class.java))
+            startActivity(Intent(requireActivity(), OutcomeActivity::class.java))
         }
     }
 

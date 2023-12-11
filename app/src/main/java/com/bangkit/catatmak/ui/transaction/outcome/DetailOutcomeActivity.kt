@@ -1,19 +1,14 @@
-package com.bangkit.catatmak.ui.transaction.expense
+package com.bangkit.catatmak.ui.transaction.outcome
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bangkit.catatmak.R
-import com.bangkit.catatmak.adapter.ExpenseAdapter
-import com.bangkit.catatmak.adapter.ListTransactionAdapter
-import com.bangkit.catatmak.databinding.ActivityExpenseBinding
 import com.bangkit.catatmak.databinding.ActivityExpenseDetailBinding
-import com.bangkit.catatmak.model.Expense
 import com.bangkit.catatmak.model.Transaction
-import com.bangkit.catatmak.ui.home.UpdateTransactionSheetFragment
 
-class DetailExpenseActivity : AppCompatActivity() {
+class DetailOutcomeActivity : AppCompatActivity() {
 
     private val list = ArrayList<Transaction>()
     private lateinit var binding: ActivityExpenseDetailBinding
@@ -38,19 +33,19 @@ class DetailExpenseActivity : AppCompatActivity() {
         setupRecyclerView()
 
         list.addAll(getListExpenses())
-        setExpenseData()
+        // setExpenseData()
     }
 
     override fun onResume() {
         list.clear()
         list.addAll(getListExpenses())
-        setExpenseData()
+        //setExpenseData()
         super.onResume()
     }
 
     private fun setupRecyclerView() {
         binding.rvExpenses.apply {
-            layoutManager = LinearLayoutManager(this@DetailExpenseActivity)
+            layoutManager = LinearLayoutManager(this@DetailOutcomeActivity)
             setHasFixedSize(true)
             addItemDecoration(DividerItemDecoration(context, LinearLayoutManager.VERTICAL))
         }
@@ -76,19 +71,19 @@ class DetailExpenseActivity : AppCompatActivity() {
         return listTransaction
     }
 
-    private fun setExpenseData() {
-        val listTransactionAdapter = ListTransactionAdapter(list)
-        binding.rvExpenses.adapter = listTransactionAdapter
-
-        listTransactionAdapter.setOnItemClickCallback(object :
-            ListTransactionAdapter.OnItemClickCallback {
-            override fun onItemClicked(data: Transaction) {
-                if (!isSheetShown) {
-                    val modalBottomSheet = UpdateTransactionSheetFragment()
-                    modalBottomSheet.show(supportFragmentManager, UpdateTransactionSheetFragment.TAG)
-                    isSheetShown = true
-                }
-            }
-        })
-    }
+//    private fun setExpenseData() {
+//        val listTransactionAdapter = ListTransactionAdapter(list)
+//        binding.rvExpenses.adapter = listTransactionAdapter
+//
+//        listTransactionAdapter.setOnItemClickCallback(object :
+//            ListTransactionAdapter.OnItemClickCallback {
+//            override fun onItemClicked(data: Transaction) {
+//                if (!isSheetShown) {
+//                    val modalBottomSheet = UpdateTransactionSheetFragment()
+//                    modalBottomSheet.show(supportFragmentManager, UpdateTransactionSheetFragment.TAG)
+//                    isSheetShown = true
+//                }
+//            }
+//        })
+//    }
 }

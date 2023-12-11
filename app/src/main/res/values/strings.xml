@@ -17,13 +17,14 @@
     <string name="title_profile">Profil</string>
     <string name="todays_expenses">Pengeluaran Hari Ini</string>
     <string name="total">Rp. 150.000</string>
+    <string name="total_zero">Rp. 0</string>
     <string name="insight_title">\" Hari Ini Lumayan Boros \"</string>
     <string name="insight_message">Kamu lumayan boros nih bulan ini, terjadi kenaikan pengeluaran pada kategori Makan sebesar Rp. 1.000.000</string>
     <string name="todays_transaction">Transaksi Hari Ini</string>
     <string name="created_at">29 Oktober, 15.00</string>
     <string name="item_name">Bakso dan Es Teh Manis</string>
     <string name="category_name">Makan Minum</string>
-    <string name="total_price">%1$s %2$s %3$s</string>
+    <string name="price">%1$s %2$s</string>
     <string name="mak_beti_image">Gambar Mak Beti</string>
     <string name="mak_beti_ai_image">Gamar Mak Beti AI</string>
     <string name="one_week_ago">1 Minggu Terakhir</string>
@@ -33,11 +34,11 @@
     <string name="food">Makanan</string>
     <string name="transportation">Transportasi</string>
     <string name="entertainment">Hiburan</string>
-    <string name="ic_expense">Icon Pengeluaran</string>
+    <string name="ic_outcome">Icon Pengeluaran</string>
     <string name="ic_income">Icon Pendapatan</string>
     <string name="income">Pendapatan</string>
     <string name="total_income">Rp. 5.000.000</string>
-    <string name="expenses">Pengeluaran</string>
+    <string name="outcome">Pengeluaran</string>
     <string name="total_expenses">Rp. %1$s</string>
     <string name="list_transaction">Daftar Transaksi</string>
 
@@ -240,4 +241,5 @@
     <string name="warning_title">Keluar</string>
     <string name="logout_warning">Yakin ingin keluar dari aplikasi?</string>
     <string name="dialog_negative_action">Tidak</string>
+    <string name="no_transaction_data">Kamu belum mencatat keuangan hari ini.</string>
 </resources>

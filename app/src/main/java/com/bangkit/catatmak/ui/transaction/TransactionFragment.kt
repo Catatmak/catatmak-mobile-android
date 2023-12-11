@@ -5,11 +5,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.annotation.StringRes
+import androidx.fragment.app.viewModels
 import com.bangkit.catatmak.R
 import com.bangkit.catatmak.adapter.ListTransactionAdapter
+import com.bangkit.catatmak.data.ResultState
 import com.bangkit.catatmak.databinding.FragmentTransactionBinding
 import com.bangkit.catatmak.model.Transaction
+import com.bangkit.catatmak.ui.ViewModelFactory
+import com.bangkit.catatmak.ui.main.MainViewModel
 import com.bangkit.catatmak.ui.transaction.tab_layout_view_pager.SectionsPagerAdapterExpense
 import com.bangkit.catatmak.ui.transaction.tab_layout_view_pager.SectionsPagerAdapterIncome
 import com.google.android.material.tabs.TabLayoutMediator
@@ -18,6 +24,10 @@ class TransactionFragment : Fragment() {
 
     private var _binding: FragmentTransactionBinding? = null
     private val binding get() = _binding
+
+    private val viewModel by viewModels<TransactionViewModel> {
+        ViewModelFactory.getInstance(requireActivity())
+    }
 
     companion object {
         @StringRes
@@ -66,6 +76,56 @@ class TransactionFragment : Fragment() {
                 }
             }
         }
+
+        getFinancialsTotal()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        getFinancialsTotal()
+    }
+
+    private fun getFinancialsTotal() {
+        viewModel.getFinancialsTotal().observe(requireActivity()) { result ->
+            if (result != null) {
+                when (result) {
+                    is ResultState.Loading -> {
+                        showLoading(true, "financials-total")
+                    }
+
+                    is ResultState.Success -> {
+                        showLoading(false, "financials-total")
+                        val financialsTotalIncome = result.data.financialsTotalData.totalIncome
+                        val financialsTotalOutcome = result.data.financialsTotalData.totalOutcome
+                        if (financialsTotalIncome.isNotEmpty() && financialsTotalOutcome.isNotEmpty()) {
+                            binding?.tvTotalIncome?.text = financialsTotalIncome
+                            binding?.tvTotalOutcome?.text = financialsTotalOutcome
+                        } else {
+                            binding?.tvTotalIncome?.text = getString(R.string.total_zero)
+                            binding?.tvTotalIncome?.text = getString(R.string.total_zero)
+                        }
+                    }
+
+                    is ResultState.Error -> {
+                        showLoading(false, "financials-total")
+                        showToast(result.error.toString())
+                    }
+                }
+            }
+        }
+    }
+
+    private fun showLoading(isLoading: Boolean, type: String) {
+        if (type == "financials-total") {
+            binding?.progressIndicatorFinancialsTotal?.visibility =
+                if (isLoading) View.VISIBLE else View.GONE
+        }
+    }
+
+    private fun showToast(message: String) {
+        Toast.makeText(
+            requireActivity(), message, Toast.LENGTH_SHORT
+        ).show()
     }
 
 // private fun setupAction() {
@@ -75,7 +135,7 @@ class TransactionFragment : Fragment() {
 //        binding?.btnCategory?.setOnClickListener { v: View ->
 //            showMenu(v, R.menu.category_menu, binding?.btnCategory!!)
 //        }
-   // }
+    // }
 
 //    private fun showMenu(v: View, @MenuRes menuRes: Int, button: Button) {
 //        val icArrowUp: Drawable? = ContextCompat.getDrawable(requireActivity(), R.drawable.ic_arrow_up)
@@ -144,51 +204,6 @@ class TransactionFragment : Fragment() {
 //        )
 //    }
 
-//    private fun setupRecyclerView() {
-//        binding?.rvTransactions?.apply {
-//            layoutManager = LinearLayoutManager(requireActivity())
-//            addItemDecoration(DividerItemDecoration(context, LinearLayoutManager.VERTICAL))
-//        }
-//    }
-
-    private fun getListTransactions(): ArrayList<Transaction> {
-        val dataCreatedAt = resources.getStringArray(R.array.data_created_at)
-        val dataItemName = resources.getStringArray(R.array.data_item_name)
-        val dataCategoryName = resources.getStringArray(R.array.data_category_name)
-        val dataPrice = resources.getStringArray(R.array.data_price)
-        val datIsPlus = resources.getStringArray(R.array.data_is_plus)
-        val listTransaction = ArrayList<Transaction>()
-        for (i in dataItemName.indices) {
-            val transaction = Transaction(
-                dataCreatedAt[i],
-                dataItemName[i],
-                dataCategoryName[i],
-                dataPrice[i],
-                datIsPlus[i]
-            )
-            listTransaction.add(transaction)
-        }
-        return listTransaction
-    }
-
-//    private fun updateTransaction(data: Transaction) {
-//        val bsDialog = BottomSheetDialog(requireActivity())
-//        val view = layoutInflater.inflate(R.layout.bs_update_transaction, null)
-//
-//        val btnUpdate = view.findViewById<Button>(R.id.btnUpdate)
-//        edtExpenseName = view.findViewById(R.id.edtExpenseName)
-//        edtPrice = view.findViewById(R.id.edtPrice)
-//
-//        edtExpenseName.setText(data.itemName)
-//        edtPrice.setText(data.price)
-//
-//        btnUpdate.setOnClickListener {
-//            Toast.makeText(context, "Berhasil mengupdate data", Toast.LENGTH_SHORT).show()
-//        }
-//        bsDialog.setCancelable(true)
-//        bsDialog.setContentView(view)
-//        bsDialog.show()
-//    }
 
     override fun onDestroy() {
         super.onDestroy()

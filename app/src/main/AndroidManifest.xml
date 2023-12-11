@@ -36,10 +36,10 @@
             android:name=".ui.add_transaction.add_with_photo.AddWithPhotoActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.transaction.expense.DetailExpenseActivity"
+            android:name=".ui.transaction.outcome.DetailOutcomeActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.transaction.expense.ExpenseActivity"
+            android:name=".ui.transaction.outcome.OutcomeActivity"
             android:exported="false" />
         <activity
             android:name=".ui.profile.about.AboutActivity"

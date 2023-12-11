@@ -1,15 +1,14 @@
-package com.bangkit.catatmak.ui.transaction.expense
+package com.bangkit.catatmak.ui.transaction.outcome
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bangkit.catatmak.R
 import com.bangkit.catatmak.adapter.ExpenseAdapter
 import com.bangkit.catatmak.databinding.ActivityExpenseBinding
 import com.bangkit.catatmak.model.Expense
 
-class ExpenseActivity : AppCompatActivity() {
+class OutcomeActivity : AppCompatActivity() {
 
     private val list = ArrayList<Expense>()
     private lateinit var binding: ActivityExpenseBinding
@@ -44,7 +43,7 @@ class ExpenseActivity : AppCompatActivity() {
 
     private fun setupRecyclerView() {
         binding.rvExpenses.apply {
-            layoutManager = LinearLayoutManager(this@ExpenseActivity)
+            layoutManager = LinearLayoutManager(this@OutcomeActivity)
             setHasFixedSize(true)
         }
     }
