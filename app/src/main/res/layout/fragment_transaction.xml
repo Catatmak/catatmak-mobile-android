@@ -76,7 +76,7 @@
             android:id="@+id/cvExpenses"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="4dp"
             android:backgroundTint="@color/light_red"
             android:orientation="vertical"
             app:cardCornerRadius="8dp"
@@ -113,9 +113,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/sf_pro_display_bold"
-                    tools:text="Rp. 2.000.0000"
                     android:textColor="@color/dark_blue"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    tools:text="Rp. 200.000.000" />
 
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
@@ -150,14 +150,14 @@
                 android:orientation="vertical">
 
                 <com.google.android.material.tabs.TabLayout
-                    android:id="@+id/tabs1"
+                    android:id="@+id/tSummaryOutcome"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@android:color/white"
                     app:tabIndicatorColor="@color/dark_blue"
                     app:tabTextColor="@color/dark_blue"/>
                 <androidx.viewpager2.widget.ViewPager2
-                    android:id="@+id/view_pager1"
+                    android:id="@+id/vpSummaryOutcome"
                     android:backgroundTint="@color/dark_gray4"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
@@ -196,14 +196,14 @@
                 android:orientation="vertical">
 
                 <com.google.android.material.tabs.TabLayout
-                    android:id="@+id/tabs2"
+                    android:id="@+id/tSummaryIncome"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@android:color/white"
                     app:tabIndicatorColor="@color/dark_blue"
                     app:tabTextColor="@color/dark_blue"/>
                 <androidx.viewpager2.widget.ViewPager2
-                    android:id="@+id/view_pager2"
+                    android:id="@+id/vpSummaryIncome"
                     android:backgroundTint="@color/dark_gray4"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />

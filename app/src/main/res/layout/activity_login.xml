@@ -115,6 +115,8 @@
                 android:id="@+id/tvSendWhatsapp"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="true"
                 android:layout_marginStart="4dp"
                 android:layout_marginEnd="8dp"
                 android:fontFamily="@font/sf_pro_display_regular"

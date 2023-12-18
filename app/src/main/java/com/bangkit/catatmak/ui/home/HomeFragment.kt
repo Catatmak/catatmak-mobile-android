@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.activity.viewModels
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,11 +13,9 @@ import com.bangkit.catatmak.R
 import com.bangkit.catatmak.adapter.ListTransactionAdapter
 import com.bangkit.catatmak.data.ResultState
 import com.bangkit.catatmak.databinding.FragmentHomeBinding
-import com.bangkit.catatmak.model.Transaction
 import com.bangkit.catatmak.ui.ViewModelFactory
-import com.bangkit.catatmak.ui.main.MainViewModel
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(), BottomSheetDismissListener {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding
@@ -49,7 +46,6 @@ class HomeFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         setupRecyclerView()
-        getTotalOutcomeToday()
         getAllFinancialsToday()
     }
 
@@ -58,40 +54,42 @@ class HomeFragment : Fragment() {
         _binding = null
     }
 
+    override fun onBottomSheetDismissed() {
+        getAllFinancialsToday()
+        getTotalOutcomeToday()
+    }
+
     private fun setupRecyclerView() {
         binding?.rvTransactions?.apply {
             layoutManager = LinearLayoutManager(requireActivity())
+            setHasFixedSize(true)
             addItemDecoration(DividerItemDecoration(context, LinearLayoutManager.VERTICAL))
         }
     }
 
     private fun getTotalOutcomeToday() {
-       viewModel.getTotalOutcomeToday().observe(requireActivity()) { result ->
-           if (result != null) {
-               when (result) {
-                   is ResultState.Loading -> {
-                       showLoading(true, "total-outcome-today")
-                   }
+        viewModel.getTotalOutcomeToday().observe(requireActivity()) { result ->
+            if (result != null) {
+                when (result) {
+                    is ResultState.Loading -> {
+                        showLoading(true, "total-outcome-today")
+                    }
 
-                   is ResultState.Success -> {
-                       showLoading(false, "total-outcome-today")
-                       val totalOutcome = result.data.summaryOutcomeIncomeData.totalToday
-                       if (totalOutcome.isNotEmpty()) {
-                         binding?.tvTotalOutcomeToday?.text = totalOutcome
-                       } else {
-                           binding?.tvTotalOutcomeToday?.text = getString(R.string.total_zero)
-                       }
-                   }
-
-                   is ResultState.Error -> {
-                       showLoading(false, "total-outcome-today")
-                       showToast(result.error.toString())
-                   }
-               }
-           }
-       }
+                    is ResultState.Success -> {
+                        showLoading(false, "total-outcome-today")
+                        val totalOutcomeToday = result.data.summaryOutcomeIncomeData[0].total
+                        if (totalOutcomeToday.isNotEmpty()) {
+                            binding?.tvTotalOutcomeToday?.text = totalOutcomeToday
+                        }
+                    }
+                    is ResultState.Error -> {
+                        showLoading(false, "total-outcome-today")
+                        showToast(result.error.toString())
+                    }
+                }
+            }
+        }
     }
-
 
     private fun getAllFinancialsToday() {
         viewModel.getAllFinancialsToday().observe(requireActivity()) { result ->
@@ -103,10 +101,16 @@ class HomeFragment : Fragment() {
 
                     is ResultState.Success -> {
                         showLoading(false, "financials-today")
-                        val financialsToday = result.data.data
+                        val financialsToday = result.data.financialsData
                         if (financialsToday.isNotEmpty()) {
                             binding?.tvNoTransactionData?.visibility = View.GONE
-                            val adapter = ListTransactionAdapter()
+                            val adapter = ListTransactionAdapter { transaction ->
+                                if (!isSheetShown) {
+                                    val showBottomSheet = UpdateTransactionSheetFragment(transaction, this)
+                                    showBottomSheet.show(childFragmentManager, UpdateTransactionSheetFragment.TAG)
+                                    isSheetShown = true
+                                }
+                            }
                             adapter.submitList(financialsToday)
                             binding?.rvTransactions?.adapter = adapter
                         } else {
@@ -138,21 +142,5 @@ class HomeFragment : Fragment() {
             requireActivity(), message, Toast.LENGTH_SHORT
         ).show()
     }
-
-//    private fun setTransactionData() {
-//        val listTransactionAdapter = ListTransactionAdapter()
-//        binding?.rvTransactions?.adapter = listTransactionAdapter
-//
-//        listTransactionAdapter.setOnItemClickCallback(object :
-//            ListTransactionAdapter.OnItemClickCallback {
-//            override fun onItemClicked(data: Transaction) {
-//                if (!isSheetShown) {
-//                    val modalBottomSheet = UpdateTransactionSheetFragment()
-//                    modalBottomSheet.show(childFragmentManager, UpdateTransactionSheetFragment.TAG)
-//                    isSheetShown = true
-//                }
-//            }
-//        })
-//    }
 
 }

@@ -35,7 +35,8 @@ class CustomArrayAdapter(
             view.findViewById<TextView>(R.id.tvDropdownItem).setTextColor(Color.WHITE)
         } else {
             view.setBackgroundColor(ContextCompat.getColor(context, R.color.white))
-            view.findViewById<TextView>(R.id.tvDropdownItem).setTextColor(ContextCompat.getColor(context, R.color.dark_blue))
+            view.findViewById<TextView>(R.id.tvDropdownItem)
+                .setTextColor(ContextCompat.getColor(context, R.color.dark_blue))
         }
 
         return view

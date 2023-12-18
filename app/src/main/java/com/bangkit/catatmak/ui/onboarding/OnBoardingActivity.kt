@@ -19,7 +19,7 @@ class OnBoardingActivity : AppCompatActivity() {
     }
 
     private fun setupAction() {
-        binding.btnTryNow.setOnClickListener { goToMainActivity() }
+        binding.btnTryNow?.setOnClickListener { goToMainActivity() }
     }
 
     private fun goToMainActivity() {

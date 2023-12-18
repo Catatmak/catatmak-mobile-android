@@ -2,7 +2,6 @@
         id("com.android.application")
         id("org.jetbrains.kotlin.android")
         id("kotlin-parcelize")
-        id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
     }
 
     android {
@@ -16,10 +15,12 @@
             versionCode = 1
             versionName = "1.0"
 
-            testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-
             buildConfigField("String", "BASE_URL", "\"https://catatmak.com/\"")
             buildConfigField("String", "BASE_URL_FINANCIALS", "\"https://catatmak-api-lbiuaop2oq-et.a.run.app/\"")
+            buildConfigField("String", "TOKEN", "\"29d4dac9b87a238179e6b790db51925fd91a3967ec2ad99810f1c5861df9efc0\"")
+
+            testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
         }
 
         buildTypes {
@@ -45,6 +46,8 @@
     }
     dependencies {
 
+        implementation("com.github.bumptech.glide:glide:4.16.0")
+        implementation("androidx.exifinterface:exifinterface:1.3.6")
         implementation("androidx.datastore:datastore-preferences:1.0.0")
         implementation("com.squareup.retrofit2:retrofit:2.9.0")
         implementation("com.squareup.retrofit2:converter-gson:2.9.0")
@@ -59,6 +62,7 @@
         implementation("androidx.navigation:navigation-fragment-ktx:2.7.5")
         implementation("androidx.navigation:navigation-ui-ktx:2.7.5")
         implementation("androidx.coordinatorlayout:coordinatorlayout:1.2.0")
+        implementation("androidx.exifinterface:exifinterface:1.3.6")
         testImplementation("junit:junit:4.13.2")
         androidTestImplementation("androidx.test.ext:junit:1.1.5")
         androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")

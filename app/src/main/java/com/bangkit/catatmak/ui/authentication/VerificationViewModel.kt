@@ -2,7 +2,7 @@ package com.bangkit.catatmak.ui.authentication
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.bangkit.catatmak.data.api.CatatmakRepository
+import com.bangkit.catatmak.data.CatatmakRepository
 import com.bangkit.catatmak.data.pref.UserModel
 import kotlinx.coroutines.launch
 

@@ -7,17 +7,17 @@
     android:layout_gravity="center"
     android:paddingVertical="8dp">
 
-    <TextView
-        android:id="@+id/tvCreatedAt"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/sf_pro_display_regular"
-        android:textColor="@color/dark_blue"
-        android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/guideline5"
-        tools:text="@string/created_at" />
+    <!--    <TextView-->
+    <!--        android:id="@+id/tvCreatedAt"-->
+    <!--        android:layout_width="0dp"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:fontFamily="@font/sf_pro_display_regular"-->
+    <!--        android:textColor="@color/dark_blue"-->
+    <!--        android:textSize="12sp"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        tools:text="@string/created_at" />-->
 
     <TextView
         android:id="@+id/tvInsightTitle"
@@ -27,39 +27,23 @@
         android:fontFamily="@font/sf_pro_display_semibold"
         android:textColor="@color/dark_blue"
         android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@id/tvCreatedAt"
-        app:layout_constraintTop_toBottomOf="@id/tvCreatedAt"
-        app:layout_constraintEnd_toEndOf="@id/guideline5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:text="@string/analysis_title" />
 
     <TextView
         android:id="@+id/tvInsightDesc"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="6dp"
         android:fontFamily="@font/sf_pro_display_regular"
         android:textColor="@color/dark_blue"
         android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@id/tvInsightTitle"
         app:layout_constraintTop_toBottomOf="@id/tvInsightTitle"
-        app:layout_constraintEnd_toEndOf="@id/guideline5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/tvInsightTitle"
         tools:text="@string/analysis_desc" />
 
-    <ImageView
-        android:id="@+id/ibFavorite"
-        android:backgroundTint="@color/transparent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_baseline_favorite_24"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="312dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

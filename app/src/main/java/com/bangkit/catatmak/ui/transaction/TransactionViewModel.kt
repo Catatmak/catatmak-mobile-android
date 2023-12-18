@@ -1,7 +1,7 @@
 package com.bangkit.catatmak.ui.transaction
 
 import androidx.lifecycle.ViewModel
-import com.bangkit.catatmak.data.api.CatatmakRepository
+import com.bangkit.catatmak.data.CatatmakRepository
 
 class TransactionViewModel(private val repository: CatatmakRepository) : ViewModel() {
 

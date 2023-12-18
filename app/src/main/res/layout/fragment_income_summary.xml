@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:background="@color/light_gray3"
     android:padding="16dp"
-    tools:context=".ui.transaction.tab_layout_view_pager.IncomeSummaryFragment">
+    tools:context=".ui.transaction.summary.income.SummaryIncomeFragment">
 
     <TextView
         android:id="@+id/tvCreatedAt"

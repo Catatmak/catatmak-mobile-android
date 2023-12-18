@@ -1,10 +1,13 @@
 package com.bangkit.catatmak.ui.authentication
 
+import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.widget.Toast
 import com.bangkit.catatmak.databinding.ActivityLoginBinding
 import com.bangkit.catatmak.R
 
@@ -21,6 +24,7 @@ class LoginActivity : AppCompatActivity() {
         setMyButtonEnable()
     }
 
+
     private fun setUpAction() {
         binding.btnNext.setOnClickListener {
             val phone = "62" + binding.edtWhatsappNumber.text.toString().trim()
@@ -28,7 +32,7 @@ class LoginActivity : AppCompatActivity() {
             val isInputEmpty = phone.isEmpty()
 
             binding.tfWhatsappNumber.error =
-                if (phone.isEmpty()) getString(R.string.empty_phone_input) else null
+                if (phone.isEmpty()) getString(R.string.empty_input) else null
 
             if (!isInputEmpty) {
                 val intent = Intent(this, VerificationActivity::class.java)
@@ -46,6 +50,18 @@ class LoginActivity : AppCompatActivity() {
             override fun afterTextChanged(s: Editable) {
             }
         })
+
+        binding.tvSendWhatsapp.setOnClickListener {
+            openWhatsApp(this, "08112584422", "Halo")
+        }
+    }
+
+    private fun openWhatsApp(context: Context, phone: String, message: String) {
+        val intent = Intent(Intent.ACTION_VIEW)
+        intent.setPackage("com.whatsapp")
+        intent.data = Uri.parse("https://wa.me/$phone?text=$message")
+
+        context.startActivity(intent)
     }
 
     private fun setMyButtonEnable() {

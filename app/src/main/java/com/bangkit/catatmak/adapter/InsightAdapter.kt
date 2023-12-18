@@ -1,55 +1,57 @@
 package com.bangkit.catatmak.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bangkit.catatmak.R
-import com.bangkit.catatmak.model.Insight
+import com.bangkit.catatmak.data.response.InsightDataItem
+import com.bangkit.catatmak.databinding.ItemRowInsightBinding
 
-class InsightAdapter(
-    private val insight: ArrayList<Insight>,
-    private val onFavoriteClick: (Int, Boolean) -> Unit
-) :
-    RecyclerView.Adapter<InsightAdapter.ListViewHolder>() {
+
+class InsightAdapter() :
+    ListAdapter<InsightDataItem, InsightAdapter.ListViewHolder>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
-        val layoutInflater = LayoutInflater.from(parent.context)
-        val view: View = layoutInflater.inflate(R.layout.item_row_insight, parent, false)
-        return ListViewHolder(view)
+        val binding =
+            ItemRowInsightBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return ListViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-        val currentInsight = insight[position]
 
-        holder.createdAt.text = currentInsight.createdAt
-        holder.insightTitle.text = currentInsight.insightTitle
-        holder.insightDesc.text = currentInsight.insightDesc
+        val insight = getItem(position)
+        holder.bind(insight)
 
-        if (currentInsight.isFavorite.toInt() == 1) {
-            holder.isFavorite.setImageResource(R.drawable.ic_baseline_favorite_24)
-        } else {
-            holder.isFavorite.setImageResource(R.drawable.ic_baseline_favorite_border_24)
-        }
+    }
 
-        holder.isFavorite.setOnClickListener {
-            // Toggle the favorite status
-            currentInsight.isFavorite = (1 - currentInsight.isFavorite.toInt()).toString()
-            notifyItemChanged(position)
-
-            // Pass the updated favorite status to the fragment
-            onFavoriteClick.invoke(position, currentInsight.isFavorite.toInt() == 1)
+    class ListViewHolder(private val binding: ItemRowInsightBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(insight: InsightDataItem) {
+            with(binding) {
+                with(insight) {
+                    tvInsightTitle.text = title
+                    tvInsightDesc.text = description
+                }
+            }
         }
     }
 
-    override fun getItemCount(): Int = insight.size
+    companion object {
+        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<InsightDataItem>() {
+            override fun areItemsTheSame(
+                oldItem: InsightDataItem,
+                newItem: InsightDataItem
+            ): Boolean {
+                return oldItem == newItem
+            }
 
-    class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val createdAt: TextView = itemView.findViewById(R.id.tvCreatedAt)
-        val insightTitle: TextView = itemView.findViewById(R.id.tvInsightTitle)
-        val insightDesc: TextView = itemView.findViewById(R.id.tvInsightDesc)
-        val isFavorite: ImageView = itemView.findViewById(R.id.ibFavorite)
+            override fun areContentsTheSame(
+                oldItem: InsightDataItem,
+                newItem: InsightDataItem
+            ): Boolean {
+                return oldItem == newItem
+            }
+        }
     }
 }

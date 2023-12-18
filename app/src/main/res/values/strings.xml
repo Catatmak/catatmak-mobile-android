@@ -8,7 +8,7 @@
     <string name="title_onboarding_3">Dapatkan Analisa Keuangan by Mamih AI yang Langsung Terkirim Lewat Whatsapp Setiap Minggu</string>
     <string name="desc_onboarding_3">Aplikasi yang bikin pencatatan keuanganmu lebih mudah. Siap analisa keuanganmu dengan bantuan prediksi dari ai</string>
 
-    <string name="try_now">GAS COBA</string>
+    <string name="try_now">LANJUT</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="title_transaction">Transaksi</string>
     <string name="title_home">Beranda</string>
@@ -29,9 +29,9 @@
     <string name="mak_beti_ai_image">Gamar Mak Beti AI</string>
     <string name="one_week_ago">1 Minggu Terakhir</string>
     <string name="category">Kategori</string>
-    <string name="one_month_ago">1 Bulan Terakhir</string>
+    <string name="one_month_ago">30 Hari Terakhir</string>
     <string name="one_day_ago">1 Hari Terakhir</string>
-    <string name="food">Makanan</string>
+    <string name="food">Makanan dan Minuman</string>
     <string name="transportation">Transportasi</string>
     <string name="entertainment">Hiburan</string>
     <string name="ic_outcome">Icon Pengeluaran</string>
@@ -127,7 +127,7 @@
     <string name="date">Tanggal</string>
     <string name="record_manual_transaction">Catat Transaksi Manual</string>
     <string name="save">SIMPAN</string>
-    <string name="welcome">Halo, Rifki 👋</string>
+    <string name="welcome">Halo, %1$s 👋</string>
     <string name="transaction">Riwayat Transaksi</string>
     <string name="analysis">Analisa Keuangan</string>
     <string name="add_transaction">Catat Transaksi</string>
@@ -139,13 +139,14 @@
     <string name="analysis_desc">Kamu lumayan boros nih bulan ini, terjadi kenaikan pengeluaran pada kategori Makan sebesar Rp. 1.000.000</string>
     <string name="date_hint">Contoh : 26 November 2023</string>
     <string name="expense_name_hint">Contoh: Bakso, Mie Ayam, Sate Kambing</string>
+    <string name="income_name_hint">Contoh : Gaji, Bonus, Investasi</string>
     <string name="price_hint">Contoh: 15000</string>
     <string name="category_hint">Pilih Kategori</string>
     <string name="tv_total_income">Total Pemasukan</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="notification">Notification</string>
-    <string name="title_categories_automatically">10 Pengeluaran Kamu Belum\n Terkategorisasi Nih 😬</string>
+    <string name="title_categories_automatically">%1$s Pengeluaran Kamu Belum\n Terkategorisasi Nih 😬</string>
     <string name="categories_automatically">KATEGORI OTOMATIS</string>
     <string name="categories">Kategori Otomatis</string>
     <string name="ok_update">OKE GASS UPDATE</string>
@@ -208,9 +209,8 @@
     <string name="weekly">Mingguan</string>
     <string name="daily">Harian</string>
     <string name="income_summary">Ringkasan Pemasukan</string>
-    <string name="last_month">Bulan Terakhir</string>
-    <string name="expense_daily">Pengeluaran Harian</string>
-    <string name="expenses_amount">%1$s Pengeluaran</string>
+    <string name="last_month">Bulan Kemaren</string>
+    <string name="outcome_daily">Pengeluaran Harian</string>
     <string name="detail_expense">Detail Pengeluaran</string>
     <string name="seven_day_ago">7 Hari Terakhir</string>
     <string name="income_name">Nama Pemasukan</string>
@@ -234,7 +234,7 @@
     <string name="move">PINDAH HALAMAN</string>
     <string name="verif_fail_title">Verifikasi Akun Gagal\nToken Tidak Valid</string>
     <string name="verif_again">VERIFIKASI ULANG</string>
-    <string name="empty_phone_input">Input tidak boleh kosong.</string>
+    <string name="empty_input">Input tidak boleh kosong.</string>
     <string name="verify">VERIFIKASI</string>
     <string name="dialog_title">Oke</string>
     <string name="dialog_positive_action">Lanjut</string>
@@ -242,4 +242,17 @@
     <string name="logout_warning">Yakin ingin keluar dari aplikasi?</string>
     <string name="dialog_negative_action">Tidak</string>
     <string name="no_transaction_data">Kamu belum mencatat keuangan hari ini.</string>
+    <string name="count_outcome">%1$s Pengeluaran</string>
+    <string name="count_income">%1$s Pemasukan</string>
+    <string name="view_more">Lihat Detail</string>
+    <string name="no_data">Data tidak ditemukan.</string>
+    <string name="detail_income">Detail Pemasukan</string>
+    <string name="no_category">Tidak Terkategori</string>
+    <string name="shopping">Belanja</string>
+    <string name="no_insight">Insight belum tersedia.</string>
+    <string name="uncompleted_title">Data kamu belum lengkap nih.</string>
+    <string name="complete">LENGKAPI DATA</string>
+    <string name="other">Lainnya</string>
+    <string name="catatmak_phone">08112584422</string>
+    <string name="send_message">Halo</string>
 </resources>

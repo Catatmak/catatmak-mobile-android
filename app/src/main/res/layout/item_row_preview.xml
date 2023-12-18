@@ -1,54 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:padding="8dp"
-    android:layout_gravity="center">
+    android:layout_gravity="center"
+    android:paddingVertical="8dp">
 
     <TextView
         android:id="@+id/tvCreatedAt"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:fontFamily="@font/sf_pro_display_regular"
-        android:textSize="12sp"
         android:textColor="@color/dark_blue"
-        tools:text="@string/created_at"
+        android:textSize="12sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/created_at" />
 
     <TextView
         android:id="@+id/tvItemName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/sf_pro_display_semibold"
-        android:textSize="14sp"
-        android:textColor="@color/dark_blue"
-        tools:text="@string/item_name"
         android:layout_marginTop="3dp"
+        android:fontFamily="@font/sf_pro_display_semibold"
+        android:maxWidth="50dp"
+        android:textColor="@color/dark_blue"
+        android:textSize="14sp"
+        android:layout_marginEnd="12dp"
+        app:layout_constraintEnd_toStartOf="@id/btnChooseCategory"
         app:layout_constraintStart_toStartOf="@id/tvCreatedAt"
-        app:layout_constraintTop_toBottomOf="@id/tvCreatedAt" />
+        app:layout_constraintTop_toBottomOf="@id/tvCreatedAt"
+        tools:text="@string/item_name" />
 
     <TextView
         android:id="@+id/tvItemPrice"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/sf_pro_display_bold"
-        android:textSize="16sp"
-        android:textColor="@color/dark_blue"
-        tools:text="Rp. 50.000"
         android:layout_marginTop="4dp"
+        android:fontFamily="@font/sf_pro_display_bold"
+        android:textColor="@color/dark_blue"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@id/tvItemName"
-        app:layout_constraintTop_toBottomOf="@id/tvItemName" />
+        app:layout_constraintTop_toBottomOf="@id/tvItemName"
+        tools:text="Rp. 50.000" />
 
     <ImageButton
         android:id="@+id/btnUpdate"
-        android:backgroundTint="@color/transparent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="0dp"
+        android:clickable="true"
         android:layout_marginTop="12dp"
+        android:backgroundTint="@color/transparent"
+        android:padding="0dp"
         android:src="@drawable/ic_update"
         app:layout_constraintEnd_toStartOf="@id/btnDelate"
         app:layout_constraintStart_toStartOf="@id/tvItemPrice"
@@ -61,6 +65,7 @@
         android:layout_marginStart="16dp"
         android:backgroundTint="@color/transparent"
         android:padding="0dp"
+        android:clickable="true"
         android:src="@drawable/ic_delete"
         app:layout_constraintBottom_toBottomOf="@id/btnUpdate"
         app:layout_constraintStart_toEndOf="@id/btnUpdate"
@@ -74,16 +79,14 @@
         android:layout_height="wrap_content"
         android:drawableEnd="@drawable/ic_arrow_down"
         android:fontFamily="@font/sf_pro_display_medium"
-        android:padding="8dp"
-        tools:text="Makanan"
+        android:padding="12dp"
         android:textColor="@color/dark_blue"
-        android:textSize="14sp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="3dp"
+        android:textSize="11sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:strokeColor="@color/light_gray2" />
+        app:strokeColor="@color/light_gray2"
+        tools:text="Makanan" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

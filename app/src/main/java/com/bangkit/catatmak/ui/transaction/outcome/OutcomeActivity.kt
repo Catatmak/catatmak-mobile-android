@@ -2,70 +2,167 @@ package com.bangkit.catatmak.ui.transaction.outcome
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bangkit.catatmak.R
-import com.bangkit.catatmak.adapter.ExpenseAdapter
-import com.bangkit.catatmak.databinding.ActivityExpenseBinding
-import com.bangkit.catatmak.model.Expense
+import com.bangkit.catatmak.adapter.OutcomeAdapter
+import com.bangkit.catatmak.data.ResultState
+import com.bangkit.catatmak.databinding.ActivityFinancialsBinding
+import com.bangkit.catatmak.ui.ViewModelFactory
 
 class OutcomeActivity : AppCompatActivity() {
 
-    private val list = ArrayList<Expense>()
-    private lateinit var binding: ActivityExpenseBinding
+    private lateinit var binding: ActivityFinancialsBinding
+
+    private var position: Int = 0
+
+    private val viewModel by viewModels<OutcomeViewModel> {
+        ViewModelFactory.getInstance(this)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityExpenseBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
+        binding = ActivityFinancialsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         setSupportActionBar(binding.topAppBar)
 
+        position = intent.getIntExtra(EXTRA_POSITION, 0)
+
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         binding.topAppBar.setNavigationOnClickListener {
             @Suppress("DEPRECATION")
             onBackPressed()
         }
 
         setupRecyclerView()
-
-        list.addAll(getListExpenses())
-        setTransactionData()
-    }
-
-    override fun onResume() {
-        list.clear()
-        list.addAll(getListExpenses())
-        setTransactionData()
-        super.onResume()
+        getFinancialsToday()
     }
 
     private fun setupRecyclerView() {
-        binding.rvExpenses.apply {
+        binding.rvOutcome.apply {
             layoutManager = LinearLayoutManager(this@OutcomeActivity)
             setHasFixedSize(true)
         }
     }
 
-    private fun getListExpenses(): ArrayList<Expense> {
-        val dateTime = resources.getStringArray(R.array.data_date_time)
-        val dataTotal = resources.getStringArray(R.array.data_total)
-        val dataExpensesAmount = resources.getStringArray(R.array.data_expenses_amount)
-        val list = ArrayList<Expense>()
-        for (i in dateTime.indices) {
-            val expense = Expense(
-                dateTime[i],
-                dataTotal[i],
-                dataExpensesAmount[i],
-            )
-            list.add(expense)
+    private fun getFinancialsToday() {
+        when (position) {
+            1 -> {
+                supportActionBar?.title = getString(R.string.daily)
+                viewModel.getOutcomeDaily().observe(this) { result ->
+                    if (result != null) {
+                        when (result) {
+                            is ResultState.Loading -> {
+                                showLoading(true)
+                            }
+
+                            is ResultState.Success -> {
+                                showLoading(false)
+                                val financialsDaily = result.data.financialsData
+                                if (financialsDaily.isNotEmpty()) {
+                                    binding.tvNoData.visibility = View.GONE
+                                    val adapter = OutcomeAdapter()
+                                    adapter.submitList(financialsDaily)
+                                    adapter.setPosition(position)
+                                    binding.rvOutcome.adapter = adapter
+                                } else {
+                                    binding.tvNoData.visibility = View.VISIBLE
+                                }
+
+                            }
+
+                            is ResultState.Error -> {
+                                showLoading(false)
+                                showToast(result.error.toString())
+                            }
+                        }
+                    }
+                }
+            }
+            2 -> {
+                supportActionBar?.title = getString(R.string.weekly)
+                viewModel.getOutcomeWeekly().observe(this) { result ->
+                    if (result != null) {
+                        when (result) {
+                            is ResultState.Loading -> {
+                                showLoading(true)
+                            }
+
+                            is ResultState.Success -> {
+                                showLoading(false)
+                                val financialsWeekly = result.data.financialsData
+                                if (financialsWeekly.isNotEmpty()) {
+                                    binding.tvNoData.visibility = View.GONE
+                                    val adapter = OutcomeAdapter()
+                                    adapter.submitList(financialsWeekly)
+                                    adapter.setPosition(position)
+                                    binding.rvOutcome.adapter = adapter
+                                } else {
+                                    binding.tvNoData.visibility = View.VISIBLE
+                                }
+
+                            }
+
+                            is ResultState.Error -> {
+                                showLoading(false)
+                                showToast(result.error.toString())
+                            }
+                        }
+                    }
+                }
+            }
+            3 -> {
+                supportActionBar?.title = getString(R.string.monthly)
+                viewModel.getOutcomeMonthly().observe(this) { result ->
+                    if (result != null) {
+                        when (result) {
+                            is ResultState.Loading -> {
+                                showLoading(true)
+                            }
+
+                            is ResultState.Success -> {
+                                showLoading(false)
+                                val financialsMonthly = result.data.financialsData
+                                if (financialsMonthly.isNotEmpty()) {
+                                    binding.tvNoData.visibility = View.GONE
+                                    val adapter = OutcomeAdapter()
+                                    adapter.submitList(financialsMonthly)
+                                    adapter.setPosition(position)
+                                    binding.rvOutcome.adapter = adapter
+                                } else {
+                                    binding.tvNoData.visibility = View.VISIBLE
+                                }
+
+                            }
+
+                            is ResultState.Error -> {
+                                showLoading(false)
+                                showToast(result.error.toString())
+                            }
+                        }
+                    }
+                }
+            }
         }
-        return list
     }
 
-    private fun setTransactionData() {
-        val listTransactionAdapter = ExpenseAdapter(list)
-        binding.rvExpenses.adapter = listTransactionAdapter
+    private fun showLoading(isLoading: Boolean) {
+        binding.pbOutcome.visibility =
+            if (isLoading) View.VISIBLE else View.GONE
+
+    }
+
+    private fun showToast(message: String) {
+        Toast.makeText(
+            this, message, Toast.LENGTH_SHORT
+        ).show()
+    }
+
+    companion object {
+        const val EXTRA_POSITION = "arg_position"
     }
 }

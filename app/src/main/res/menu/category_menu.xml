@@ -5,8 +5,12 @@
         android:title="@string/food" />
     <item
         android:id="@+id/option_category_2"
-        android:title="@string/transportation" />
+        android:title="@string/shopping" />
     <item
         android:id="@+id/option_category_3"
         android:title="@string/entertainment" />
+
+    <item
+        android:id="@+id/option_category_4"
+        android:title="@string/other" />
 </menu>

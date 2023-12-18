@@ -2,7 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cvBgHeader"
@@ -33,16 +34,17 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/completed"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:padding="16dp">
 
                     <ImageView
                         android:id="@+id/ivPremiumMedal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
                         android:contentDescription="@string/premium_medal"
-                        android:src="@drawable/medallions"
+                        tools:src="@drawable/medallions"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -52,7 +54,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/sf_pro_display_bold"
-                        android:text="@string/username"
+                        tools:text="@string/username"
                         android:textColor="@color/dark_blue"
                         android:textSize="18sp"
                         android:layout_marginStart="16dp"
@@ -69,14 +71,64 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/sf_pro_display_medium"
-                        android:text="@string/member_status"
+                        tools:text="@string/member_status"
                         android:textColor="@color/dark_blue"
                         android:textSize="14sp"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="@id/tvUsername"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="1.0"
                         app:layout_constraintStart_toStartOf="@id/tvUsername"
                         app:layout_constraintTop_toBottomOf="@id/tvUsername"
+                        app:layout_constraintVertical_bias="0.5" />
+
+                    <ProgressBar
+                        android:id="@+id/pbProfile"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        tools:visibility="visible" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/uncompleted"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:id="@+id/tvUncompletedTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/sf_pro_display_bold"
+                        android:text="@string/uncompleted_title"
+                        android:textColor="@color/dark_blue"
+                        android:textSize="18sp"
+                        android:layout_marginEnd="16dp"
+                        app:layout_constraintBottom_toTopOf="@id/btnCompleteProfile"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_chainStyle="packed" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnCompleteProfile"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/sf_pro_display_medium"
+                        android:text="@string/complete"
+                        android:backgroundTint="@color/dark_blue"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvUncompletedTitle"
+                        app:layout_constraintStart_toStartOf="@id/tvUncompletedTitle"
                         app:layout_constraintVertical_bias="0.5" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>

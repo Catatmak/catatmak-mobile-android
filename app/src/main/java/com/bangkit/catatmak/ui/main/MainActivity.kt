@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.activity.viewModels
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
@@ -12,6 +13,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.bangkit.catatmak.R
+import com.bangkit.catatmak.data.ResultState
 import com.bangkit.catatmak.databinding.ActivityMainBinding
 import com.bangkit.catatmak.ui.ViewModelFactory
 import com.bangkit.catatmak.ui.authentication.LoginActivity
@@ -33,7 +35,8 @@ class MainActivity : AppCompatActivity() {
 
         viewModel.getSession().observe(this) { user ->
             if (!user.isLogin) {
-                startActivity(Intent(this, LoginActivity::class.java))
+                val intent = Intent(this, LoginActivity::class.java)
+                startActivity(intent)
                 finish()
             }
         }
@@ -62,7 +65,7 @@ class MainActivity : AppCompatActivity() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
                 R.id.navigation_home -> {
-                    supportActionBar?.title = resources.getString(R.string.welcome)
+                    getProfile()
                 }
 
                 R.id.navigation_add_transaction -> {
@@ -78,6 +81,37 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+
+
+    }
+
+    private fun getProfile() {
+        viewModel.getProfile().observe(this) { result ->
+            if (result != null) {
+                when (result) {
+                    is ResultState.Loading -> {
+                    }
+
+                    is ResultState.Success -> {
+                        val data = result.data.data
+                        if (data.name.isNotEmpty()) {
+                            supportActionBar?.title = getString(R.string.welcome, data.name)
+                        } else {
+                            supportActionBar?.title = getString(R.string.welcome, "Sobat")
+                        }
+                    }
+                    is ResultState.Error -> {
+                        showToast(result.error.toString())
+                    }
+                }
+            }
+        }
+    }
+
+    private fun showToast(message: String) {
+        Toast.makeText(
+            this, message, Toast.LENGTH_SHORT
+        ).show()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

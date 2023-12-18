@@ -2,7 +2,7 @@ package com.bangkit.catatmak.data.di
 
 import android.content.Context
 import com.bangkit.catatmak.data.api.ApiConfig
-import com.bangkit.catatmak.data.api.CatatmakRepository
+import com.bangkit.catatmak.data.CatatmakRepository
 import com.bangkit.catatmak.data.pref.UserPreference
 import com.bangkit.catatmak.data.pref.dataStore
 import kotlinx.coroutines.flow.first

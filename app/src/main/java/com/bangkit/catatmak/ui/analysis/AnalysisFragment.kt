@@ -1,25 +1,23 @@
 package com.bangkit.catatmak.ui.analysis
 
-import android.content.Context
 import android.content.Intent
-import android.graphics.drawable.Drawable
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.PopupMenu
-import androidx.annotation.MenuRes
+import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bangkit.catatmak.R
 import com.bangkit.catatmak.adapter.InsightAdapter
+import com.bangkit.catatmak.data.ResultState
+import com.bangkit.catatmak.data.response.ChartOutcomeDataItem
 import com.bangkit.catatmak.databinding.FragmentAnalysisBinding
-import com.bangkit.catatmak.model.Insight
-import com.bangkit.catatmak.ui.categories.CategoriesActivity
+import com.bangkit.catatmak.ui.ViewModelFactory
+import com.bangkit.catatmak.ui.uncategorized.UcategorizedActivity
 import com.bangkit.catatmak.utils.AxisDateFormatter
 import com.bangkit.catatmak.utils.LineChartMarkerView
 import com.github.mikephil.charting.components.IMarker
@@ -30,10 +28,15 @@ import com.github.mikephil.charting.data.BarEntry
 
 class AnalysisFragment : Fragment() {
 
-    private val insights = ArrayList<Insight>()
 
     private var _binding: FragmentAnalysisBinding? = null
     private val binding get() = _binding
+
+    private val viewModel by viewModels<AnalysisViewModel> {
+        ViewModelFactory.getInstance(requireActivity())
+    }
+
+    private var count: Int? = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -50,42 +53,167 @@ class AnalysisFragment : Fragment() {
 
         setUpAction()
 
-        insights.addAll(getInsights())
-        setInsightData()
+        getChartsByDate()
+        getChartsByType()
+        getTotalUnCategorize()
+        getInsight()
+    }
 
-        setUpExpensesGraph()
-        setUpCashFlowGraph()
+    private fun getInsight() {
+        viewModel.getInsight().observe(requireActivity()) { result ->
+            if (result != null) {
+                when (result) {
+                    is ResultState.Loading -> {
+                        showLoading(true, "insight")
+                    }
 
-        setUpAction()
+                    is ResultState.Success -> {
+                        showLoading(false, "insight")
+                        val insight = result.data.data
+                        if (insight.isNotEmpty()) {
+                            binding?.tvNoInsight?.visibility = View.GONE
+                            val adapter = InsightAdapter()
+                            adapter.submitList(insight)
+                            binding?.rvInsights?.adapter = adapter
+                        } else {
+                            binding?.tvNoInsight?.visibility = View.VISIBLE
+                        }
+                    }
+
+                    is ResultState.Error -> {
+                        showLoading(false, "insight")
+                        showToast(result.error.toString())
+                    }
+
+                }
+            }
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        getTotalUnCategorize()
     }
 
     private fun setUpAction() {
-        binding?.btnCategoriesAutomatically?.setOnClickListener {
-            startActivity(Intent(requireActivity(), CategoriesActivity::class.java))
-        }
-        binding?.btnFilterInsight?.setOnClickListener { v: View ->
-            showMenu(requireActivity(), v, R.menu.filter_menu_time_current, binding?.btnFilterInsight!!)
+        binding?.btnCategorize?.setOnClickListener {
+            val intent = Intent(requireActivity(), UcategorizedActivity::class.java)
+            intent.putExtra(UcategorizedActivity.EXTRA_COUNT, count)
+            startActivity(intent)
         }
     }
 
-    private fun setUpCashFlowGraph() {
+    private fun getTotalUnCategorize() {
+        viewModel.getTotalUnCategorize().observe(requireActivity()) { result ->
+            if (result != null) {
+                when (result) {
+                    is ResultState.Loading -> {
+                    }
+
+                    is ResultState.Success -> {
+                        showLoading(false, "total_uncategorize")
+                        val totalUncategorize = result.data.data.count
+                        count = totalUncategorize
+                        if (totalUncategorize > 0) {
+                            binding?.cvCategorize?.visibility = View.VISIBLE
+                            binding?.tvTitleCategoriesAutomatically?.text = getString(
+                                R.string.title_categories_automatically,
+                                totalUncategorize.toString()
+                            )
+                        } else {
+                            binding?.cvCategorize?.visibility = View.GONE
+                        }
+                    }
+
+                    is ResultState.Error -> {
+                        showToast(result.error.toString())
+                    }
+
+                }
+            }
+        }
+    }
+
+    private fun getChartsByType() {
+        viewModel.getChartsByType().observe(viewLifecycleOwner) { result ->
+            if (result != null) {
+                when (result) {
+                    is ResultState.Loading -> {
+                        showLoading(true, "cash-flow-chart")
+                    }
+
+                    is ResultState.Success -> {
+                        showLoading(false, "cash-flow-chart")
+                        val chartData = result.data.data
+                        if (chartData.isEmpty()) {
+                            binding?.lineChartCashFlow?.visibility = View.INVISIBLE
+                            binding?.tvNoCashFlowData?.visibility = View.VISIBLE
+                        } else {
+                            binding?.lineChartCashFlow?.visibility = View.VISIBLE
+                            binding?.tvNoCashFlowData?.visibility = View.GONE
+                            setUpCashFlowCharts(chartData)
+                        }
+                    }
+
+                    is ResultState.Error -> {
+                        showLoading(false, "cash-flow-chart")
+                        showToast(result.error.toString())
+                    }
+
+                }
+            }
+        }
+    }
+
+    private fun getChartsByDate() {
+        viewModel.getChartsByDate().observe(viewLifecycleOwner) { result ->
+            if (result != null) {
+                when (result) {
+                    is ResultState.Loading -> {
+                        showLoading(true, "outcome-chart")
+                    }
+
+                    is ResultState.Success -> {
+                        showLoading(false, "outcome-chart")
+                        val chartData = result.data.data
+                        if (chartData.isEmpty()) {
+                            binding?.lineChartOutcome?.visibility = View.INVISIBLE
+                            binding?.tvNoChartOutcomeData?.visibility = View.VISIBLE
+                        } else {
+                            binding?.lineChartOutcome?.visibility = View.VISIBLE
+                            binding?.tvNoChartOutcomeData?.visibility = View.GONE
+                            setUpOutcomeCharts(chartData)
+                        }
+                    }
+
+                    is ResultState.Error -> {
+                        showLoading(false, "outcome-chart")
+                        showToast(result.error.toString())
+                    }
+
+                }
+            }
+        }
+    }
+
+    private fun setUpCashFlowCharts(chartData: List<ChartOutcomeDataItem>) {
         binding?.lineChartCashFlow?.legend?.isEnabled = false
 
-
+        var x = 0F
         val value = ArrayList<BarEntry>()
         value.apply {
-            clear()
-            add(BarEntry(0F, 5000000F))
-            add(BarEntry(1F, 3000000F))
-            add(BarEntry(2F, 1000000F))
+            chartData.forEach { result ->
+                val y = result.y.toInt()
+                add(BarEntry(x, y.toFloat()))
+                x++
+            }
         }
 
         val type = ArrayList<String>();
         type.apply {
-            clear()
-            add(resources.getString(R.string.income))
-            add(resources.getString(R.string.outcome))
-            add(resources.getString(R.string.savings))
+            chartData.forEach { result ->
+                add(result.x)
+            }
         }
         val axisType = AxisDateFormatter(type.toArray(arrayOfNulls<String>(type.size)))
 
@@ -95,14 +223,15 @@ class AnalysisFragment : Fragment() {
             binding?.lineChartCashFlow,
             R.layout.markerview_item,
             axisType
-        );
+        )
         binding?.lineChartCashFlow?.marker = marker;
 
         val barDataSet = BarDataSet(value, getString(R.string.outcome))
         barDataSet.colors = listOf(
             ContextCompat.getColor(requireActivity(), R.color.orange),
             ContextCompat.getColor(requireActivity(), R.color.red),
-            ContextCompat.getColor(requireActivity(), R.color.teal_blue)
+            ContextCompat.getColor(requireActivity(), R.color.teal_blue),
+            ContextCompat.getColor(requireActivity(), R.color.orange),
         )
         barDataSet.setDrawValues(false)
 
@@ -111,161 +240,104 @@ class AnalysisFragment : Fragment() {
             xAxis.position = XAxis.XAxisPosition.BOTTOM
             data = BarData(barDataSet)
             xAxis.apply {
-                labelCount = value.size
+                labelCount = type.size
                 valueFormatter = axisType
-                granularity = 1f // Menetapkan granularitas sumbu X
-                isGranularityEnabled = true // Mengaktifkan granularitas
+                granularity = 1f
+                isGranularityEnabled = true
             }
-
             setPinchZoom(false)
             animateXY(100, 500)
         }
     }
 
-    private fun setUpExpensesGraph() {
-        binding?.lineChartExpenses?.legend?.isEnabled = false
+    private fun setUpOutcomeCharts(chartData: List<ChartOutcomeDataItem>) {
+        binding?.lineChartOutcome?.legend?.isEnabled = false
 
-
-        val expenses = ArrayList<BarEntry>()
-        expenses.apply {
-            clear()
-            add(BarEntry(0F, 15000F))
-            add(BarEntry(1F, 10000F))
-            add(BarEntry(2F, 6000F))
-            add(BarEntry(3F, 13000F))
-            add(BarEntry(4F, 10000F))
-            add(BarEntry(5F, 15000F))
-            add(BarEntry(6F, 15000F))
-            add(BarEntry(7F, 15000F))
-            add(BarEntry(8F, 15000F))
-            add(BarEntry(9F, 1000F))
+        var x = 0F
+        val outcome = ArrayList<BarEntry>()
+        outcome.apply {
+            chartData.forEach { result ->
+                val y = result.y.toInt()
+                add(BarEntry(x, y.toFloat()))
+                x++
+            }
         }
 
         val date = ArrayList<String>();
         date.apply {
-            clear()
-            add("01 Jun")
-            add("02 Jun")
-            add("03 Jun")
-            add("04 Jun")
-            add("05 Jun")
-            add("06 Jun")
-            add("07 Jun")
-            add("08 Jun")
-            add("09 Jun")
-            add("10 Jun")
+            chartData.forEach { result ->
+                val parts = result.x.split("-")
+                val dayOfMonth = parts.getOrNull(2) ?: ""
+                add(dayOfMonth)
+            }
+        }
+
+        val dateTitle = ArrayList<String>();
+        dateTitle.apply {
+            chartData.forEach { result ->
+                add(result.x)
+            }
         }
 
         val axisDate = AxisDateFormatter(date.toArray(arrayOfNulls<String>(date.size)))
-
+        val axisDateTitle =
+            AxisDateFormatter(dateTitle.toArray(arrayOfNulls<String>(dateTitle.size)))
 
         val marker: IMarker = LineChartMarkerView(
             requireActivity(),
-            binding?.lineChartExpenses,
+            binding?.lineChartOutcome,
             R.layout.markerview_item,
-            axisDate
+            axisDateTitle
         );
-        binding?.lineChartExpenses?.marker = marker;
+        binding?.lineChartOutcome?.marker = marker
 
-        val expensesBarDataSet = BarDataSet(expenses, getString(R.string.outcome))
+        val expensesBarDataSet = BarDataSet(outcome, getString(R.string.outcome))
         expensesBarDataSet.color = ContextCompat.getColor(requireActivity(), R.color.teal_blue)
         expensesBarDataSet.setDrawValues(false)
 
-        binding?.lineChartExpenses?.apply {
+        binding?.lineChartOutcome?.apply {
             description.isEnabled = false
             xAxis.position = XAxis.XAxisPosition.BOTTOM
             data = BarData(expensesBarDataSet)
             xAxis.apply {
                 labelCount = date.size
                 valueFormatter = axisDate
-                granularity = 1f // Atur interval label
+                granularity = 1f
                 isGranularityEnabled = true
-                labelRotationAngle = -45f // Menetapkan rotasi label
-                setDrawLabels(true)
             }
             setPinchZoom(false)
             animateXY(100, 500)
         }
     }
 
-    private fun showMenu(context: Context, v: View, @MenuRes menuRes: Int, button: Button) {
-        val icArrowUp: Drawable? = ContextCompat.getDrawable(context, R.drawable.ic_arrow_up)
-        val icArrowDown: Drawable? = ContextCompat.getDrawable(context, R.drawable.ic_arrow_down)
-        val popup = PopupMenu(context, v)
-        popup.menuInflater.inflate(menuRes, popup.menu)
+    private fun showLoading(isLoading: Boolean, type: String) {
+        when (type) {
+            "outcome-chart" -> {
+                binding?.pbOutcomeCharts?.visibility =
+                    if (isLoading) View.VISIBLE else View.GONE
+            }
 
-        popup.setOnMenuItemClickListener { menuItem: MenuItem ->
-            when (menuItem.itemId) {
-                R.id.option_filter_1 -> {
-                    button.text = menuItem.title
-                    setDrawableEnd(button, icArrowDown)
-                    true
-                }
+            "cash-flow-chart" -> {
+                binding?.pbCashFlowCharts?.visibility =
+                    if (isLoading) View.VISIBLE else View.GONE
+            }
 
-                R.id.option_filter_2 -> {
-                    button.text = menuItem.title
-                    setDrawableEnd(button, icArrowDown)
-                    true
-                }
-
-                R.id.option_filter_3 -> {
-                    button.text = menuItem.title
-                    setDrawableEnd(button, icArrowDown)
-                    true
-                }
-
-                else -> false
+            "insight" -> {
+                binding?.pbInsight?.visibility =
+                    if (isLoading) View.VISIBLE else View.GONE
             }
         }
-        popup.setOnDismissListener {
-            setDrawableEnd(button, icArrowDown)
-        }
-        // Show the popup menu.
-        popup.show()
-        setDrawableEnd(button, icArrowUp)
     }
 
-    private fun setDrawableEnd(button: Button, drawable: Drawable?) {
-        val drawables = button.compoundDrawablesRelative
-
-        // Set drawable baru sebagai drawableEnd
-        button.setCompoundDrawablesRelativeWithIntrinsicBounds(
-            drawables[0], // drawableStart
-            drawables[1], // drawableTop
-            drawable,     // drawableEnd
-            drawables[3]  // drawableBottom
-        )
+    private fun showToast(message: String) {
+        Toast.makeText(
+            requireActivity(), message, Toast.LENGTH_SHORT
+        ).show()
     }
 
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
-    }
-
-    private fun getInsights(): ArrayList<Insight> {
-        val dataCreatedAt = resources.getStringArray(R.array.insight_created_at)
-        val dataInsightTitle = resources.getStringArray(R.array.insight_title)
-        val dataInsightDesc = resources.getStringArray(R.array.insight_desc)
-        val dataIsFavorite = resources.getStringArray(R.array.insight_is_favorite)
-        val list = ArrayList<Insight>()
-        for (i in dataInsightTitle.indices) {
-            val insight = Insight(
-                dataCreatedAt[i],
-                dataInsightTitle[i],
-                dataInsightDesc[i],
-                dataIsFavorite[i],
-            )
-            list.add(insight)
-        }
-        return list
-    }
-
-    private fun setInsightData() {
-        val insightAdapter = InsightAdapter(insights) { position, isFavorite ->
-            insights[position].isFavorite = if (isFavorite) "1" else "0"
-        }
-        binding?.rvInsights?.adapter = insightAdapter
-
     }
 
     private fun setupRecyclerView() {

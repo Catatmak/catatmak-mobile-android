@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/light_gray3"
+    android:paddingHorizontal="8dp"
+    android:paddingVertical="16dp"
+    tools:context=".ui.transaction.summary.outcome.SummaryOutcomeFragment">
+
+    <TextView
+        android:id="@+id/tvSummaryTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/sf_pro_display_medium"
+        tools:text="@string/daily"
+        android:textColor="@color/dark_blue"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvSummaryTotal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="@font/sf_pro_display_bold"
+        android:textColor="@color/dark_blue"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@id/btnDetailSummary"
+        app:layout_constraintStart_toStartOf="@id/tvSummaryTitle"
+        app:layout_constraintTop_toBottomOf="@id/tvSummaryTitle"
+        app:layout_constraintVertical_bias="0.0"
+        tools:text="Rp. 100.000.000" />
+
+    <TextView
+        android:id="@+id/tvCountItem"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/sf_pro_display_regular"
+        tools:text="10 Pengeluaran"
+        android:textColor="@color/dark_blue"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@id/tvSummaryTotal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvSummaryTotal" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnDetailSummary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/sf_pro_display_semibold"
+        android:text="@string/view_more"
+        android:textColor="@android:color/white"
+        android:textSize="11sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvSummaryTotal" />
+
+    <ProgressBar
+        android:id="@+id/pbSummary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:visibility="visible" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
