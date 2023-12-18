@@ -1,6 +1,7 @@
 package com.bangkit.catatmak.ui.main
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -8,6 +9,7 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -44,6 +46,9 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(binding.topAppBar)
 
         val navView: BottomNavigationView = binding.navView
+
+        navView.itemActiveIndicatorColor = resources.getColorStateList(R.color.dark_blue)
+        navView.itemRippleColor = resources.getColorStateList(R.color.light_blue)
 
         navView.labelVisibilityMode = NavigationBarView.LABEL_VISIBILITY_LABELED
 

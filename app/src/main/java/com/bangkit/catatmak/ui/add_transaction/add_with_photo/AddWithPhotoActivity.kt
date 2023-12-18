@@ -99,7 +99,7 @@ class AddWithPhotoActivity : AppCompatActivity(), UpdateTransactionListener,
                             showToast(result.data.message)
                             val intent = Intent(this, MainActivity::class.java)
                             startActivity(intent)
-
+                            finish()
                         }
 
                         is ResultState.Error -> {

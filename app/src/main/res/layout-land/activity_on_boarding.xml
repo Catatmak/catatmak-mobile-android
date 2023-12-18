@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:id="@+id/motionLayoutId"
     android:layout_height="match_parent"
     android:background="@android:color/white"
     app:layoutDescription="@xml/activity_on_boarding_scene_lanscape"

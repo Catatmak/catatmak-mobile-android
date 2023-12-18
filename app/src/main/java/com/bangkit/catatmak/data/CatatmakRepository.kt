@@ -25,6 +25,7 @@ import com.bangkit.catatmak.data.response.UpdateCategoryItem
 import com.google.gson.Gson
 import kotlinx.coroutines.flow.Flow
 import retrofit2.HttpException
+import java.io.IOException
 
 class CatatmakRepository private constructor(
     private var apiService: ApiService,
@@ -53,6 +54,8 @@ class CatatmakRepository private constructor(
             val errorBody = e.response()?.errorBody()?.string()
             val errorResponse = Gson().fromJson(errorBody, OTPResponse::class.java)
             emit(ResultState.Error(errorResponse.message))
+        } catch (e: IOException) {
+            emit(ResultState.Error("Network error occurred"))
         }
     }
 
@@ -65,6 +68,8 @@ class CatatmakRepository private constructor(
             val errorBody = e.response()?.errorBody()?.string()
             val errorResponse = Gson().fromJson(errorBody, VerifyOTPResponse::class.java)
             emit(ResultState.Error(errorResponse.message))
+        } catch (e: IOException) {
+            emit(ResultState.Error("Network error occurred"))
         }
     }
 
@@ -79,6 +84,8 @@ class CatatmakRepository private constructor(
             val errorBody = e.response()?.errorBody()?.string()
             val errorResponse = Gson().fromJson(errorBody, FinancialsTodayResponse::class.java)
             emit(ResultState.Error(errorResponse.message))
+        } catch (e: IOException) {
+            emit(ResultState.Error("Network error occurred"))
         }
     }
 
@@ -94,6 +101,8 @@ class CatatmakRepository private constructor(
             val errorBody = e.response()?.errorBody()?.string()
             val errorResponse = Gson().fromJson(errorBody, SummaryOutcomeIncomeResponse::class.java)
             emit(ResultState.Error(errorResponse.message))
+        } catch (e: IOException) {
+            emit(ResultState.Error("Network error occurred"))
         }
     }
 
@@ -108,6 +117,8 @@ class CatatmakRepository private constructor(
             val errorBody = e.response()?.errorBody()?.string()
             val errorResponse = Gson().fromJson(errorBody, SummaryOutcomeIncomeResponse::class.java)
             emit(ResultState.Error(errorResponse.message))
+        } catch (e: IOException) {
+            emit(ResultState.Error("Network error occurred"))
         }
     }
 
@@ -122,6 +133,8 @@ class CatatmakRepository private constructor(
             val errorBody = e.response()?.errorBody()?.string()
             val errorResponse = Gson().fromJson(errorBody, FinancialsTotalResponse::class.java)
             emit(ResultState.Error(errorResponse.message))
+        } catch (e: IOException) {
+            emit(ResultState.Error("Network error occurred"))
         }
     }
 
@@ -136,6 +149,8 @@ class CatatmakRepository private constructor(
             val errorBody = e.response()?.errorBody()?.string()
             val errorResponse = Gson().fromJson(errorBody, FinancialsDailyResponse::class.java)
             emit(ResultState.Error(errorResponse.message))
+        } catch (e: IOException) {
+            emit(ResultState.Error("Network error occurred"))
         }
     }
 
@@ -150,6 +165,8 @@ class CatatmakRepository private constructor(
             val errorBody = e.response()?.errorBody()?.string()
             val errorResponse = Gson().fromJson(errorBody, FinancialsDailyResponse::class.java)
             emit(ResultState.Error(errorResponse.message))
+        } catch (e: IOException) {
+            emit(ResultState.Error("Network error occurred"))
         }
     }
 
@@ -164,6 +181,8 @@ class CatatmakRepository private constructor(
             val errorBody = e.response()?.errorBody()?.string()
             val errorResponse = Gson().fromJson(errorBody, FinancialsDailyResponse::class.java)
             emit(ResultState.Error(errorResponse.message))
+        } catch (e: IOException) {
+            emit(ResultState.Error("Network error occurred"))
         }
     }
 
@@ -178,6 +197,8 @@ class CatatmakRepository private constructor(
             val errorBody = e.response()?.errorBody()?.string()
             val errorResponse = Gson().fromJson(errorBody, FinancialsDailyResponse::class.java)
             emit(ResultState.Error(errorResponse.message))
+        } catch (e: IOException) {
+            emit(ResultState.Error("Network error occurred"))
         }
     }
 
@@ -196,6 +217,8 @@ class CatatmakRepository private constructor(
             val errorBody = e.response()?.errorBody()?.string()
             val errorResponse = Gson().fromJson(errorBody, FinancialsTodayResponse::class.java)
             emit(ResultState.Error(errorResponse.message))
+        } catch (e: IOException) {
+            emit(ResultState.Error("Network error occurred"))
         }
     }
 
@@ -214,6 +237,8 @@ class CatatmakRepository private constructor(
             val errorBody = e.response()?.errorBody()?.string()
             val errorResponse = Gson().fromJson(errorBody, FinancialsTodayResponse::class.java)
             emit(ResultState.Error(errorResponse.message))
+        } catch (e: IOException) {
+            emit(ResultState.Error("Network error occurred"))
         }
     }
 
@@ -235,6 +260,8 @@ class CatatmakRepository private constructor(
             val errorBody = e.response()?.errorBody()?.string()
             val errorResponse = Gson().fromJson(errorBody, CreateFinancialResponse::class.java)
             emit(ResultState.Error(errorResponse.message))
+        } catch (e: IOException) {
+            emit(ResultState.Error("Network error occurred"))
         }
     }
 
@@ -249,6 +276,8 @@ class CatatmakRepository private constructor(
             val errorBody = e.response()?.errorBody()?.string()
             val errorResponse = Gson().fromJson(errorBody, CreateFinancialResponse::class.java)
             emit(ResultState.Error(errorResponse.message))
+        } catch (e: IOException) {
+            emit(ResultState.Error("Network error occurred"))
         }
     }
 
@@ -271,6 +300,8 @@ class CatatmakRepository private constructor(
             val errorBody = e.response()?.errorBody()?.string()
             val errorResponse = Gson().fromJson(errorBody, CreateFinancialResponse::class.java)
             emit(ResultState.Error(errorResponse.message))
+        } catch (e: IOException) {
+            emit(ResultState.Error("Network error occurred"))
         }
     }
 
@@ -288,6 +319,8 @@ class CatatmakRepository private constructor(
             val errorBody = e.response()?.errorBody()?.string()
             val errorResponse = Gson().fromJson(errorBody, BulkDataResponse::class.java)
             emit(ResultState.Error(errorResponse.message))
+        } catch (e: IOException) {
+            emit(ResultState.Error("Network error occurred"))
         }
     }
 
@@ -305,6 +338,8 @@ class CatatmakRepository private constructor(
             val errorBody = e.response()?.errorBody()?.string()
             val errorResponse = Gson().fromJson(errorBody, BulkDataResponse::class.java)
             emit(ResultState.Error(errorResponse.message))
+        } catch (e: IOException) {
+            emit(ResultState.Error("Network error occurred"))
         }
     }
 
@@ -319,6 +354,8 @@ class CatatmakRepository private constructor(
             val errorBody = e.response()?.errorBody()?.string()
             val errorResponse = Gson().fromJson(errorBody, GetChartsByDateResponse::class.java)
             emit(ResultState.Error(errorResponse.message))
+        } catch (e: IOException) {
+            emit(ResultState.Error("Network error occurred"))
         }
     }
 
@@ -333,6 +370,8 @@ class CatatmakRepository private constructor(
             val errorBody = e.response()?.errorBody()?.string()
             val errorResponse = Gson().fromJson(errorBody, GetChartsByDateResponse::class.java)
             emit(ResultState.Error(errorResponse.message))
+        } catch (e: IOException) {
+            emit(ResultState.Error("Network error occurred"))
         }
     }
 
@@ -347,6 +386,8 @@ class CatatmakRepository private constructor(
             val errorBody = e.response()?.errorBody()?.string()
             val errorResponse = Gson().fromJson(errorBody, TotalUncategorizeResponse::class.java)
             emit(ResultState.Error(errorResponse.message))
+        } catch (e: IOException) {
+            emit(ResultState.Error("Network error occurred"))
         }
     }
 
@@ -361,6 +402,8 @@ class CatatmakRepository private constructor(
             val errorBody = e.response()?.errorBody()?.string()
             val errorResponse = Gson().fromJson(errorBody, InsightResponse::class.java)
             emit(ResultState.Error(errorResponse.message))
+        } catch (e: IOException) {
+            emit(ResultState.Error("Network error occurred"))
         }
     }
 
@@ -375,6 +418,8 @@ class CatatmakRepository private constructor(
             val errorBody = e.response()?.errorBody()?.string()
             val errorResponse = Gson().fromJson(errorBody, ProfileResponse::class.java)
             emit(ResultState.Error(errorResponse.message))
+        } catch (e: IOException) {
+            emit(ResultState.Error("Network error occurred"))
         }
     }
 
@@ -389,6 +434,8 @@ class CatatmakRepository private constructor(
             val errorBody = e.response()?.errorBody()?.string()
             val errorResponse = Gson().fromJson(errorBody, ProfileResponse::class.java)
             emit(ResultState.Error(errorResponse.message))
+        } catch (e: IOException) {
+            emit(ResultState.Error("Network error occurred"))
         }
     }
 

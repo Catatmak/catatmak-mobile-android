@@ -36,12 +36,6 @@ class VerificationActivity : AppCompatActivity() {
         }
     }
 
-    override fun onResume() {
-        super.onResume()
-        showLoading(false)
-        setUpAction()
-    }
-
     private fun sendOtp() {
         viewModel.sendOTP(phone).observe(this) { result ->
             if (result != null) {

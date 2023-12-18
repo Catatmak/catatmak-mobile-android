@@ -33,6 +33,14 @@
             motion:layout_constraintStart_toStartOf="@id/ivBackgroundOnBoarding1"
             android:layout_marginTop="24dp"
             motion:layout_constraintTop_toBottomOf="@id/ivBackgroundOnBoarding1" />
+        <Constraint
+            android:id="@+id/btnNext"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="18dp"
+            motion:layout_constraintTop_toBottomOf="parent"
+            motion:layout_constraintStart_toStartOf="parent" />
     </ConstraintSet>
 
     <ConstraintSet android:id="@+id/end">
@@ -52,34 +60,6 @@
             android:layout_marginStart="8dp"
             motion:layout_constraintEnd_toEndOf="parent" />
         <Constraint
-            android:id="@+id/menu1"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginBottom="16dp"
-            motion:layout_constraintBottom_toBottomOf="parent"
-            motion:layout_constraintEnd_toStartOf="@+id/menu2"
-            motion:layout_constraintHorizontal_bias="0.5"
-            motion:layout_constraintStart_toStartOf="parent">
-            <CustomAttribute
-                motion:attributeName="crossfade"
-                motion:customFloatValue="1" />
-        </Constraint>
-        <Constraint
-            android:id="@+id/menu2"
-            motion:layout_constraintEnd_toStartOf="@+id/menu3"
-            motion:layout_constraintStart_toEndOf="@+id/menu1"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            motion:layout_constraintBottom_toBottomOf="@+id/menu1"
-            motion:layout_constraintVertical_bias="0.0"
-            motion:layout_constraintHorizontal_bias="0.5"
-            motion:layout_constraintTop_toTopOf="@+id/menu1">
-            <CustomAttribute
-                motion:attributeName="crossfade"
-                motion:customFloatValue="0" />
-        </Constraint>
-        <Constraint
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             motion:layout_constraintEnd_toEndOf="@id/ivBackgroundOnBoarding1"
@@ -87,6 +67,59 @@
             motion:layout_constraintTop_toBottomOf="@id/ivBackgroundOnBoarding1"
             android:id="@+id/tvTitleOnBoarding1"
             motion:layout_constraintStart_toStartOf="@id/ivBackgroundOnBoarding1" />
+        <Constraint
+            android:id="@+id/btnNext"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintBottom_toBottomOf="parent" />
+        <Constraint
+            android:id="@+id/menu1"
+            motion:layout_constraintEnd_toStartOf="@+id/menu2"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_marginEnd="12dp"
+            motion:layout_constraintHorizontal_chainStyle="packed"
+            motion:layout_constraintTop_toBottomOf="@id/tevDesc1"
+            android:layout_marginStart="12dp"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="24dp" >
+            <CustomAttribute
+                motion:attributeName="crossfade"
+                motion:customFloatValue="1" />
+        </Constraint>
+        <Constraint
+            android:id="@+id/menu2"
+            motion:layout_constraintEnd_toStartOf="@+id/menu3"
+            motion:layout_constraintStart_toEndOf="@id/menu1"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_marginEnd="12dp"
+            motion:layout_constraintHorizontal_chainStyle="packed"
+            motion:layout_constraintTop_toBottomOf="@id/tevDesc1"
+            android:layout_marginTop="24dp" >
+            <CustomAttribute
+                motion:attributeName="crossfade"
+                motion:customFloatValue="0" />
+        </Constraint>
+        <Constraint
+            android:id="@+id/menu3"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toEndOf="@id/menu2"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_marginEnd="12dp"
+            motion:layout_constraintHorizontal_chainStyle="packed"
+            motion:layout_constraintTop_toBottomOf="@id/tevDesc1"
+            android:layout_marginTop="24dp" >
+            <CustomAttribute
+                motion:attributeName="crossfade"
+                motion:customFloatValue="0" />
+        </Constraint>
     </ConstraintSet>
     <ConstraintSet
         android:id="@+id/menu2"
@@ -118,15 +151,34 @@
             motion:layout_constraintStart_toStartOf="parent"
             motion:layout_constraintEnd_toEndOf="parent" />
         <Constraint
+            android:id="@+id/btnNext"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintBottom_toBottomOf="parent" />
+        <Constraint
+            android:id="@+id/tvTitleOnBoarding2"
+            motion:layout_constraintEnd_toEndOf="@id/ivBackgroundOnBoarding2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            motion:layout_constraintStart_toStartOf="@id/ivBackgroundOnBoarding2"
+            android:layout_marginTop="24dp"
+            motion:layout_constraintTop_toBottomOf="@id/ivBackgroundOnBoarding2" />
+        <Constraint
             android:id="@+id/menu1"
             motion:layout_constraintEnd_toStartOf="@+id/menu2"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="32dp"
-            motion:layout_constraintHorizontal_bias="0.5"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_marginEnd="12dp"
+            motion:layout_constraintHorizontal_chainStyle="packed"
+            motion:layout_constraintTop_toBottomOf="@id/tvTitleOnBoarding2"
+            android:layout_marginStart="12dp"
             motion:layout_constraintStart_toStartOf="parent"
-            motion:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="16dp" >
+            android:layout_marginTop="24dp" >
             <CustomAttribute
                 motion:attributeName="crossfade"
                 motion:customFloatValue="0" />
@@ -134,13 +186,13 @@
         <Constraint
             android:id="@+id/menu2"
             motion:layout_constraintEnd_toStartOf="@+id/menu3"
-            motion:layout_constraintStart_toEndOf="@+id/menu1"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            motion:layout_constraintBottom_toBottomOf="@+id/menu1"
-            motion:layout_constraintVertical_bias="0.0"
-            motion:layout_constraintHorizontal_bias="0.5"
-            motion:layout_constraintTop_toTopOf="@+id/menu1" >
+            motion:layout_constraintStart_toEndOf="@id/menu1"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_marginEnd="12dp"
+            motion:layout_constraintHorizontal_chainStyle="packed"
+            motion:layout_constraintTop_toBottomOf="@id/tvTitleOnBoarding2"
+            android:layout_marginTop="24dp" >
             <CustomAttribute
                 motion:attributeName="crossfade"
                 motion:customFloatValue="1" />
@@ -148,13 +200,13 @@
         <Constraint
             android:id="@+id/menu3"
             motion:layout_constraintEnd_toEndOf="parent"
-            motion:layout_constraintStart_toEndOf="@+id/menu2"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            motion:layout_constraintBottom_toBottomOf="@+id/menu2"
-            motion:layout_constraintVertical_bias="0.0"
-            motion:layout_constraintHorizontal_bias="0.5"
-            motion:layout_constraintTop_toTopOf="@+id/menu2">
+            motion:layout_constraintStart_toEndOf="@id/menu2"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_marginEnd="12dp"
+            motion:layout_constraintHorizontal_chainStyle="packed"
+            motion:layout_constraintTop_toBottomOf="@id/tvTitleOnBoarding2"
+            android:layout_marginTop="24dp" >
             <CustomAttribute
                 motion:attributeName="crossfade"
                 motion:customFloatValue="0" />
@@ -197,16 +249,47 @@
             motion:layout_constraintHorizontal_bias="0.0"
             motion:layout_constraintEnd_toEndOf="parent" />
         <Constraint
+            android:id="@+id/btnNext"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="18dp"
+            motion:layout_constraintTop_toBottomOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:visibility="gone" />
+        <Constraint
+            android:id="@+id/tvTitleOnBoarding3"
+            motion:layout_constraintEnd_toEndOf="@id/ivBackgroundOnBoarding3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            motion:layout_constraintStart_toStartOf="@id/ivBackgroundOnBoarding3"
+            android:layout_marginTop="24dp"
+            motion:layout_constraintTop_toBottomOf="@id/ivBackgroundOnBoarding3" />
+        <Constraint
+            android:id="@+id/menu1"
+            motion:layout_constraintEnd_toStartOf="@+id/menu2"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_marginEnd="12dp"
+            motion:layout_constraintHorizontal_chainStyle="packed"
+            motion:layout_constraintTop_toBottomOf="@id/tvTitleOnBoarding3"
+            android:layout_marginStart="12dp"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="24dp" >
+            <CustomAttribute
+                motion:attributeName="crossfade"
+                motion:customFloatValue="0" />
+        </Constraint>
+        <Constraint
             android:id="@+id/menu2"
             motion:layout_constraintEnd_toStartOf="@+id/menu3"
-            motion:layout_constraintStart_toEndOf="@+id/menu1"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            motion:layout_constraintBottom_toBottomOf="@+id/menu1"
-            motion:layout_constraintVertical_bias="0.0"
-            motion:layout_constraintHorizontal_bias="0.5"
-            motion:layout_constraintTop_toTopOf="@+id/menu1"
-            motion:crossfade="1">
+            motion:layout_constraintStart_toEndOf="@id/menu1"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_marginEnd="12dp"
+            motion:layout_constraintHorizontal_chainStyle="packed"
+            motion:layout_constraintTop_toBottomOf="@id/tvTitleOnBoarding3"
+            android:layout_marginTop="24dp" >
             <CustomAttribute
                 motion:attributeName="crossfade"
                 motion:customFloatValue="0" />
@@ -214,13 +297,13 @@
         <Constraint
             android:id="@+id/menu3"
             motion:layout_constraintEnd_toEndOf="parent"
-            motion:layout_constraintStart_toEndOf="@+id/menu2"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            motion:layout_constraintBottom_toBottomOf="@+id/menu2"
-            motion:layout_constraintVertical_bias="0.0"
-            motion:layout_constraintHorizontal_bias="0.5"
-            motion:layout_constraintTop_toTopOf="@+id/menu2">
+            motion:layout_constraintStart_toEndOf="@id/menu2"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_marginEnd="12dp"
+            motion:layout_constraintHorizontal_chainStyle="packed"
+            motion:layout_constraintTop_toBottomOf="@id/tvTitleOnBoarding3"
+            android:layout_marginTop="24dp" >
             <CustomAttribute
                 motion:attributeName="crossfade"
                 motion:customFloatValue="1" />
@@ -231,11 +314,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            motion:layout_constraintBottom_toTopOf="@id/menu2"
-            motion:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:visibility="visible" />
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintStart_toStartOf="parent" />
     </ConstraintSet>
     <Transition
         motion:constraintSetStart="@+id/menu2"
