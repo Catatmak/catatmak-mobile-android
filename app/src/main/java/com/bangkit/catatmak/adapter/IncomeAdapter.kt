@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bangkit.catatmak.R
 import com.bangkit.catatmak.data.response.FinancialsDailyDataItem
 import com.bangkit.catatmak.databinding.ItemRowOutcomeBinding
-import com.bangkit.catatmak.ui.transaction.detail_outcome.DetailIncomeActivity
+import com.bangkit.catatmak.ui.transaction.detail_income.DetailIncomeActivity
 import com.bangkit.catatmak.utils.formatToCurrency
 
 class IncomeAdapter :

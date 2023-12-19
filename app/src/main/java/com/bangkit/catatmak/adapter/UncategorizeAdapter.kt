@@ -2,6 +2,7 @@ package com.bangkit.catatmak.adapter
 
 import android.content.Context
 import android.graphics.drawable.Drawable
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
@@ -49,6 +50,7 @@ class UncategorizeAdapter(private val onMenuChanged: (UncategorizeDataItem, Stri
         fun bind(transaction: UncategorizeDataItem) {
             with(binding) {
                 with(transaction) {
+                    Log.d("CATEGORY", category)
                     val cleanPrice = price.replace(".", "")
                     tvCreatedAt.text = formatDateTime(updatedAt)
                     tvItemName.text = title

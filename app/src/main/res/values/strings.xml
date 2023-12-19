@@ -18,7 +18,7 @@
     <string name="todays_expenses">Pengeluaran Hari Ini</string>
     <string name="total">Rp. 150.000</string>
     <string name="total_zero">Rp. 0</string>
-    <string name="insight_title">\" Hari Ini Lumayan Boros \"</string>
+    <string name="insight_title">\" %1$s \"</string>
     <string name="insight_message">Kamu lumayan boros nih bulan ini, terjadi kenaikan pengeluaran pada kategori Makan sebesar Rp. 1.000.000</string>
     <string name="todays_transaction">Transaksi Hari Ini</string>
     <string name="created_at">29 Oktober, 15.00</string>

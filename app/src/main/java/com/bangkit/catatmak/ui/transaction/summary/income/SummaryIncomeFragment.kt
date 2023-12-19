@@ -13,7 +13,6 @@ import com.bangkit.catatmak.data.ResultState
 import com.bangkit.catatmak.databinding.FragmentSummaryBinding
 import com.bangkit.catatmak.ui.ViewModelFactory
 import com.bangkit.catatmak.ui.transaction.income.IncomeActivity
-import com.bangkit.catatmak.ui.transaction.outcome.OutcomeActivity
 
 class SummaryIncomeFragment : Fragment() {
 
@@ -40,8 +39,6 @@ class SummaryIncomeFragment : Fragment() {
         arguments?.let {
             position = it.getInt(EXTRA_POSITION, 0)
         }
-
-        getSummaryIncome()
 
         binding?.btnDetailSummary?.setOnClickListener {
             val intent = Intent(requireActivity(), IncomeActivity::class.java)

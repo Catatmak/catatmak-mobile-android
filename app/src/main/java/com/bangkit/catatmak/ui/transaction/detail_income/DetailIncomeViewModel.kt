@@ -30,9 +30,6 @@ class DetailIncomeViewModel(private val repository: CatatmakRepository) : ViewMo
         _categoryItems.value = categories
     }
 
-    fun getAllFinancialsToday() = repository.getAllFinancialsToday()
-
-    fun getTotalOutcomeToday() = repository.getSummaryOutcome()
 
     fun updateFinancial(
         id: String,

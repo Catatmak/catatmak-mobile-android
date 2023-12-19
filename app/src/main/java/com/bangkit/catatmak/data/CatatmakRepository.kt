@@ -18,16 +18,23 @@ import com.bangkit.catatmak.data.response.BulkDataResponse
 import com.bangkit.catatmak.data.response.BulkResponseItem
 import com.bangkit.catatmak.data.response.GetChartsByDateResponse
 import com.bangkit.catatmak.data.response.InsightResponse
+import com.bangkit.catatmak.data.response.OCRResponse
 import com.bangkit.catatmak.data.response.ProfileDataItem
 import com.bangkit.catatmak.data.response.ProfileResponse
 import com.bangkit.catatmak.data.response.TotalUncategorizeResponse
+import com.bangkit.catatmak.data.response.UncategorizeResponse
 import com.bangkit.catatmak.data.response.UpdateCategoryItem
 import com.google.gson.Gson
 import kotlinx.coroutines.flow.Flow
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody.Companion.asRequestBody
 import retrofit2.HttpException
+import java.io.File
 import java.io.IOException
 
 class CatatmakRepository private constructor(
+    private var apiBotService: ApiService,
     private var apiService: ApiService,
     private val userPreference: UserPreference,
 ) {
@@ -48,7 +55,7 @@ class CatatmakRepository private constructor(
         Log.d("OTP", phone)
         emit(ResultState.Loading)
         try {
-            val successResponse = apiService.sendOTP(phone)
+            val successResponse = apiBotService.sendOTP(phone)
             emit(ResultState.Success(successResponse))
         } catch (e: HttpException) {
             val errorBody = e.response()?.errorBody()?.string()
@@ -62,7 +69,7 @@ class CatatmakRepository private constructor(
     fun verifyOTP(phone: String, otp: String) = liveData {
         emit(ResultState.Loading)
         try {
-            val successResponse = apiService.verifyOTP(phone, otp)
+            val successResponse = apiBotService.verifyOTP(phone, otp)
             emit(ResultState.Success(successResponse))
         } catch (e: HttpException) {
             val errorBody = e.response()?.errorBody()?.string()
@@ -76,8 +83,6 @@ class CatatmakRepository private constructor(
     fun getAllFinancialsToday() = liveData {
         emit(ResultState.Loading)
         try {
-            val apiService =
-                ApiConfig.getApiService(BuildConfig.TOKEN, BuildConfig.BASE_URL_FINANCIALS)
             val successResponse = apiService.getAllFinancialsToday()
             emit(ResultState.Success(successResponse))
         } catch (e: HttpException) {
@@ -93,8 +98,6 @@ class CatatmakRepository private constructor(
     fun getSummaryOutcome() = liveData {
         emit(ResultState.Loading)
         try {
-            val apiService =
-                ApiConfig.getApiService(BuildConfig.TOKEN, BuildConfig.BASE_URL_FINANCIALS)
             val successResponse = apiService.getSummaryOutcomeIncome("outcome")
             emit(ResultState.Success(successResponse))
         } catch (e: HttpException) {
@@ -109,8 +112,6 @@ class CatatmakRepository private constructor(
     fun getSummaryIncome() = liveData {
         emit(ResultState.Loading)
         try {
-            val apiService =
-                ApiConfig.getApiService(BuildConfig.TOKEN, BuildConfig.BASE_URL_FINANCIALS)
             val successResponse = apiService.getSummaryOutcomeIncome("income")
             emit(ResultState.Success(successResponse))
         } catch (e: HttpException) {
@@ -125,8 +126,6 @@ class CatatmakRepository private constructor(
     fun getFinancialsTotal() = liveData {
         emit(ResultState.Loading)
         try {
-            val apiService =
-                ApiConfig.getApiService(BuildConfig.TOKEN, BuildConfig.BASE_URL_FINANCIALS)
             val successResponse = apiService.getFinancialsTotal()
             emit(ResultState.Success(successResponse))
         } catch (e: HttpException) {
@@ -141,8 +140,6 @@ class CatatmakRepository private constructor(
     fun getOutcomeDaily() = liveData {
         emit(ResultState.Loading)
         try {
-            val apiService =
-                ApiConfig.getApiService(BuildConfig.TOKEN, BuildConfig.BASE_URL_FINANCIALS)
             val successResponse = apiService.getOutcomeDaily()
             emit(ResultState.Success(successResponse))
         } catch (e: HttpException) {
@@ -157,8 +154,6 @@ class CatatmakRepository private constructor(
     fun getOutcomeWeekly() = liveData {
         emit(ResultState.Loading)
         try {
-            val apiService =
-                ApiConfig.getApiService(BuildConfig.TOKEN, BuildConfig.BASE_URL_FINANCIALS)
             val successResponse = apiService.getOutcomeWeekly()
             emit(ResultState.Success(successResponse))
         } catch (e: HttpException) {
@@ -173,8 +168,6 @@ class CatatmakRepository private constructor(
     fun getOutcomeMonthly() = liveData {
         emit(ResultState.Loading)
         try {
-            val apiService =
-                ApiConfig.getApiService(BuildConfig.TOKEN, BuildConfig.BASE_URL_FINANCIALS)
             val successResponse = apiService.getOutcomeMonthly()
             emit(ResultState.Success(successResponse))
         } catch (e: HttpException) {
@@ -189,8 +182,6 @@ class CatatmakRepository private constructor(
     fun getIncomeThisMonth() = liveData {
         emit(ResultState.Loading)
         try {
-            val apiService =
-                ApiConfig.getApiService(BuildConfig.TOKEN, BuildConfig.BASE_URL_FINANCIALS)
             val successResponse = apiService.getIncomeThisMonth()
             emit(ResultState.Success(successResponse))
         } catch (e: HttpException) {
@@ -205,8 +196,6 @@ class CatatmakRepository private constructor(
     fun getOutcomeCustomDate(startDate: String, endDate: String) = liveData {
         emit(ResultState.Loading)
         try {
-            val apiService =
-                ApiConfig.getApiService(BuildConfig.TOKEN, BuildConfig.BASE_URL_FINANCIALS)
             val successResponse = apiService.getFinancialsCustomDate(
                 startDate = startDate,
                 endDate = endDate,
@@ -225,8 +214,6 @@ class CatatmakRepository private constructor(
     fun getIncomeCustomDate(startDate: String, endDate: String) = liveData {
         emit(ResultState.Loading)
         try {
-            val apiService =
-                ApiConfig.getApiService(BuildConfig.TOKEN, BuildConfig.BASE_URL_FINANCIALS)
             val successResponse = apiService.getFinancialsCustomDate(
                 startDate = startDate,
                 endDate = endDate,
@@ -251,8 +238,6 @@ class CatatmakRepository private constructor(
     ) = liveData {
         emit(ResultState.Loading)
         try {
-            val apiService =
-                ApiConfig.getApiService(BuildConfig.TOKEN, BuildConfig.BASE_URL_FINANCIALS)
             val successResponse =
                 apiService.createFinancial(title, price, category, type, createdAt)
             emit(ResultState.Success(successResponse))
@@ -268,8 +253,6 @@ class CatatmakRepository private constructor(
     fun deleteFinancial(id: String) = liveData {
         emit(ResultState.Loading)
         try {
-            val apiService =
-                ApiConfig.getApiService(BuildConfig.TOKEN, BuildConfig.BASE_URL_FINANCIALS)
             val successResponse = apiService.deleteFinancial(id)
             emit(ResultState.Success(successResponse))
         } catch (e: HttpException) {
@@ -291,8 +274,6 @@ class CatatmakRepository private constructor(
     ) = liveData {
         emit(ResultState.Loading)
         try {
-            val apiService =
-                ApiConfig.getApiService(BuildConfig.TOKEN, BuildConfig.BASE_URL_FINANCIALS)
             val successResponse =
                 apiService.updateFinancial(id, title, price, category, type, createdAt)
             emit(ResultState.Success(successResponse))
@@ -310,8 +291,6 @@ class CatatmakRepository private constructor(
     ) = liveData {
         emit(ResultState.Loading)
         try {
-            val apiService =
-                ApiConfig.getApiService(BuildConfig.TOKEN, BuildConfig.BASE_URL_FINANCIALS)
             val successResponse =
                 apiService.updateBulk(bulk)
             emit(ResultState.Success(successResponse))
@@ -329,8 +308,6 @@ class CatatmakRepository private constructor(
     ) = liveData {
         emit(ResultState.Loading)
         try {
-            val apiService =
-                ApiConfig.getApiService(BuildConfig.TOKEN, BuildConfig.BASE_URL_FINANCIALS)
             val successResponse =
                 apiService.updateCategory(transaction)
             emit(ResultState.Success(successResponse))
@@ -346,9 +323,7 @@ class CatatmakRepository private constructor(
     fun getChartsByDate() = liveData {
         emit(ResultState.Loading)
         try {
-            val apiService =
-                ApiConfig.getApiService(BuildConfig.TOKEN, BuildConfig.BASE_URL_FINANCIALS)
-            val successResponse = apiService.getChartsByDate("weekly")
+            val successResponse = apiService.getChartsByDate("monthly")
             emit(ResultState.Success(successResponse))
         } catch (e: HttpException) {
             val errorBody = e.response()?.errorBody()?.string()
@@ -362,9 +337,7 @@ class CatatmakRepository private constructor(
     fun getChartsByType() = liveData {
         emit(ResultState.Loading)
         try {
-            val apiService =
-                ApiConfig.getApiService(BuildConfig.TOKEN, BuildConfig.BASE_URL_FINANCIALS)
-            val successResponse = apiService.getChartsByType("weekly")
+            val successResponse = apiService.getChartsByType("monthly")
             emit(ResultState.Success(successResponse))
         } catch (e: HttpException) {
             val errorBody = e.response()?.errorBody()?.string()
@@ -378,8 +351,6 @@ class CatatmakRepository private constructor(
     fun getTotalUncategorize() = liveData {
         emit(ResultState.Loading)
         try {
-            val apiService =
-                ApiConfig.getApiService(BuildConfig.TOKEN, BuildConfig.BASE_URL_FINANCIALS)
             val successResponse = apiService.getTotalUncategorize()
             emit(ResultState.Success(successResponse))
         } catch (e: HttpException) {
@@ -394,8 +365,6 @@ class CatatmakRepository private constructor(
     fun getInsight() = liveData {
         emit(ResultState.Loading)
         try {
-            val apiService =
-                ApiConfig.getApiService(BuildConfig.TOKEN, BuildConfig.BASE_URL_FINANCIALS)
             val successResponse = apiService.getInsight()
             emit(ResultState.Success(successResponse))
         } catch (e: HttpException) {
@@ -410,8 +379,6 @@ class CatatmakRepository private constructor(
     fun getProfile() = liveData {
         emit(ResultState.Loading)
         try {
-            val apiService =
-                ApiConfig.getApiService(BuildConfig.TOKEN, BuildConfig.BASE_URL_FINANCIALS)
             val successResponse = apiService.getProfile()
             emit(ResultState.Success(successResponse))
         } catch (e: HttpException) {
@@ -426,8 +393,6 @@ class CatatmakRepository private constructor(
     fun updateProfile(profile: ProfileDataItem) = liveData {
         emit(ResultState.Loading)
         try {
-            val apiService =
-                ApiConfig.getApiService(BuildConfig.TOKEN, BuildConfig.BASE_URL_FINANCIALS)
             val successResponse = apiService.updateProfile(profile)
             emit(ResultState.Success(successResponse))
         } catch (e: HttpException) {
@@ -439,15 +404,51 @@ class CatatmakRepository private constructor(
         }
     }
 
+    fun sendOCR(imageFile: File) = liveData {
+        emit(ResultState.Loading)
+        val requestImageFile = imageFile.asRequestBody("image/jpeg".toMediaType())
+        val multipartBody = MultipartBody.Part.createFormData(
+            "file",
+            imageFile.name,
+            requestImageFile
+        )
+        try {
+            val successResponse = apiService.sendOCR(multipartBody)
+            emit(ResultState.Success(successResponse))
+        } catch (e: HttpException) {
+            val errorBody = e.response()?.errorBody()?.string()
+            val errorResponse = Gson().fromJson(errorBody, OCRResponse::class.java)
+            emit(ResultState.Error(errorResponse.message))
+        } catch (e: IOException) {
+            emit(ResultState.Error("Network error occurred"))
+        }
+    }
+
+    fun getFinancialsUncategorized() = liveData {
+        emit(ResultState.Loading)
+        try {
+            val successResponse = apiService.getFinancialsUncategorize()
+            emit(ResultState.Success(successResponse))
+        } catch (e: HttpException) {
+            val errorBody = e.response()?.errorBody()?.string()
+            val errorResponse = Gson().fromJson(errorBody, UncategorizeResponse::class.java)
+            emit(ResultState.Error(errorResponse.message))
+        } catch (e: IOException) {
+            emit(ResultState.Error("Network error occurred"))
+        }
+    }
+
+
     companion object {
         @Volatile
         private var instance: CatatmakRepository? = null
         fun getInstance(
+            apiBotService: ApiService,
             apiService: ApiService,
             userPreference: UserPreference,
         ): CatatmakRepository =
             instance ?: synchronized(this) {
-                instance ?: CatatmakRepository(apiService, userPreference)
+                instance ?: CatatmakRepository(apiBotService, apiService, userPreference)
             }.also { instance = it }
 
         fun resetInstance() {

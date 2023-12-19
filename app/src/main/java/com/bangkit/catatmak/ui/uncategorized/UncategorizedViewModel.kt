@@ -4,22 +4,14 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.bangkit.catatmak.BuildConfig
 import com.bangkit.catatmak.data.CatatmakRepository
-import com.bangkit.catatmak.data.api.ApiConfig
-import com.bangkit.catatmak.data.response.BulkResponseItem
 import com.bangkit.catatmak.data.response.UncategorizeDataItem
-import com.bangkit.catatmak.data.response.UncategorizeResponse
 import com.bangkit.catatmak.data.response.UpdateCategoryItem
-import com.bangkit.catatmak.ui.add_transaction.add_with_photo.AddWithPhotoViewModel
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class UncategorizedViewModel(private val repository: CatatmakRepository) : ViewModel() {
 
 
-    private val _listTransaction = MutableLiveData<List<UncategorizeDataItem>>()
+    val _listTransaction = MutableLiveData<List<UncategorizeDataItem>>()
     val listTransaction: LiveData<List<UncategorizeDataItem>> = _listTransaction
 
     private val _updatedTransaction = MutableLiveData<List<UpdateCategoryItem>>()
@@ -35,36 +27,38 @@ class UncategorizedViewModel(private val repository: CatatmakRepository) : ViewM
         getFinancialsUncategorized()
     }
 
-    private fun getFinancialsUncategorized() {
-        _isLoading.value = true
-        val client = ApiConfig.getApiService(BuildConfig.TOKEN, BuildConfig.BASE_URL_FINANCIALS)
-            .getFinancialsUncategorize()
-        client.enqueue(object : Callback<UncategorizeResponse> {
-            override fun onResponse(
-                call: Call<UncategorizeResponse>,
-                response: Response<UncategorizeResponse>
-            ) {
-                _isLoading.value = false
-                if (response.isSuccessful) {
-                    _listTransaction.value = response.body()?.data
-                    Log.d("DATAKU", listTransaction.toString())
-                } else {
-                    _errorMessage.value = response.message()
-                    Log.e(TAG, "onFailure: ${response.message()}")
-                }
-            }
+    fun getFinancialsUncategorized() = repository.getFinancialsUncategorized()
 
-            override fun onFailure(call: Call<UncategorizeResponse>, t: Throwable) {
-                _isLoading.value = false
-                _errorMessage.value = t.message.toString()
-                Log.e(TAG, "onFailure: ${t.message.toString()}")
-            }
-
-        })
-    }
+//    private fun getFinancialsUncategorized() {
+//        _isLoading.value = true
+//        val client = ApiConfig.getApiService(BuildConfig.TOKEN, BuildConfig.BASE_URL_FINANCIALS)
+//            .getFinancialsUncategorize()
+//        client.enqueue(object : Callback<UncategorizeResponse> {
+//            override fun onResponse(
+//                call: Call<UncategorizeResponse>,
+//                response: Response<UncategorizeResponse>
+//            ) {
+//                _isLoading.value = false
+//                if (response.isSuccessful) {
+//                    _listTransaction.value = response.body()?.data
+//                    Log.d("DATAKU", listTransaction.toString())
+//                } else {
+//                    _errorMessage.value = response.message()
+//                    Log.e(TAG, "onFailure: ${response.message()}")
+//                }
+//            }
+//
+//            override fun onFailure(call: Call<UncategorizeResponse>, t: Throwable) {
+//                _isLoading.value = false
+//                _errorMessage.value = t.message.toString()
+//                Log.e(TAG, "onFailure: ${t.message.toString()}")
+//            }
+//
+//        })
+//    }
 
     fun updateSelectedTransaction(transaction: UncategorizeDataItem, category: String) {
-        val currentList = _listTransaction.value.orEmpty().toMutableList()
+        val currentList = listTransaction.value.orEmpty().toMutableList()
 
         val updatedTransaction = transaction.copy(category = category)
 
@@ -78,7 +72,7 @@ class UncategorizedViewModel(private val repository: CatatmakRepository) : ViewM
     }
 
     private fun updatedCategory(): List<UpdateCategoryItem> {
-        val currentList = _listTransaction.value.orEmpty()
+        val currentList = listTransaction.value.orEmpty()
         val transactionResponseList = mutableListOf<UpdateCategoryItem>()
 
         currentList.forEach { transaction ->

@@ -16,7 +16,6 @@ import com.bangkit.catatmak.data.ResultState
 import com.bangkit.catatmak.data.response.FinancialsTodayDataItem
 import com.bangkit.catatmak.databinding.FragmentUpdateTransactionSheetBinding
 import com.bangkit.catatmak.ui.ViewModelFactory
-import com.bangkit.catatmak.ui.transaction.detail_outcome.DetailIncomeActivity
 import com.bangkit.catatmak.ui.transaction.detail_outcome.DetailIncomeViewModel
 import com.bangkit.catatmak.utils.convertCurrencyStringToNumber
 import com.bangkit.catatmak.utils.convertISO8601StringToCustom
@@ -106,7 +105,7 @@ class UpdateIncomeTransactionSheetFragment(private val transaction: FinancialsTo
                 )
                 binding?.actvCategory?.setAdapter(adapter)
 
-                binding?.actvCategory?.setOnItemClickListener { parent, view, position, id ->
+                binding?.actvCategory?.setOnItemClickListener { _, _, position, _ ->
                     adapter.setSelectedPosition(position)
                 }
             }
@@ -165,7 +164,7 @@ class UpdateIncomeTransactionSheetFragment(private val transaction: FinancialsTo
             if (category.isEmpty()) getString(R.string.empty_input) else null
 
         if (!isInputEmpty) {
-            formattedDateToISO8601?.let { date ->
+            formattedDateToISO8601?.let { _ ->
                 viewModel.updateFinancial(id, title, price, category, type, createdAt)
                     .observe(viewLifecycleOwner) { result ->
                         if (result != null) {

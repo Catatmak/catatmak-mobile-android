@@ -40,7 +40,6 @@ class SummaryOutcomeFragment : Fragment() {
             position = it.getInt(EXTRA_POSITION, 0)
         }
 
-        getSummaryOutcome()
 
         binding?.btnDetailSummary?.setOnClickListener {
             val intent = Intent(requireActivity(), OutcomeActivity::class.java)
@@ -59,11 +58,11 @@ class SummaryOutcomeFragment : Fragment() {
             if (result != null) {
                 when (result) {
                     is ResultState.Loading -> {
-                        showLoading(true, "summary-outcome")
+                        showLoading(true)
                     }
 
                     is ResultState.Success -> {
-                        showLoading(false, "summary-outcome")
+                        showLoading(false)
                         with(result) {
                             when (position) {
                                 1 -> {
@@ -91,7 +90,7 @@ class SummaryOutcomeFragment : Fragment() {
                     }
 
                     is ResultState.Error -> {
-                        showLoading(false, "summary-outcome")
+                        showLoading(false)
                         showToast(result.error.toString())
                     }
                 }
@@ -105,11 +104,11 @@ class SummaryOutcomeFragment : Fragment() {
         binding?.tvCountItem?.text = getString(R.string.count_outcome, count.toString())
     }
 
-    private fun showLoading(isLoading: Boolean, type: String) {
-        if (type == "summary-outcome") {
-            binding?.pbSummary?.visibility =
-                if (isLoading) View.VISIBLE else View.GONE
-        }
+    private fun showLoading(isLoading: Boolean) {
+
+        binding?.pbSummary?.visibility =
+            if (isLoading) View.VISIBLE else View.GONE
+
     }
 
     private fun showToast(message: String) {

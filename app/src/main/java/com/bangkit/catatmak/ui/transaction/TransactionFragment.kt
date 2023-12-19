@@ -54,11 +54,6 @@ class TransactionFragment : Fragment() {
         setUpViewPagerIncome()
     }
 
-    override fun onResume() {
-        super.onResume()
-        getFinancialsTotal()
-    }
-
     private fun setUpViewPagerOutcome() {
         val sectionsPagerAdapter = OutcomeSectionsPagerAdapter(this)
         binding?.vpSummaryOutcome?.adapter = sectionsPagerAdapter
@@ -88,11 +83,11 @@ class TransactionFragment : Fragment() {
             if (result != null) {
                 when (result) {
                     is ResultState.Loading -> {
-                        showLoading(true, "financials-total")
+                        showLoading(true)
                     }
 
                     is ResultState.Success -> {
-                        showLoading(false, "financials-total")
+                        showLoading(false)
                         val financialsTotalIncome = result.data.financialsTotalData.totalIncome
                         val financialsTotalOutcome = result.data.financialsTotalData.totalOutcome
                         if (financialsTotalIncome.isNotEmpty() && financialsTotalOutcome.isNotEmpty()) {
@@ -105,7 +100,7 @@ class TransactionFragment : Fragment() {
                     }
 
                     is ResultState.Error -> {
-                        showLoading(false, "financials-total")
+                        showLoading(false)
                         showToast(result.error.toString())
                     }
                 }
@@ -113,11 +108,11 @@ class TransactionFragment : Fragment() {
         }
     }
 
-    private fun showLoading(isLoading: Boolean, type: String) {
-        if (type == "financials-total") {
-            binding?.progressIndicatorFinancialsTotal?.visibility =
-                if (isLoading) View.VISIBLE else View.GONE
-        }
+    private fun showLoading(isLoading: Boolean) {
+
+        binding?.progressIndicatorFinancialsTotal?.visibility =
+            if (isLoading) View.VISIBLE else View.GONE
+
     }
 
     private fun showToast(message: String) {

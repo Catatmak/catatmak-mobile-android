@@ -27,7 +27,7 @@ class VerifSuccessViewModel : ViewModel() {
             override fun onTick(millisUntilFinished: Long) {
                 currentTime.value = millisUntilFinished
                 val seconds = millisUntilFinished / 1000
-                currentTimeString.value = seconds.toString() // Perbarui string saat waktu berubah
+                currentTimeString.value = seconds.toString()
             }
 
             override fun onFinish() {

@@ -5,14 +5,12 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
-import androidx.core.content.ContentProviderCompat.requireContext
 import com.bangkit.catatmak.R
 import com.bangkit.catatmak.adapter.CustomArrayAdapter
 import com.bangkit.catatmak.data.ResultState
 import com.bangkit.catatmak.data.response.ProfileDataItem
 import com.bangkit.catatmak.databinding.ActivityUpdateProfileBinding
 import com.bangkit.catatmak.ui.ViewModelFactory
-import com.bangkit.catatmak.ui.main.MainViewModel
 
 class UpdateProfileActivity : AppCompatActivity() {
 
@@ -104,7 +102,7 @@ class UpdateProfileActivity : AppCompatActivity() {
                                         )
                                         binding.actvGender?.setAdapter(adapter)
 
-                                        binding.actvGender?.setOnItemClickListener { parent, view, position, id ->
+                                        binding.actvGender?.setOnItemClickListener { _, _, position, _ ->
                                             adapter.setSelectedPosition(position)
                                         }
                                     }

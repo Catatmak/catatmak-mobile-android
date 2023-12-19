@@ -48,4 +48,6 @@ class HomeViewModel(private val repository: CatatmakRepository) : ViewModel() {
 
     fun deleteFinancial(id: String) = repository.deleteFinancial(id)
 
+    fun getInsight() = repository.getInsight()
+
 }

@@ -1,28 +1,17 @@
 package com.bangkit.catatmak.ui.uncategorized
 
-import android.content.Context
-import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.MenuItem
 import android.view.View
-import android.widget.Button
-import android.widget.PopupMenu
 import android.widget.Toast
 import androidx.activity.viewModels
-import androidx.annotation.MenuRes
-import androidx.core.content.ContextCompat
-import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bangkit.catatmak.R
-import com.bangkit.catatmak.adapter.ListTransactionAdapter
 import com.bangkit.catatmak.adapter.UncategorizeAdapter
 import com.bangkit.catatmak.data.ResultState
 import com.bangkit.catatmak.databinding.ActivityCategorizeBinding
 import com.bangkit.catatmak.ui.ViewModelFactory
-import com.bangkit.catatmak.ui.analysis.AnalysisFragment
-import com.bangkit.catatmak.ui.home.UpdateTransactionSheetFragment
 
 class UcategorizedActivity : AppCompatActivity() {
 
@@ -56,26 +45,43 @@ class UcategorizedActivity : AppCompatActivity() {
 
         setupRecyclerView()
 
-        viewModel.listTransaction.observe(this) { listTransaction ->
+        getFinancialsUncategorized()
+
+        viewModel.listTransaction.observe(this) { result ->
             val adapter = UncategorizeAdapter { transaction, category ->
                 viewModel.updateSelectedTransaction(transaction, category)
             }
-            adapter.submitList(listTransaction)
+            adapter.submitList(result)
             binding.rvTransactions.adapter = adapter
         }
+    }
 
-        viewModel.isLoading.observe(this) { isLoading ->
-            showLoading(isLoading)
-        }
+    private fun getFinancialsUncategorized() {
+        viewModel.getFinancialsUncategorized().observe(this) { result ->
+            if (result != null) {
+                when (result) {
+                    is ResultState.Loading -> {
+                        showLoading(true)
+                    }
 
-        viewModel.errorMessage.observe(this) { errorMessage ->
-            showToast(errorMessage)
+                    is ResultState.Success -> {
+                        showLoading(false)
+                        val data = result.data.data
+                        viewModel._listTransaction.value = data
+                    }
+
+                    is ResultState.Error -> {
+                        showLoading(false)
+                        showToast(result.error.toString())
+                    }
+                }
+            }
         }
     }
 
     private fun setUpAction() {
         binding.btnUpdate.setOnClickListener {
-            viewModel.updateCategory()?.observe(this) { result ->
+            viewModel.updateCategory().observe(this) { result ->
                 if (result != null) {
                     when (result) {
                         is ResultState.Loading -> {

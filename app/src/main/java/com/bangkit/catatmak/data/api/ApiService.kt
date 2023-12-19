@@ -124,11 +124,12 @@ interface ApiService {
         @Query("date") date: String
     ): GetChartsByDateResponse
 
+
     @Multipart
     @POST("ocr")
-    fun sendOCR(
+    suspend fun sendOCR(
         @Part file: MultipartBody.Part,
-    ): Call<OCRResponse>
+    ): OCRResponse
 
     @PUT("financials/bulk")
     suspend fun updateBulk(
@@ -144,9 +145,10 @@ interface ApiService {
     suspend fun getTotalUncategorize(
     ): TotalUncategorizeResponse
 
+
     @GET("uncategorize")
-    fun getFinancialsUncategorize(
-    ): Call<UncategorizeResponse>
+    suspend fun getFinancialsUncategorize(
+    ): UncategorizeResponse
 
     @GET("insight")
     suspend fun getInsight(

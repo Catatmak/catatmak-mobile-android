@@ -1,13 +1,11 @@
 package com.bangkit.catatmak.ui.authentication
 
-import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.widget.Toast
 import com.bangkit.catatmak.databinding.ActivityLoginBinding
 import com.bangkit.catatmak.R
 
@@ -44,24 +42,28 @@ class LoginActivity : AppCompatActivity() {
         binding.edtWhatsappNumber.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
             }
+
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
                 setMyButtonEnable()
             }
+
             override fun afterTextChanged(s: Editable) {
             }
         })
 
         binding.tvSendWhatsapp.setOnClickListener {
-            openWhatsApp(this, "08112584422", "Halo")
+            openWhatsApp()
         }
     }
 
-    private fun openWhatsApp(context: Context, phone: String, message: String) {
+    private fun openWhatsApp() {
+        val phone = getString(R.string.catatmak_phone)
+        val message = getString(R.string.send_message)
         val intent = Intent(Intent.ACTION_VIEW)
         intent.setPackage("com.whatsapp")
         intent.data = Uri.parse("https://wa.me/$phone?text=$message")
 
-        context.startActivity(intent)
+        this.startActivity(intent)
     }
 
     private fun setMyButtonEnable() {

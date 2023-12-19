@@ -4,22 +4,10 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.bangkit.catatmak.BuildConfig
 import com.bangkit.catatmak.data.CatatmakRepository
-import com.bangkit.catatmak.data.api.ApiConfig
 import com.bangkit.catatmak.data.response.BulkResponseItem
 import com.bangkit.catatmak.data.response.OCRDataItem
-import com.bangkit.catatmak.data.response.OCRResponse
-import com.bangkit.catatmak.data.response.UncategorizeDataItem
-import com.bangkit.catatmak.ui.uncategorized.UncategorizedViewModel
-import okhttp3.MediaType.Companion.toMediaType
-import okhttp3.MultipartBody
-import okhttp3.RequestBody.Companion.asRequestBody
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import java.io.File
-import java.util.Random
 
 class AddWithPhotoViewModel(private val repository: CatatmakRepository) : ViewModel() {
 
@@ -30,7 +18,7 @@ class AddWithPhotoViewModel(private val repository: CatatmakRepository) : ViewMo
     private val _selectedTransaction = MutableLiveData<OCRDataItem?>()
     val selectedTransaction: LiveData<OCRDataItem?> = _selectedTransaction
 
-    private val _listTransaction = MutableLiveData<List<OCRDataItem>>()
+    val _listTransaction = MutableLiveData<List<OCRDataItem>>()
     val listTransaction: LiveData<List<OCRDataItem>> = _listTransaction
 
     private val _isLoading = MutableLiveData<Boolean>()
@@ -53,49 +41,8 @@ class AddWithPhotoViewModel(private val repository: CatatmakRepository) : ViewMo
         _categoryItems.value = categories
     }
 
-    fun sendOCR(imageFile: File) {
-        _isLoading.value = true
-        val requestImageFile = imageFile.asRequestBody("image/jpeg".toMediaType())
-        val multipartBody = MultipartBody.Part.createFormData(
-            "file",
-            imageFile.name,
-            requestImageFile
-        )
-        val client = ApiConfig.getApiService(BuildConfig.TOKEN, BuildConfig.BASE_URL_FINANCIALS)
-            .sendOCR(multipartBody)
-        client.enqueue(object : Callback<OCRResponse> {
-            override fun onResponse(
-                call: Call<OCRResponse>,
-                response: Response<OCRResponse>
-            ) {
-                _isLoading.value = false
-                if (response.isSuccessful) {
-                    val ocrResponse = response.body()
-                    val newList = addIdToOCRData(ocrResponse?.data.orEmpty())
-                    _listTransaction.value = newList
-                    Log.d("DATAKU", newList.toString())
-                } else {
-                    _errorMessage.value = response.message()
-                    Log.e(TAG, "onFailure: ${response.message()}")
-                }
-            }
+    fun sendOCR(imageFile: File) = repository.sendOCR(imageFile)
 
-            override fun onFailure(call: Call<OCRResponse>, t: Throwable) {
-                _isLoading.value = false
-                _errorMessage.value = t.message.toString()
-                Log.e(TAG, "onFailure: ${t.message.toString()}")
-            }
-
-        })
-    }
-
-    private fun addIdToOCRData(ocrData: List<OCRDataItem>): List<OCRDataItem> {
-        val random = Random()
-        return ocrData.map { ocrItem ->
-            val uniqueId = random.nextInt(Int.MAX_VALUE)
-            ocrItem.copy(id = uniqueId)
-        }
-    }
 
 
     private fun updatedBulk(): List<BulkResponseItem> {
@@ -120,7 +67,7 @@ class AddWithPhotoViewModel(private val repository: CatatmakRepository) : ViewMo
     }
 
     fun updateSelectedTransaction(updatedTransaction: OCRDataItem) {
-        val currentList = _listTransaction.value.orEmpty().toMutableList()
+        val currentList = listTransaction.value.orEmpty().toMutableList()
 
         val updatedTransactionCopy = updatedTransaction.copy()
 
@@ -133,7 +80,7 @@ class AddWithPhotoViewModel(private val repository: CatatmakRepository) : ViewMo
     }
 
     fun updateCategoryTransaction(transaction: OCRDataItem, category: String) {
-        val currentList = _listTransaction.value.orEmpty().toMutableList()
+        val currentList = listTransaction.value.orEmpty().toMutableList()
 
         val updatedTransaction = transaction.copy(category = category)
 

@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import com.bangkit.catatmak.R
+import com.bangkit.catatmak.data.CatatmakRepository
 import com.bangkit.catatmak.data.ResultState
 import com.bangkit.catatmak.data.pref.UserModel
 import com.bangkit.catatmak.databinding.ActivityVerificationBinding
@@ -54,6 +55,7 @@ class VerificationActivity : AppCompatActivity() {
         }
     }
 
+    @Suppress("DEPRECATION")
     private fun setUpAction() {
         binding.btnVerify.setOnClickListener {
             verify()
@@ -88,10 +90,13 @@ class VerificationActivity : AppCompatActivity() {
                         }
 
                         is ResultState.Success -> {
+                            showLoading(false)
                             val token = result.data.token
                             if (token.isNotEmpty()) {
                                 viewModel.saveSession(UserModel(token))
                             }
+                            ViewModelFactory.resetInstance()
+                            CatatmakRepository.resetInstance()
                             val intent = Intent(this, VerifSuccessActivity::class.java)
                             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                             startActivity(intent)
@@ -99,6 +104,7 @@ class VerificationActivity : AppCompatActivity() {
                         }
 
                         is ResultState.Error -> {
+                            showLoading(false)
                             val intent = Intent(this, VerifFailActivity::class.java)
                             startActivity(intent)
                         }

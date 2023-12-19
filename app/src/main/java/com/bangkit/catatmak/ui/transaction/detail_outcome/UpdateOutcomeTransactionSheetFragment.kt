@@ -105,7 +105,7 @@ class UpdateOutcomeTransactionSheetFragment(private val transaction: FinancialsT
                 )
                 binding?.actvCategory?.setAdapter(adapter)
 
-                binding?.actvCategory?.setOnItemClickListener { parent, view, position, id ->
+                binding?.actvCategory?.setOnItemClickListener { _, _, position, _ ->
                     adapter.setSelectedPosition(position)
                 }
             }
@@ -164,7 +164,7 @@ class UpdateOutcomeTransactionSheetFragment(private val transaction: FinancialsT
             if (category.isEmpty()) getString(R.string.empty_input) else null
 
         if (!isInputEmpty) {
-            formattedDateToISO8601?.let { date ->
+            formattedDateToISO8601?.let { _ ->
                 viewModel.updateFinancial(id, title, price, category, type, createdAt)
                     .observe(viewLifecycleOwner) { result ->
                         if (result != null) {

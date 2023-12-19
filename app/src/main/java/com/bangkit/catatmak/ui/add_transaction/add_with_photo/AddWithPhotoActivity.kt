@@ -20,6 +20,7 @@ import com.bangkit.catatmak.ui.home.BottomSheetDismissListener
 import com.bangkit.catatmak.ui.main.MainActivity
 import com.bangkit.catatmak.utils.reduceFileImage
 import com.bangkit.catatmak.utils.uriToFile
+import java.util.Random
 
 interface UpdateTransactionListener {
     fun onUpdateTransaction(updatedTransaction: OCRDataItem)
@@ -65,25 +66,52 @@ class AddWithPhotoActivity : AppCompatActivity(), UpdateTransactionListener,
         setupRecyclerView()
 
         imageUri?.let { uri ->
-            viewModel.sendOCR(uriToFile(uri, this).reduceFileImage())
+            sendOCR(uri)
         }
 
-        viewModel.listTransaction.observe(this) { listTransaction ->
-            setTransactionData(listTransaction)
-            binding.btnSave.visibility = View.VISIBLE
-        }
-
-        viewModel.isLoading.observe(this) { isLoading ->
-            showLoading(isLoading)
-            binding.btnSave.visibility = View.GONE
-        }
-
-        viewModel.errorMessage.observe(this) { errorMessage ->
-            Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()
+        viewModel.listTransaction.observe(this) { result ->
+            setTransactionData(result)
         }
 
         setUpAction()
     }
+
+    private fun sendOCR(uri: Uri) {
+        viewModel.sendOCR(uriToFile(uri, this).reduceFileImage()).observe(this) { result ->
+            if (result != null) {
+                when (result) {
+                    is ResultState.Loading -> {
+                        showLoading(true)
+                        binding.btnSave.visibility = View.GONE
+                    }
+
+                    is ResultState.Success -> {
+                        showLoading(false)
+                        binding.btnSave.visibility = View.VISIBLE
+                        val data = result.data.data
+                        if (data.isNotEmpty()) {
+                            val newList = addIdToOCRData(data)
+                            viewModel._listTransaction.value = newList
+                        }
+                    }
+
+                    is ResultState.Error -> {
+                        showLoading(false)
+                        showToast(result.error.toString())
+                    }
+                }
+            }
+        }
+    }
+
+    private fun addIdToOCRData(ocrData: List<OCRDataItem>): List<OCRDataItem> {
+        val random = Random()
+        return ocrData.map { ocrItem ->
+            val uniqueId = random.nextInt(Int.MAX_VALUE)
+            ocrItem.copy(id = uniqueId)
+        }
+    }
+
 
     private fun setUpAction() {
         binding.btnSave.setOnClickListener {

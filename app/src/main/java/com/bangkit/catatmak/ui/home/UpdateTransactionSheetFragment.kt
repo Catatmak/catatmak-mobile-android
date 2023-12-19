@@ -3,7 +3,6 @@ package com.bangkit.catatmak.ui.home
 import android.app.DatePickerDialog
 import android.app.Dialog
 import android.content.DialogInterface
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -17,7 +16,6 @@ import com.bangkit.catatmak.data.ResultState
 import com.bangkit.catatmak.data.response.FinancialsTodayDataItem
 import com.bangkit.catatmak.databinding.FragmentUpdateTransactionSheetBinding
 import com.bangkit.catatmak.ui.ViewModelFactory
-import com.bangkit.catatmak.ui.add_transaction.AddTransactionViewModel
 import com.bangkit.catatmak.utils.convertCurrencyStringToNumber
 import com.bangkit.catatmak.utils.convertISO8601StringToCustom
 import com.bangkit.catatmak.utils.formatDateToISO8601
@@ -25,10 +23,7 @@ import com.bangkit.catatmak.utils.formatISO8601ToCustom
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.google.android.material.textfield.TextInputEditText
-import java.text.SimpleDateFormat
 import java.util.Calendar
-import java.util.Locale
 import java.util.TimeZone
 
 interface BottomSheetDismissListener {
@@ -109,7 +104,7 @@ class UpdateTransactionSheetFragment(private val transaction: FinancialsTodayDat
                 )
                 binding?.actvCategory?.setAdapter(adapter)
 
-                binding?.actvCategory?.setOnItemClickListener { parent, view, position, id ->
+                binding?.actvCategory?.setOnItemClickListener { _, _, position, _ ->
                     adapter.setSelectedPosition(position)
                 }
             }
@@ -168,7 +163,7 @@ class UpdateTransactionSheetFragment(private val transaction: FinancialsTodayDat
             if (category.isEmpty()) getString(R.string.empty_input) else null
 
         if (!isInputEmpty) {
-            formattedDateToISO8601?.let { date ->
+            formattedDateToISO8601?.let { _ ->
                 viewModel.updateFinancial(id, title, price, category, type, createdAt)
                     .observe(viewLifecycleOwner) { result ->
                         if (result != null) {

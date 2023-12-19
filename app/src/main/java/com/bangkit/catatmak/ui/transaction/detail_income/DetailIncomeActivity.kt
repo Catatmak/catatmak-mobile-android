@@ -1,4 +1,4 @@
-package com.bangkit.catatmak.ui.transaction.detail_outcome
+package com.bangkit.catatmak.ui.transaction.detail_income
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -12,11 +12,10 @@ import com.bangkit.catatmak.adapter.ListTransactionAdapter
 import com.bangkit.catatmak.data.ResultState
 import com.bangkit.catatmak.databinding.ActivityFinancialsDetailBinding
 import com.bangkit.catatmak.ui.ViewModelFactory
-import com.bangkit.catatmak.ui.home.UpdateTransactionSheetFragment
-import com.bangkit.catatmak.ui.transaction.detail_income.UpdateIncomeTransactionSheetFragment
+import com.bangkit.catatmak.ui.transaction.detail_outcome.DetailIncomeViewModel
 
 class DetailIncomeActivity : AppCompatActivity(),
-    com.bangkit.catatmak.ui.transaction.detail_income.BottomSheetDismissListener {
+    BottomSheetDismissListener {
 
     private lateinit var binding: ActivityFinancialsDetailBinding
 

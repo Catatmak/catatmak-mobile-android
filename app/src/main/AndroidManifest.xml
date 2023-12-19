@@ -37,7 +37,7 @@
             android:name=".ui.add_transaction.add_with_photo.AddWithPhotoActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.transaction.detail_outcome.DetailIncomeActivity"
+            android:name=".ui.transaction.detail_income.DetailIncomeActivity"
             android:exported="false" />
         <activity
             android:name=".ui.transaction.detail_outcome.DetailOutcomeActivity"

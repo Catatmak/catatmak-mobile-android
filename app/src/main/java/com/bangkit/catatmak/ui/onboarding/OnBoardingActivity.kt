@@ -20,22 +20,19 @@ class OnBoardingActivity : AppCompatActivity() {
     }
 
     private fun setupAction() {
-        binding.btnTryNow?.setOnClickListener { goToMainActivity() }
+        binding.btnTryNow.setOnClickListener { goToMainActivity() }
 
         var isMenu2Displayed = false
 
         binding.btnNext?.setOnClickListener {
-            if (!isMenu2Displayed) {
-                // Ganti scene dari end ke menu2
-                binding.motionLayoutId?.setTransition(R.id.end, R.id.menu2)
-                binding.motionLayoutId?.transitionToEnd()
-                isMenu2Displayed = true
+            isMenu2Displayed = if (!isMenu2Displayed) {
+                binding.motionLayoutId.setTransition(R.id.end, R.id.menu2)
+                binding.motionLayoutId.transitionToEnd()
+                true
             } else {
-                // Ganti scene dari menu2 ke menu3
-                binding.motionLayoutId?.setTransition(R.id.menu2, R.id.menu3)
-                binding.motionLayoutId?.transitionToEnd()
-                // Reset variabel untuk transisi selanjutnya
-                isMenu2Displayed = false
+                binding.motionLayoutId.setTransition(R.id.menu2, R.id.menu3)
+                binding.motionLayoutId.transitionToEnd()
+                false
             }
         }
 

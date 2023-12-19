@@ -1,11 +1,7 @@
 package com.bangkit.catatmak.ui.profile.about
 
-import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Spannable
-import android.text.SpannableString
-import android.text.style.StyleSpan
 import com.bangkit.catatmak.databinding.ActivityAboutBinding
 
 class AboutActivity : AppCompatActivity() {

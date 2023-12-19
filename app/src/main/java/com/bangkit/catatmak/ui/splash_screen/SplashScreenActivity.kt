@@ -34,13 +34,13 @@ class SplashScreenActivity : AppCompatActivity() {
 
         viewModel.getSession().observe(this) { user ->
             if (user.isLogin) {
-                val handler = Handler()
+                @Suppress("DEPRECATION") val handler = Handler()
                 handler.postDelayed({
                     startActivity(Intent(this, MainActivity::class.java))
                     finish()
                 }, 5000)
             } else {
-                val handler = Handler()
+                @Suppress("DEPRECATION") val handler = Handler()
                 handler.postDelayed({
                     goToOnboardingPage()
                 }, 5000)
@@ -48,7 +48,6 @@ class SplashScreenActivity : AppCompatActivity() {
         }
     }
 
-    @Suppress("DEPRECATION")
     private fun goToOnboardingPage() {
         val intent = Intent(this, OnBoardingActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK

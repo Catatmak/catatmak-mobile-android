@@ -7,7 +7,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 class OutcomeSectionsPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment)
 {
     override fun createFragment(position: Int): Fragment {
-        var fragment = SummaryOutcomeFragment()
+        val fragment = SummaryOutcomeFragment()
         fragment.arguments = Bundle().apply {
             putInt(SummaryOutcomeFragment.EXTRA_POSITION, position + 1)
         }

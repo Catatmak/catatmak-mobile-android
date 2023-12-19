@@ -80,16 +80,16 @@ fun File.reduceFileImage(): File {
     var streamLength: Int
     do {
         val bmpStream = ByteArrayOutputStream()
-        bitmap?.compress(Bitmap.CompressFormat.JPEG, compressQuality, bmpStream)
+        bitmap.compress(Bitmap.CompressFormat.JPEG, compressQuality, bmpStream)
         val bmpPicByteArray = bmpStream.toByteArray()
         streamLength = bmpPicByteArray.size
         compressQuality -= 5
     } while (streamLength > MAXIMAL_SIZE)
-    bitmap?.compress(Bitmap.CompressFormat.JPEG, compressQuality, FileOutputStream(file))
+    bitmap.compress(Bitmap.CompressFormat.JPEG, compressQuality, FileOutputStream(file))
     return file
 }
 
-fun Bitmap.getRotatedBitmap(file: File): Bitmap? {
+fun Bitmap.getRotatedBitmap(file: File): Bitmap {
     val orientation = ExifInterface(file).getAttributeInt(
         ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_UNDEFINED
     )
@@ -102,7 +102,7 @@ fun Bitmap.getRotatedBitmap(file: File): Bitmap? {
     }
 }
 
-fun rotateImage(source: Bitmap, angle: Float): Bitmap? {
+fun rotateImage(source: Bitmap, angle: Float): Bitmap {
     val matrix = Matrix()
     matrix.postRotate(angle)
     return Bitmap.createBitmap(
@@ -157,10 +157,9 @@ fun formatISO8601ToCustom(calendar: Calendar): String {
 
 fun convertISO8601StringToCustom(inputDate: String): String {
     val inputFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault())
-    inputFormat.timeZone = TimeZone.getTimeZone("UTC")
+    inputFormat.timeZone = TimeZone.getTimeZone("Asia/Jakarta")
 
     val outputFormat = SimpleDateFormat("dd MMMM yyyy", Locale.getDefault())
-    outputFormat.timeZone = TimeZone.getDefault()
 
     return try {
         val date = inputFormat.parse(inputDate)
@@ -172,6 +171,8 @@ fun convertISO8601StringToCustom(inputDate: String): String {
 
 fun formatDateTime(inputDate: String): String {
     val inputFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault())
+    inputFormat.timeZone = TimeZone.getTimeZone("Asia/Jakarta")
+
     val outputFormat = SimpleDateFormat("d MMMM, HH:mm", Locale.getDefault())
 
     return try {

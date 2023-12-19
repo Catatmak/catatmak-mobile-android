@@ -98,7 +98,7 @@ class AddTransactionSheetFragment : BottomSheetDialogFragment() {
                 )
                 binding?.actvCategory?.setAdapter(adapter)
 
-                binding?.actvCategory?.setOnItemClickListener { parent, view, position, id ->
+                binding?.actvCategory?.setOnItemClickListener { _, _, position, _ ->
                     adapter.setSelectedPosition(position)
                 }
             }
@@ -180,7 +180,7 @@ class AddTransactionSheetFragment : BottomSheetDialogFragment() {
                             )
                             binding?.actvCategory?.setAdapter(adapter)
 
-                            binding?.actvCategory?.setOnItemClickListener { parent, view, position, id ->
+                            binding?.actvCategory?.setOnItemClickListener { _, _, position, _ ->
                                 adapter.setSelectedPosition(position)
                             }
                         }

@@ -15,9 +15,8 @@
             versionCode = 1
             versionName = "1.0"
 
-            buildConfigField("String", "BASE_URL", "\"https://catatmak.com/\"")
-            buildConfigField("String", "BASE_URL_FINANCIALS", "\"https://catatmak-api-lbiuaop2oq-et.a.run.app/\"")
-            buildConfigField("String", "TOKEN", "\"29d4dac9b87a238179e6b790db51925fd91a3967ec2ad99810f1c5861df9efc0\"")
+            buildConfigField("String", "BASE_URL_BOT", "\"https://catatmak.com/\"")
+            buildConfigField("String", "BASE_URL_API", "\"https://catatmak-api-lbiuaop2oq-et.a.run.app/\"")
 
             testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 

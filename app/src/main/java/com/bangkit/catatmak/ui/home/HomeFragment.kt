@@ -34,20 +34,44 @@ class HomeFragment : Fragment(), BottomSheetDismissListener {
         return binding?.root
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         setupRecyclerView()
         getTotalOutcomeToday()
         getAllFinancialsToday()
+        getInsight()
+    }
+
+    private fun getInsight() {
+        viewModel.getInsight().observe(viewLifecycleOwner) { result ->
+            if (result != null) {
+                when (result) {
+                    is ResultState.Loading -> {
+                        showLoading(true, "one-insight")
+                    }
+
+                    is ResultState.Success -> {
+                        showLoading(false, "one-insight")
+                        val insight = result.data.data[0]
+                        binding?.tvInsightTitle?.text = getString(R.string.insight_title, insight.title)
+                        binding?.tvInsightMessage?.text = insight.description
+                    }
+
+                    is ResultState.Error -> {
+                        showLoading(false, "one-insight")
+                        showToast(result.error.toString())
+                    }
+                }
+            }
+        }
     }
 
     override fun onResume() {
         super.onResume()
-        setupRecyclerView()
+        getTotalOutcomeToday()
         getAllFinancialsToday()
     }
+
 
     override fun onDestroy() {
         super.onDestroy()
@@ -68,7 +92,7 @@ class HomeFragment : Fragment(), BottomSheetDismissListener {
     }
 
     private fun getTotalOutcomeToday() {
-        viewModel.getTotalOutcomeToday().observe(requireActivity()) { result ->
+        viewModel.getTotalOutcomeToday().observe(viewLifecycleOwner) { result ->
             if (result != null) {
                 when (result) {
                     is ResultState.Loading -> {
@@ -82,6 +106,7 @@ class HomeFragment : Fragment(), BottomSheetDismissListener {
                             binding?.tvTotalOutcomeToday?.text = totalOutcomeToday
                         }
                     }
+
                     is ResultState.Error -> {
                         showLoading(false, "total-outcome-today")
                         showToast(result.error.toString())
@@ -92,7 +117,7 @@ class HomeFragment : Fragment(), BottomSheetDismissListener {
     }
 
     private fun getAllFinancialsToday() {
-        viewModel.getAllFinancialsToday().observe(requireActivity()) { result ->
+        viewModel.getAllFinancialsToday().observe(viewLifecycleOwner) { result ->
             if (result != null) {
                 when (result) {
                     is ResultState.Loading -> {
@@ -106,8 +131,12 @@ class HomeFragment : Fragment(), BottomSheetDismissListener {
                             binding?.tvNoTransactionData?.visibility = View.GONE
                             val adapter = ListTransactionAdapter { transaction ->
                                 if (!isSheetShown) {
-                                    val showBottomSheet = UpdateTransactionSheetFragment(transaction, this)
-                                    showBottomSheet.show(childFragmentManager, UpdateTransactionSheetFragment.TAG)
+                                    val showBottomSheet =
+                                        UpdateTransactionSheetFragment(transaction, this)
+                                    showBottomSheet.show(
+                                        childFragmentManager,
+                                        UpdateTransactionSheetFragment.TAG
+                                    )
                                     isSheetShown = true
                                 }
                             }
@@ -128,12 +157,21 @@ class HomeFragment : Fragment(), BottomSheetDismissListener {
     }
 
     private fun showLoading(isLoading: Boolean, type: String) {
-        if (type == "financials-today") {
-            binding?.progressIndicatorTodaysFinancials?.visibility =
-                if (isLoading) View.VISIBLE else View.GONE
-        } else {
-            binding?.progressIndicatorFinancialsTotal?.visibility =
-                if (isLoading) View.VISIBLE else View.GONE
+        when (type) {
+            "financials-today" -> {
+                binding?.progressIndicatorTodaysFinancials?.visibility =
+                    if (isLoading) View.VISIBLE else View.GONE
+            }
+
+            "total-outcome-today" -> {
+                binding?.progressIndicatorFinancialsTotal?.visibility =
+                    if (isLoading) View.VISIBLE else View.GONE
+            }
+
+            "one-insight" -> {
+                binding?.progressIndicatorInsight?.visibility =
+                    if (isLoading) View.VISIBLE else View.GONE
+            }
         }
     }
 
