@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import com.bangkit.catatmak.data.CatatmakRepository
 import com.bangkit.catatmak.data.response.BulkResponseItem
 import com.bangkit.catatmak.data.response.OCRDataItem
+import com.bangkit.catatmak.utils.convertCurrencyStringToNumber
 import java.io.File
 
 class AddWithPhotoViewModel(private val repository: CatatmakRepository) : ViewModel() {
@@ -54,7 +55,7 @@ class AddWithPhotoViewModel(private val repository: CatatmakRepository) : ViewMo
                 title = transaction.title,
                 type = transaction.type,
                 category = transaction.category,
-                price = transaction.price,
+                price = convertCurrencyStringToNumber(transaction.price).toString(),
                 imageUrl = transaction.imageUrl,
                 imageName = transaction.imageName
             )

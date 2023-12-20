@@ -255,4 +255,5 @@
     <string name="other">Lainnya</string>
     <string name="catatmak_phone">08112584422</string>
     <string name="send_message">Halo</string>
+    <string name="no_insight_data">Insight belum tersedia.</string>
 </resources>

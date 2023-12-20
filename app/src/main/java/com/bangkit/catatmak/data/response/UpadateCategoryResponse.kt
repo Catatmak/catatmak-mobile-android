@@ -20,4 +20,7 @@ data class UpdateCategoryItem(
     @field:SerializedName("price")
     val price: String,
 
+    @field:SerializedName("created_at")
+    val createdAt: String,
+
     )

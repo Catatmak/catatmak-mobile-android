@@ -29,33 +29,6 @@ class UncategorizedViewModel(private val repository: CatatmakRepository) : ViewM
 
     fun getFinancialsUncategorized() = repository.getFinancialsUncategorized()
 
-//    private fun getFinancialsUncategorized() {
-//        _isLoading.value = true
-//        val client = ApiConfig.getApiService(BuildConfig.TOKEN, BuildConfig.BASE_URL_FINANCIALS)
-//            .getFinancialsUncategorize()
-//        client.enqueue(object : Callback<UncategorizeResponse> {
-//            override fun onResponse(
-//                call: Call<UncategorizeResponse>,
-//                response: Response<UncategorizeResponse>
-//            ) {
-//                _isLoading.value = false
-//                if (response.isSuccessful) {
-//                    _listTransaction.value = response.body()?.data
-//                    Log.d("DATAKU", listTransaction.toString())
-//                } else {
-//                    _errorMessage.value = response.message()
-//                    Log.e(TAG, "onFailure: ${response.message()}")
-//                }
-//            }
-//
-//            override fun onFailure(call: Call<UncategorizeResponse>, t: Throwable) {
-//                _isLoading.value = false
-//                _errorMessage.value = t.message.toString()
-//                Log.e(TAG, "onFailure: ${t.message.toString()}")
-//            }
-//
-//        })
-//    }
 
     fun updateSelectedTransaction(transaction: UncategorizeDataItem, category: String) {
         val currentList = listTransaction.value.orEmpty().toMutableList()
@@ -81,7 +54,8 @@ class UncategorizedViewModel(private val repository: CatatmakRepository) : ViewM
                 title = transaction.title,
                 type = transaction.type,
                 category = transaction.category,
-                price = transaction.price
+                price = transaction.price,
+                createdAt = transaction.createdAt,
             )
             transactionResponseList.add(transactionResponseItem)
         }

@@ -177,6 +177,21 @@
             app:layout_constraintTop_toBottomOf="@id/tvTodaysTransaction"
             android:visibility="gone" />
 
+        <TextView
+            android:id="@+id/tvNoInsightData"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:fontFamily="@font/sf_pro_display_medium"
+            android:text="@string/no_insight_data"
+            android:textColor="@color/red"
+            android:textSize="14sp"
+            android:textAlignment="center"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ivMamihAi" />
+
         <ProgressBar
             android:id="@+id/progressIndicatorTodaysFinancials"
             android:layout_width="wrap_content"

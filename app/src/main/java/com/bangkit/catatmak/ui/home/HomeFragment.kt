@@ -52,9 +52,16 @@ class HomeFragment : Fragment(), BottomSheetDismissListener {
 
                     is ResultState.Success -> {
                         showLoading(false, "one-insight")
-                        val insight = result.data.data[0]
-                        binding?.tvInsightTitle?.text = getString(R.string.insight_title, insight.title)
-                        binding?.tvInsightMessage?.text = insight.description
+                        val insight = result.data.data
+                        if (insight.isNotEmpty()) {
+                            binding?.tvInsightTitle?.text =
+                                getString(R.string.insight_title, insight[0].title)
+                            binding?.tvInsightMessage?.text = insight[0].description
+                        } else {
+                            binding?.tvInsightTitle?.visibility = View.GONE
+                            binding?.tvInsightMessage?.visibility = View.GONE
+                            binding?.tvNoInsightData?.visibility = View.VISIBLE
+                        }
                     }
 
                     is ResultState.Error -> {
