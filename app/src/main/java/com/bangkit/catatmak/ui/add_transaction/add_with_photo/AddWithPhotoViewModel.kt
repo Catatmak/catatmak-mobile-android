@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModel
 import com.bangkit.catatmak.data.CatatmakRepository
 import com.bangkit.catatmak.data.response.BulkResponseItem
 import com.bangkit.catatmak.data.response.OCRDataItem
-import com.bangkit.catatmak.utils.convertCurrencyStringToNumber
 import java.io.File
 
 class AddWithPhotoViewModel(private val repository: CatatmakRepository) : ViewModel() {
@@ -45,7 +44,6 @@ class AddWithPhotoViewModel(private val repository: CatatmakRepository) : ViewMo
     fun sendOCR(imageFile: File) = repository.sendOCR(imageFile)
 
 
-
     private fun updatedBulk(): List<BulkResponseItem> {
         val currentList = _listTransaction.value.orEmpty()
         val bulkResponseList = mutableListOf<BulkResponseItem>()
@@ -55,7 +53,7 @@ class AddWithPhotoViewModel(private val repository: CatatmakRepository) : ViewMo
                 title = transaction.title,
                 type = transaction.type,
                 category = transaction.category,
-                price = convertCurrencyStringToNumber(transaction.price).toString(),
+                price = transaction.price.replace(".", ""),
                 imageUrl = transaction.imageUrl,
                 imageName = transaction.imageName
             )
