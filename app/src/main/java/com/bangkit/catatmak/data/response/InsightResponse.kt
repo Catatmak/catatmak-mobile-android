@@ -7,14 +7,14 @@ data class InsightResponse(
     @field:SerializedName("code")
     val code: Int,
 
-    @field:SerializedName("data")
-    val data: List<InsightDataItem>,
-
     @field:SerializedName("message")
     val message: String,
 
     @field:SerializedName("status")
-    val status: String
+    val status: String,
+
+    @field:SerializedName("data")
+    val data: List<InsightDataItem>,
 )
 
 data class InsightDataItem(

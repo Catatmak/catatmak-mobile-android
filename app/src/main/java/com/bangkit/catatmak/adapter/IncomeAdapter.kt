@@ -50,6 +50,7 @@ class IncomeAdapter :
                         intent.putExtra(DetailIncomeActivity.EXTRA_START_DATE, startDate)
                         intent.putExtra(DetailIncomeActivity.EXTRA_END_DATE, endDate)
                         intent.putExtra(DetailIncomeActivity.EXTRA_POSITION, position)
+                        intent.putExtra(DetailIncomeActivity.EXTRA_TITLE, title)
                         itemView.context.startActivity(intent)
                     }
                 }

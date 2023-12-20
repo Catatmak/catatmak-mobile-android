@@ -12,7 +12,7 @@
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cvTodaysExpeses"
-            android:layout_width="320dp"
+            android:layout_width="400dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="18dp"
             android:backgroundTint="@color/dark_blue"
@@ -84,59 +84,77 @@
             app:layout_constraintStart_toEndOf="@id/guideline2"
             app:layout_constraintTop_toTopOf="@id/cvTodaysExpeses" />
 
-        <ImageView
+        <LinearLayout
             android:id="@+id/ivMamihAi"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:contentDescription="@string/mak_beti_ai_image"
-            android:src="@drawable/mamih_ai"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:gravity="center"
+            android:orientation="vertical"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cvTodaysExpeses" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cvTodaysExpeses">
 
-        <TextView
-            android:id="@+id/tvInsightTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:fontFamily="@font/sf_pro_display_bold"
-            android:text="@string/insight_title"
-            android:textAlignment="center"
-            android:textColor="@color/dark_blue"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="@id/ivMamihAi"
-            app:layout_constraintStart_toStartOf="@id/ivMamihAi"
-            app:layout_constraintTop_toBottomOf="@id/ivMamihAi" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/mak_beti_ai_image"
+                android:src="@drawable/mamih_ai" />
 
-        <TextView
-            android:id="@+id/tvInsightMessage"
-            android:layout_width="292dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
-            android:fontFamily="@font/sf_pro_display_medium"
-            android:lineHeight="17dp"
-            android:text="@string/insight_message"
-            android:textAlignment="center"
-            android:textColor="@color/dark_blue"
-            android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="@id/tvInsightTitle"
-            app:layout_constraintStart_toStartOf="@id/tvInsightTitle"
-            app:layout_constraintTop_toBottomOf="@id/tvInsightTitle"
-            tools:ignore="UnusedAttribute" />
+
+            <ProgressBar
+                android:id="@+id/progressIndicatorInsight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                tools:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tvInsightTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/sf_pro_display_bold"
+                tools:text="@string/insight_title"
+                android:textAlignment="center"
+                android:textColor="@color/dark_blue"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="@id/ivMamihAi"
+                app:layout_constraintStart_toStartOf="@id/ivMamihAi"
+                app:layout_constraintTop_toBottomOf="@id/ivMamihAi" />
+
+
+            <TextView
+                android:id="@+id/tvInsightMessage"
+                android:layout_width="292dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:fontFamily="@font/sf_pro_display_medium"
+                android:lineHeight="17dp"
+                tools:text="@string/insight_message"
+                android:textAlignment="center"
+                android:textColor="@color/dark_blue"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@id/tvInsightTitle"
+                app:layout_constraintStart_toStartOf="@id/tvInsightTitle"
+                app:layout_constraintTop_toBottomOf="@id/tvInsightTitle"
+                tools:ignore="UnusedAttribute" />
+
+        </LinearLayout>
+
 
         <TextView
             android:id="@+id/tvTodaysTransaction"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="24dp"
             android:fontFamily="@font/sf_pro_display_bold"
             android:text="@string/todays_transaction"
             android:textColor="@color/dark_blue"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvInsightMessage" />
+            app:layout_constraintTop_toBottomOf="@id/ivMamihAi" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvTransactions"
@@ -150,6 +168,22 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvTodaysTransaction"
             tools:listitem="@layout/item_row_transaction" />
+
+        <TextView
+            android:id="@+id/tvNoTransactionData"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/sf_pro_display_medium"
+            android:text="@string/no_transaction_data"
+            android:textColor="@color/red"
+            android:textSize="14sp"
+            android:visibility="gone"
+            android:textAlignment="center"
+            android:layout_marginTop="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTodaysTransaction"
+            />
 
         <ProgressBar
             android:id="@+id/progressIndicatorTodaysFinancials"
@@ -174,7 +208,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_begin="407dp" />
+            app:layout_constraintGuide_begin="435dp" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

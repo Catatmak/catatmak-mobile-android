@@ -45,7 +45,13 @@ class PreviewAdapter(
         }
 
         holder.binding.btnChooseCategory.setOnClickListener { v: View ->
-            showMenu(holder.itemView.context, v, R.menu.category_menu, holder.binding.btnChooseCategory, transaction)
+            showMenu(
+                holder.itemView.context,
+                v,
+                R.menu.category_menu,
+                holder.binding.btnChooseCategory,
+                transaction
+            )
         }
 
         holder.bind(transaction)
@@ -74,44 +80,24 @@ class PreviewAdapter(
         }
     }
 
-    private fun showMenu(context: Context, v: View, @MenuRes menuRes: Int, button: Button, transaction: OCRDataItem) {
+    private fun showMenu(
+        context: Context,
+        v: View,
+        @MenuRes menuRes: Int,
+        button: Button,
+        transaction: OCRDataItem
+    ) {
         val icArrowUp: Drawable? = ContextCompat.getDrawable(context, R.drawable.ic_arrow_up)
         val icArrowDown: Drawable? = ContextCompat.getDrawable(context, R.drawable.ic_arrow_down)
         val popup = PopupMenu(context, v)
         popup.menuInflater.inflate(menuRes, popup.menu)
 
         popup.setOnMenuItemClickListener { menuItem: MenuItem ->
-            selectedCategory = menuItem.title.toString()
-            when (menuItem.itemId) {
-                R.id.option_category_1 -> {
-                    button.text = menuItem.title
-                    setDrawableEnd(button, icArrowDown)
-                    onMenuChanged(transaction, selectedCategory)
-                    true
-                }
-
-                R.id.option_category_2 -> {
-                    button.text = menuItem.title
-                    setDrawableEnd(button, icArrowDown)
-                    onMenuChanged(transaction, selectedCategory)
-                    true
-                }
-
-                R.id.option_category_3 -> {
-                    button.text = menuItem.title
-                    setDrawableEnd(button, icArrowDown)
-                    onMenuChanged(transaction, selectedCategory)
-                    true
-                }
-                R.id.option_category_4 -> {
-                    button.text = menuItem.title
-                    setDrawableEnd(button, icArrowDown)
-                    onMenuChanged(transaction, selectedCategory)
-                    true
-                }
-
-                else -> false
-            }
+            val selectedCategory = menuItem.title.toString()
+            button.text = selectedCategory
+            setDrawableEnd(button, icArrowDown)
+            onMenuChanged(transaction, selectedCategory)
+            true
         }
         popup.setOnDismissListener {
             setDrawableEnd(button, icArrowDown)

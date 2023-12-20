@@ -39,6 +39,7 @@ class UncategorizeAdapter(private val onMenuChanged: (UncategorizeDataItem, Stri
 
         holder.binding.btnChooseCategory.setOnClickListener { v: View ->
             showMenu(holder.itemView.context, v, R.menu.category_menu, holder.binding.btnChooseCategory, transaction)
+
         }
 
         holder.bind(transaction)
@@ -49,8 +50,8 @@ class UncategorizeAdapter(private val onMenuChanged: (UncategorizeDataItem, Stri
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(transaction: UncategorizeDataItem) {
             with(binding) {
+                Log.d("CATEGORY", transaction.toString())
                 with(transaction) {
-                    Log.d("CATEGORY", category)
                     val cleanPrice = price.replace(".", "")
                     tvCreatedAt.text = formatDateTime(updatedAt)
                     tvItemName.text = title
@@ -68,38 +69,15 @@ class UncategorizeAdapter(private val onMenuChanged: (UncategorizeDataItem, Stri
         popup.menuInflater.inflate(menuRes, popup.menu)
 
         popup.setOnMenuItemClickListener { menuItem: MenuItem ->
-            selectedCategory = menuItem.title.toString()
-            when (menuItem.itemId) {
-                R.id.option_category_1 -> {
-                    button.text = menuItem.title
-                    setDrawableEnd(button, icArrowDown)
-                    onMenuChanged(transaction, selectedCategory)
-                    true
-                }
-
-                R.id.option_category_2 -> {
-                    button.text = menuItem.title
-                    setDrawableEnd(button, icArrowDown)
-                    onMenuChanged(transaction, selectedCategory)
-                    true
-                }
-
-                R.id.option_category_3 -> {
-                    button.text = menuItem.title
-                    setDrawableEnd(button, icArrowDown)
-                    onMenuChanged(transaction, selectedCategory)
-                    true
-                }
-                R.id.option_category_4 -> {
-                    button.text = menuItem.title
-                    setDrawableEnd(button, icArrowDown)
-                    onMenuChanged(transaction, selectedCategory)
-                    true
-                }
-
-                else -> false
-            }
+            val selectedCategory = menuItem.title.toString()
+            button.text = selectedCategory
+            setDrawableEnd(button, icArrowDown)
+            onMenuChanged(transaction, selectedCategory)
+            true
         }
+
+        popup.show()
+
         popup.setOnDismissListener {
             setDrawableEnd(button, icArrowDown)
         }

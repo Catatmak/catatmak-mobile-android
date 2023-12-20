@@ -11,19 +11,41 @@
         android:layout_height="match_parent">
 
 
-        <TextView
+        <LinearLayout
             android:id="@+id/tvInsightByMamihAi"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/sf_pro_display_bold"
-            android:text="@string/insight_by_mamih_ai"
-            android:textAlignment="center"
-            android:textColor="@color/dark_blue"
-            android:textSize="18sp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
+            android:layout_marginBottom="24dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sf_pro_display_bold"
+                android:text="@string/insight_by_mamih_ai"
+                android:textAlignment="center"
+                android:textColor="@color/dark_blue"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tvNoInsight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:fontFamily="@font/sf_pro_display_medium"
+                android:text="@string/no_insight"
+                android:textColor="@color/red"
+                android:textSize="14sp"
+                android:textAlignment="center"
+                android:visibility="gone"/>
+        </LinearLayout>
+
+
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvInsights"
@@ -163,7 +185,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="28dp"
             android:fontFamily="@font/sf_pro_display_medium"
-            android:text="@string/no_data"
+            android:text="@string/no_chart_data"
             android:textColor="@color/red"
             android:textSize="14sp"
             android:textAlignment="center"
@@ -178,7 +200,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="28dp"
             android:fontFamily="@font/sf_pro_display_medium"
-            android:text="@string/no_data"
+            android:text="@string/no_chart_data"
             android:textColor="@color/red"
             android:textSize="14sp"
             android:textAlignment="center"
@@ -187,20 +209,6 @@
             app:layout_constraintTop_toBottomOf="@id/tvCashFlowGraph"
             android:visibility="gone" />
 
-        <TextView
-            android:id="@+id/tvNoInsight"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
-            android:fontFamily="@font/sf_pro_display_medium"
-            android:text="@string/no_insight"
-            android:textColor="@color/red"
-            android:textSize="14sp"
-            android:textAlignment="center"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvInsightByMamihAi"
-            android:visibility="gone" />
 
         <ProgressBar
             android:id="@+id/pbOutcomeCharts"

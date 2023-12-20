@@ -27,6 +27,7 @@ class DetailIncomeActivity : AppCompatActivity(),
 
     private lateinit var startDate: String
     private lateinit var endDate: String
+    private lateinit var title: String
     private var position: Int? = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,6 +37,7 @@ class DetailIncomeActivity : AppCompatActivity(),
 
         startDate = intent.getStringExtra(EXTRA_START_DATE).toString()
         endDate = intent.getStringExtra(EXTRA_END_DATE).toString()
+        title = intent.getStringExtra(EXTRA_TITLE).toString()
         position = intent.getIntExtra(EXTRA_POSITION, 0)
 
 
@@ -48,6 +50,8 @@ class DetailIncomeActivity : AppCompatActivity(),
             @Suppress("DEPRECATION")
             onBackPressed()
         }
+
+        binding.tvTitle.text = title
 
         setupRecyclerView()
         getFinancialsCustomDate()
@@ -68,7 +72,6 @@ class DetailIncomeActivity : AppCompatActivity(),
     private fun getFinancialsCustomDate() {
         when (position) {
             1 -> {
-                binding.tvTitle.text = getString(R.string.this_month)
                 viewModel.getIncomeCustomDate(startDate, endDate).observe(this) { result ->
                     if (result != null) {
                         when (result) {
@@ -98,41 +101,7 @@ class DetailIncomeActivity : AppCompatActivity(),
                     }
                 }
             }
-
             2 -> {
-                binding.tvTitle.text = getString(R.string.last_month)
-                viewModel.getIncomeCustomDate(startDate, endDate).observe(this) { result ->
-                    if (result != null) {
-                        when (result) {
-                            is ResultState.Loading -> {
-                                showLoading(true)
-                            }
-
-                            is ResultState.Success -> {
-                                showLoading(false)
-                                val financialsCustomDate = result.data.financialsData
-                                val adapter = ListTransactionAdapter { transaction ->
-                                    if (!isSheetShown) {
-                                        val showBottomSheet = UpdateIncomeTransactionSheetFragment(transaction, this)
-                                        showBottomSheet.show(supportFragmentManager, UpdateIncomeTransactionSheetFragment.TAG)
-                                        isSheetShown = true
-                                    }
-                                }
-                                adapter.submitList(financialsCustomDate)
-                                binding.rvDetailOutcome.adapter = adapter
-                            }
-
-                            is ResultState.Error -> {
-                                showLoading(false)
-                                showToast(result.error.toString())
-                            }
-                        }
-                    }
-                }
-            }
-
-            3 -> {
-                binding.tvTitle.text = getString(R.string.this_month)
                 viewModel.getIncomeCustomDate(startDate, endDate).observe(this) { result ->
                     if (result != null) {
                         when (result) {
@@ -181,5 +150,6 @@ class DetailIncomeActivity : AppCompatActivity(),
         const val EXTRA_START_DATE = "start_date"
         const val EXTRA_END_DATE = "end_date"
         const val EXTRA_POSITION = "position"
+        const val EXTRA_TITLE = "title"
     }
 }

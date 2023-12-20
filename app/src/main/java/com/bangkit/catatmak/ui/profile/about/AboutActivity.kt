@@ -16,6 +16,8 @@ class AboutActivity : AppCompatActivity() {
 
         setSupportActionBar(binding.topAppBar)
 
+
+
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         binding.topAppBar.setNavigationOnClickListener {
             @Suppress("DEPRECATION")

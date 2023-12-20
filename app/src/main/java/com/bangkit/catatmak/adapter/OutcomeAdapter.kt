@@ -50,6 +50,7 @@ class OutcomeAdapter :
                         intent.putExtra(DetailOutcomeActivity.EXTRA_START_DATE, startDate)
                         intent.putExtra(DetailOutcomeActivity.EXTRA_END_DATE, endDate)
                         intent.putExtra(DetailOutcomeActivity.EXTRA_POSITION, position)
+                        intent.putExtra(DetailOutcomeActivity.EXTRA_TITLE, title)
                         itemView.context.startActivity(intent)
                     }
                 }

@@ -4,9 +4,12 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.bangkit.catatmak.data.CatatmakRepository
 import com.bangkit.catatmak.data.response.UncategorizeDataItem
 import com.bangkit.catatmak.data.response.UpdateCategoryItem
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class UncategorizedViewModel(private val repository: CatatmakRepository) : ViewModel() {
 
@@ -29,18 +32,27 @@ class UncategorizedViewModel(private val repository: CatatmakRepository) : ViewM
 
     fun getFinancialsUncategorized() = repository.getFinancialsUncategorized()
 
+    fun setListTransaction(data: List<UncategorizeDataItem>) {
+        viewModelScope.launch {
+            _listTransaction.value = data
+        }
+    }
 
     fun updateSelectedTransaction(transaction: UncategorizeDataItem, category: String) {
-        val currentList = listTransaction.value.orEmpty().toMutableList()
+        viewModelScope.launch(Dispatchers.IO) {
+            val currentList = listTransaction.value.orEmpty().toMutableList()
 
-        val updatedTransaction = transaction.copy(category = category)
+            val updatedTransaction = transaction.copy(category = category)
 
-        val index = currentList.indexOfFirst { it.id == transaction.id }
+            val index = currentList.indexOfFirst { it.id == transaction.id }
 
-        if (index != -1) {
-            currentList[index] = updatedTransaction
-            _listTransaction.value = currentList
-            Log.d(TAG, _listTransaction.value.toString())
+            if (index != -1) {
+                currentList[index] = updatedTransaction
+                viewModelScope.launch {
+                    _listTransaction.value = currentList
+                }
+                Log.d(TAG, _listTransaction.value.toString())
+            }
         }
     }
 

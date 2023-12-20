@@ -26,6 +26,7 @@ class DetailOutcomeActivity : AppCompatActivity(), BottomSheetDismissListener {
 
     private lateinit var startDate: String
     private lateinit var endDate: String
+    private lateinit var title: String
     private var position: Int? = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,6 +37,7 @@ class DetailOutcomeActivity : AppCompatActivity(), BottomSheetDismissListener {
         startDate = intent.getStringExtra(EXTRA_START_DATE).toString()
         endDate = intent.getStringExtra(EXTRA_END_DATE).toString()
         position = intent.getIntExtra(EXTRA_POSITION, 0)
+        title = intent.getStringExtra(EXTRA_TITLE).toString()
 
 
         setSupportActionBar(binding.topAppBar)
@@ -45,6 +47,8 @@ class DetailOutcomeActivity : AppCompatActivity(), BottomSheetDismissListener {
             @Suppress("DEPRECATION")
             onBackPressed()
         }
+
+        binding.tvTitle.text = title
 
         setupRecyclerView()
         getFinancialsCustomDate()
@@ -61,7 +65,6 @@ class DetailOutcomeActivity : AppCompatActivity(), BottomSheetDismissListener {
     private fun getFinancialsCustomDate() {
         when (position) {
             1 -> {
-                binding.tvTitle.text = getString(R.string.today)
                 viewModel.getOutcomeCustomDate(startDate, endDate).observe(this) { result ->
                     if (result != null) {
                         when (result) {
@@ -97,7 +100,6 @@ class DetailOutcomeActivity : AppCompatActivity(), BottomSheetDismissListener {
             }
 
             2 -> {
-                binding.tvTitle.text = getString(R.string.this_week)
                 viewModel.getOutcomeCustomDate(startDate, endDate).observe(this) { result ->
                     if (result != null) {
                         when (result) {
@@ -133,7 +135,6 @@ class DetailOutcomeActivity : AppCompatActivity(), BottomSheetDismissListener {
             }
 
             3 -> {
-                binding.tvTitle.text = getString(R.string.this_month)
                 viewModel.getOutcomeCustomDate(startDate, endDate).observe(this) { result ->
                     if (result != null) {
                         when (result) {
@@ -191,5 +192,6 @@ class DetailOutcomeActivity : AppCompatActivity(), BottomSheetDismissListener {
         const val EXTRA_START_DATE = "start_date"
         const val EXTRA_END_DATE = "end_date"
         const val EXTRA_POSITION = "position"
+        const val EXTRA_TITLE = "title"
     }
 }

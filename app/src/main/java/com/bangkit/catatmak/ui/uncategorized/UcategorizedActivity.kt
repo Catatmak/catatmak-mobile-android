@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bangkit.catatmak.R
@@ -12,6 +13,7 @@ import com.bangkit.catatmak.adapter.UncategorizeAdapter
 import com.bangkit.catatmak.data.ResultState
 import com.bangkit.catatmak.databinding.ActivityCategorizeBinding
 import com.bangkit.catatmak.ui.ViewModelFactory
+import kotlinx.coroutines.launch
 
 class UcategorizedActivity : AppCompatActivity() {
 
@@ -49,7 +51,9 @@ class UcategorizedActivity : AppCompatActivity() {
 
         viewModel.listTransaction.observe(this) { result ->
             val adapter = UncategorizeAdapter { transaction, category ->
-                viewModel.updateSelectedTransaction(transaction, category)
+                lifecycleScope.launch {
+                    viewModel.updateSelectedTransaction(transaction, category)
+                }
             }
             adapter.submitList(result)
             binding.rvTransactions.adapter = adapter
@@ -67,7 +71,9 @@ class UcategorizedActivity : AppCompatActivity() {
                     is ResultState.Success -> {
                         showLoading(false)
                         val data = result.data.data
-                        viewModel._listTransaction.value = data
+                        lifecycleScope.launch {
+                            viewModel.setListTransaction(data)
+                        }
                     }
 
                     is ResultState.Error -> {

@@ -58,9 +58,7 @@ class HomeFragment : Fragment(), BottomSheetDismissListener {
                                 getString(R.string.insight_title, insight[0].title)
                             binding?.tvInsightMessage?.text = insight[0].description
                         } else {
-                            binding?.tvInsightTitle?.visibility = View.GONE
-                            binding?.tvInsightMessage?.visibility = View.GONE
-                            binding?.tvNoInsightData?.visibility = View.VISIBLE
+                           binding?.ivMamihAi?.visibility = View.GONE
                         }
                     }
 
@@ -150,6 +148,9 @@ class HomeFragment : Fragment(), BottomSheetDismissListener {
                             adapter.submitList(financialsToday)
                             binding?.rvTransactions?.adapter = adapter
                         } else {
+                            val adapter = ListTransactionAdapter { _ ->
+                            }
+                            adapter.submitList(emptyList())
                             binding?.tvNoTransactionData?.visibility = View.VISIBLE
                         }
                     }
