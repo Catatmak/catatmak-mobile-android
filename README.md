@@ -69,7 +69,7 @@ Catatmak Mobile Android App is designed to assist users in managing their financ
     git clone https://github.com/Catatmak/catatmak-mobile-android.git
     ```
 2. Open Android Studio and select "Open an Existing Project."
-3. Browse to the directory where you cloned your project and select the "Meongku" folder.
+3. Browse to the directory where you cloned your project and select the "Catatmak" folder.
 4. After opening the project, click on Run > Run 'app'.
 5. Select the device or emulator to run the app, then click OK.
 6. Once installed and running successfully, access the app through an emulator or your Android device.
