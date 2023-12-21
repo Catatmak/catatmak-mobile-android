@@ -1,10 +1,12 @@
 package com.bangkit.catatmak.ui.transaction.detail_outcome
 
+import android.graphics.PorterDuff
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bangkit.catatmak.R
@@ -42,7 +44,11 @@ class DetailOutcomeActivity : AppCompatActivity(), BottomSheetDismissListener {
 
         setSupportActionBar(binding.topAppBar)
 
+        val upArrow = ContextCompat.getDrawable(this, R.drawable.baseline_arrow_back_24)
+        upArrow?.setColorFilter(ContextCompat.getColor(this, R.color.dark_blue), PorterDuff.Mode.SRC_ATOP)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setHomeAsUpIndicator(upArrow)
+
         binding.topAppBar.setNavigationOnClickListener {
             @Suppress("DEPRECATION")
             onBackPressed()

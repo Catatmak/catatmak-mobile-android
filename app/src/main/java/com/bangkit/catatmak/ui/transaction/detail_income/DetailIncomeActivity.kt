@@ -1,10 +1,12 @@
 package com.bangkit.catatmak.ui.transaction.detail_income
 
+import android.graphics.PorterDuff
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bangkit.catatmak.R
@@ -43,9 +45,13 @@ class DetailIncomeActivity : AppCompatActivity(),
 
         setSupportActionBar(binding.topAppBar)
 
+        val upArrow = ContextCompat.getDrawable(this, R.drawable.baseline_arrow_back_24)
+        upArrow?.setColorFilter(ContextCompat.getColor(this, R.color.dark_blue), PorterDuff.Mode.SRC_ATOP)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setHomeAsUpIndicator(upArrow)
+
         supportActionBar?.title = getString(R.string.detail_income)
 
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         binding.topAppBar.setNavigationOnClickListener {
             @Suppress("DEPRECATION")
             onBackPressed()
@@ -101,6 +107,7 @@ class DetailIncomeActivity : AppCompatActivity(),
                     }
                 }
             }
+
             2 -> {
                 viewModel.getIncomeCustomDate(startDate, endDate).observe(this) { result ->
                     if (result != null) {

@@ -1,6 +1,7 @@
 package com.bangkit.catatmak.ui.add_transaction.add_with_photo
 
 import android.content.Intent
+import android.graphics.PorterDuff
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,9 +9,11 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.core.content.ContextCompat
 import androidx.core.net.toFile
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bangkit.catatmak.R
 import com.bangkit.catatmak.adapter.PreviewAdapter
 import com.bangkit.catatmak.data.ResultState
 import com.bangkit.catatmak.data.response.OCRDataItem
@@ -49,7 +52,11 @@ class AddWithPhotoActivity : AppCompatActivity(), UpdateTransactionListener,
 
         setSupportActionBar(binding.topAppBar)
 
+        val upArrow = ContextCompat.getDrawable(this, R.drawable.baseline_arrow_back_24)
+        upArrow?.setColorFilter(ContextCompat.getColor(this, R.color.dark_blue), PorterDuff.Mode.SRC_ATOP)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setHomeAsUpIndicator(upArrow)
+
         binding.topAppBar.setNavigationOnClickListener {
             @Suppress("DEPRECATION")
             onBackPressed()
